@@ -109,7 +109,7 @@ Follow `hyperframes-creative/references/video-composition.md` and `house-style.m
 - **Resolution honesty**: 720p clips in a 1080×1920 master are upscaled 1.5×. Use them where
   softness is fine (backgrounds with depth-of-field, framed panels, split screens, with grain),
   not as razor-sharp hero detail.
-- **Watermarks stay.** Flow's visible mark is never removed or cropped away. If the mark sits in a
+- **Clips are used as Flow delivers them.** On the user's Flow Ultra plan they arrive without a visible mark; any mark that is present is never removed or cropped away. If the mark sits in a
   letterbox bar, framing the clip so the bar is cut also cuts the mark: keep it visible or ask the
   user first. Label AI-generated footage in the delivery notes.
 - **Mute generated clip audio** and rebuild sound in the mix (it is usually near-silent ambience).
@@ -140,7 +140,7 @@ Follow `hyperframes-creative/references/video-composition.md` and `house-style.m
 - [ ] ≥ 3 element families; generated footage only where code can't do it.
 - [ ] Each beat: one focal idea, three depth layers, edge-anchored layout.
 - [ ] Type at video scale; captions clean at 360 px; no double exposure.
-- [ ] Footage graded to one look; watermark removed and verified; clip audio muted.
+- [ ] Footage graded to one look; clips exactly as Flow delivered them; clip audio muted.
 - [ ] SFX tied to events; VO in front; −14 LUFS master.
 - [ ] No invented brands, UI claims, metrics or testimonials.
 - [ ] Motion follows `brief/motion_brief.md`: every scene change has a bridge (no coded crossfades),

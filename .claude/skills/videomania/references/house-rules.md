@@ -7,6 +7,7 @@ own words.
 
 | Date | The user's note (their words or close paraphrase) | Rule now | Enforced by |
 |---|---|---|---|
+| 2026-10-17 | "I got Google Flow Ultra." | Flow clips arrive without a visible mark from Flow itself; use them exactly as delivered; never remove, crop or mask marks | SKILL §2, editor-doctrine §8, flow_ingest provenance |
 | 2026-10-17 | "The motion graphics you made are very generic." (recovery-agent) | Research real Opus 5.5 motion first; write a motion brief with a concept, central visual rule, bridges between scenes, one object changing shape; no grey placeholder bars, no repeated layouts, every problem graphic pays off | SKILL step 3, `motion-design-playbook.md`, critic prompt, `qa.py` cadence gate |
 | 2026-10-17 | "Research these sources and build from them every time." | Each film's `brief/motion_research.md` cites 3–6 references with the technique taken from each | SKILL step 3, critic reads it |
 | 2026-10-16 | "Every Flow video generation uses Omni Flash 1.1, never Veo 3.1." | Model `gemini-omni-flash` only; stop if it isn't offered | SKILL §2, `flow-asset-production.md`, `flow_once.mjs --expect-model omni` |

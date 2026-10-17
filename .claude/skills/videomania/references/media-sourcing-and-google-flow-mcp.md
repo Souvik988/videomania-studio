@@ -37,7 +37,7 @@ colours, fonts; no fictional UI implied to exist; no invented metrics/testimonia
 
 Operational rules live in **`flow-asset-production.md`** and override anything older here:
 **video = Omni Flash only (`gemini-omni-flash`), never Veo 3.1**; aspect 16:9 or 9:16 as the user
-says; one explicit user approval per generation; watermark removed; server code unmodified; one
+says; one explicit user approval per generation; clips used as Flow delivers them (Ultra: no visible mark); server code unmodified; one
 generation at a time.
 
 Two ways in, same engine, same job ledger:
@@ -56,6 +56,5 @@ Two ways in, same engine, same job ledger:
 
 **Both providers require an `approval` input quoting what the user agreed to for that specific ID.**
 Without it they refuse to submit — that is the credit gate, not a formality; never invent the string.
-`FLOW_WATERMARK_REMOVAL=true` with `FLOW_WATERMARK_METHOD=auto` is set in the engine's
-`.env.asset-studio`, per the user's 2026-10-17 instruction that Omni Flash plates ship badge-free.
-Verify the result on a corner crop before trusting it.
+The user's account is on Google Flow Ultra (2026-10-17), so Flow delivers clips without the visible mark.
+Keep `FLOW_WATERMARK_REMOVAL=false`: the engine never alters a clip, and Video Mania never crops or masks marks.

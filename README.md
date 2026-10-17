@@ -30,10 +30,14 @@ session) using the **Video Mania** skill.
 Google Flow can't run in the cloud because it drives your own signed-in Chrome. Generation always
 happens on your machine; everything else can run in the cloud.
 
-## Local use
-On your own computer the same skill also talks to the Google Flow MCP directly (one approval per
-generation). The skill's source of truth on this PC is `Desktop/video editor/videomania`. When it
-changes, copy it to `.claude/skills/videomania/` here and commit.
+## Local use and other IDEs
+- **Claude Code** (desktop, CLI or cloud) loads the skill from `.claude/skills/` automatically.
+- **Other agents** (Codex, Cursor, …): see `AGENTS.md`.
+- On a computer with the Google Flow MCP connected, the skill generates clips directly, with one
+  approval per generation. Without it, the skill runs in prompt-sheet mode.
+- **This repo is the master copy of the skill.** Improve it here, commit, push. On your PC, run
+  `bash .claude/skills/videomania/scripts/install_skills.sh` after pulling, to update the installed
+  copies.
 
 ## Licences
 - Video Mania skill: yours.

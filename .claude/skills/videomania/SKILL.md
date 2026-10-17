@@ -79,7 +79,7 @@ tool list for `mcp__google-flow__*`; if absent say "Google Flow: not connected" 
 - **One explicit approval per generation.** Show the generation sheet (ID, purpose, prompt, model,
   aspect, duration); the user approves IDs; each approved ID = one real "Start generation" click,
   made with `scripts/flow_once.mjs click`. No retries, no extra takes without new approval.
-- Server code stays unmodified; **Flow's watermark is removed before delivery** (`FLOW_WATERMARK_REMOVAL=true`, method `auto`); clip audio is muted and rebuilt.
+- Server code stays unmodified; **Clips are used exactly as Google Flow delivers them. On the user's Flow Ultra plan Flow itself delivers them without a visible mark; Video Mania never removes, crops or masks a mark (`FLOW_WATERMARK_REMOVAL` stays false)**; clip audio is muted and rebuilt.
 - Generate only what code can't make (people, nature, objects, light, places). Text, UI, numbers,
   charts and logos are always coded.
 Full procedure: `references/flow-asset-production.md`.
@@ -207,15 +207,21 @@ Final path, format, QA gates (cite `qa/final/summary.json`), critic scores per p
 licence, every Flow generation (ID, model, credits shown, approval), what is not included, anything
 blocked. Audio is measured, never "listened to".
 
-## 6. Keeping the install honest
+## 6. Keeping the install honest (one master copy)
 
-This folder (the project you edit the skill in) is the source of truth. After changing anything here,
-run `bash "$S/install_skills.sh"` — it mirrors the skill into every agent host on this machine
-(`~/.claude/skills/videomania`, `~/.qoder/skills/videomania`), prints what changed, and never touches
-`config.json` or another skill. `install_skills.sh --check` reports drift without writing.
+The master copy is the **videomania-studio repo** (github.com/Souvik988/videomania-studio,
+`.claude/skills/videomania/`; local clone `Desktop/videomania-studio`). Every improvement goes
+there, so local and cloud sessions always run the same skill.
+- **Local session:** edit the skill in the local clone, then run `bash "$S/install_skills.sh"` (from
+  that clone) to mirror it into `~/.claude` and `~/.qoder`. Then commit and push.
+- **Cloud session:** edit the skill in the repo, commit and push the session branch, and say so in the
+  report. The user merges the branch (pull request), and the local clone pulls it.
+- Notes-to-rules changes (§4b) follow the same path. Don't leave an improvement only in an installed
+  copy: `install_skills.sh` overwrites installed copies from the master.
+- `install_skills.sh --check` reports drift without writing.
 
 ## Non-negotiables
 A specific reason to stay by 3 s · every open loop closes with the same object · narration is the timing master · every line gets a visual change · frame 0 moves · ≥ 3 element
 families in films over 15 s · no invented brands, UI claims, metrics or testimonials · every asset
-has provenance · watermarks removed · seek-deterministic compositions · draft before final · honest
+has provenance · clips used as Flow delivers them · seek-deterministic compositions · draft before final · honest
 scores (a real 78 beats a fake 99).
