@@ -1,0 +1,12 @@
+# Fill into artifacts/brief.json (schema: OpenMontage schemas/artifacts/brief.schema.json)
+version: "1.0"
+title: ""
+hook: ""                      # first spoken line or the visual promise of the first 2 s
+key_points: []                # one per beat, from the narration (no invented claims)
+tone: ""
+style: ""                     # concept name + one-line visual thesis (see brief/art_direction.md)
+target_platform: tiktok       # youtube | instagram | tiktok | linkedin | generic
+target_duration_seconds: 0    # narration duration + tail
+# Also write: brief/concepts.md (2-3 concepts, evidence -> inference), brief/art_direction.md
+# and artifacts/decision_log.json with approval_policy, pipeline_selection, concept_selection,
+# render_runtime_selection, composition_mode, music_source.

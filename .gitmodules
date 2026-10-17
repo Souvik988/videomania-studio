@@ -1,0 +1,12 @@
+[submodule "research/awesome-opus5-5-videos"]
+	path = research/awesome-opus5-5-videos
+	url = https://github.com/yihui-dev/awesome-opus5-5-videos.git
+	shallow = true
+[submodule "research/motion-graphics-skills"]
+	path = research/motion-graphics-skills
+	url = https://github.com/charlie947/motion-graphics-skills.git
+	shallow = true
+[submodule "research/herk-edit-kit"]
+	path = research/herk-edit-kit
+	url = https://github.com/nateherkai/herk-edit-kit.git
+	shallow = true

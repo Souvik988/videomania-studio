@@ -1,0 +1,19 @@
+/* Look: dark lit ("Infinite" spot; herk-edit-kit MOTION_PHILOSOPHY). Lifts glow and chrome bans. Playbook §12. */
+:root {
+  --mk-ground: #050506; --mk-surface: rgba(255,255,255,0.06); --mk-card: #141417; --mk-ink: #f4f4f5; --mk-muted: #8a8a93; --mk-line: rgba(255,255,255,0.12);
+  --mk-accent: #33d4c8; --mk-accent2: #ff9430; --mk-go: #5ee2d9;
+  --mk-display: "Inter", sans-serif; --mk-ui: "Inter", sans-serif; --mk-mono: "JetBrains Mono", monospace; --mk-serif: "EB Garamond", serif;
+  --mk-radius: 26px;
+  --mk-cap-bg: rgba(10, 10, 12, 0.62); --mk-cap-edge: rgba(255,255,255,0.22); --mk-cap-ink: #ffffff;
+}
+.mk-bg { background: #050506; }
+.mk-bg::before { content: ""; position: absolute; left: -20%; right: -20%; top: 45%; bottom: -30%;
+  transform: perspective(900px) rotateX(60deg);
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px),
+              repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px); }
+.mk-vignette { background: radial-gradient(ellipse at center, transparent 30%, #000 95%); }
+.mk-chrome { background: linear-gradient(180deg, #fff 0%, #999 60%, #ccc 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.mk-halo { text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3); }
+.mk-glass { background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025) 40%, rgba(255,255,255,.010) 60%, rgba(255,255,255,.055));
+  backdrop-filter: blur(14px) saturate(1.12); -webkit-backdrop-filter: blur(14px) saturate(1.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.12); }

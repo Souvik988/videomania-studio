@@ -1,0 +1,21 @@
+{
+  "tail_seconds": 1.5,
+  "music": {
+    "source": "procedural",
+    "mood": "tension_to_release",
+    "seed": 11,
+    "volume": 0.42,
+    "sections": [
+      {"start": 0.0, "end": 10.0, "role": "problem", "energy": 0.25},
+      {"start": 10.0, "end": 14.0, "role": "build", "energy": 0.5},
+      {"start": 14.0, "end": 22.0, "role": "reveal", "energy": 0.9},
+      {"start": 22.0, "end": 27.0, "role": "resolve", "energy": 0.6}
+    ],
+    "anchors": [14.0, 21.5]
+  },
+  "sfx": [
+    {"time": 1.1, "type": "whoosh", "duration": 1.2, "gain_db": -17, "reason": "camera pull-back reveal"},
+    {"time": 14.0, "type": "impact", "gain_db": -14, "reason": "reveal lands"}
+  ],
+  "mix": {"loudness_target": -14, "music_volume_during_speech": 0.16, "attack_ms": 120, "release_ms": 500, "sfx_volume": 0.9}
+}

@@ -1,0 +1,10 @@
+# keep Linux line endings for everything the cloud machine executes or reads
+* text=auto eol=lf
+*.mp4 binary
+*.mov binary
+*.mp3 binary
+*.wav binary
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.zip binary

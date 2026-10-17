@@ -1,0 +1,24 @@
+{
+  "opening": {
+    "benefit": "What the viewer gets by staying, in one specific line (from the narration, not invented)",
+    "evidenceBy3": 2.4,
+    "payoffTime": 54.6,
+    "openings_tried": [
+      {"name": "problem first", "first_3s": "what is on screen", "chosen": true, "why": "..."},
+      {"name": "result glimpse", "first_3s": "...", "chosen": false, "why": "..."},
+      {"name": "recognition first", "first_3s": "...", "chosen": false, "why": "..."}
+    ]
+  },
+  "loops": [
+    {
+      "id": "main",
+      "question": "The one question the viewer wants answered",
+      "object": "The specific on-screen object that holds the open state (e.g. three empty slots)",
+      "setup": 2.3,
+      "updates": [{"time": 5.1, "state": "First slot fills"}],
+      "closure": 38.4,
+      "resolution": "The same object, completed",
+      "supportingSpeech": "exact words from the narration that close it"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# One entry per scene in storyboard/scenes.yaml. Every field is required.
+- scene_id: S01
+  start_s: 0.00          # from transcript/phrases.json (phrase boundary or pause)
+  end_s: 3.20
+  voiceover_text: "exact spoken words"
+  semantic_goal: "the idea viewers must understand"
+  emotional_role: tension   # tension | friction | surprise | relief | proof | payoff | resolution | call_to_action
+  visual_concept: "one strong original image/transform"
+  composition: "foreground / midground / background, focus hierarchy, negative space"
+  camera: "lens feel, height, move, speed, duration"
+  style: "palette tokens, texture, light"
+  asset_plan: "real asset | code animation | licensed footage | Google Flow MCP | hybrid"
+  asset_provenance: []
+  motion_plan: "entrance, hold, curve, exit, carried object; word-onset accents"
+  text_plan: "exact wording, size, reading time, caption collision check"
+  sound_plan: "music section/energy, hit points, ducking, SFX cues with motivating event"
+  transition_to_next: "type + reason + carried element"
+  renderer: HyperFrames
+  review_gates: [legibility, continuity, audio_sync, brand]

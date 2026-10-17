@@ -1,0 +1,6 @@
+/* Bundled OFL fonts (see ../fonts/OFL-*.txt). Load before any look. */
+@font-face { font-family: "Inter"; font-weight: 100 900; src: url("fonts/InterVariable.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 800; src: url("fonts/BarlowCondensed-ExtraBold.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("fonts/JetBrainsMono-400.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 700; src: url("fonts/JetBrainsMono-700.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 400; src: url("fonts/EBGaramond-400.woff2") format("woff2"); }

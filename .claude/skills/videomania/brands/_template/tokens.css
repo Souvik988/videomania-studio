@@ -1,0 +1,5 @@
+/* brands/<slug>/tokens.css: overrides layered over the chosen look (new_composition.py --brand <slug>) */
+:root {
+  /* --mk-ground: #......; --mk-surface: #......; --mk-ink: #......; --mk-muted: #......; */
+  /* --mk-accent: #......; --mk-accent2: #......; --mk-display: "…", sans-serif; --mk-ui: "…", sans-serif; */
+}

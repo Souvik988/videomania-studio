@@ -1,0 +1,25 @@
+# machine-specific
+.claude/skills/videomania/config.json
+**/__pycache__/
+*.pyc
+node_modules/
+.hyperframes/
+.DS_Store
+Thumbs.db
+
+# heavy, regenerable project outputs (deliveries, briefs, QA summaries are kept)
+projects/*/renders/
+projects/*/previews/
+projects/*/snap*/
+projects/*/anim-map/
+projects/*/qa/**/*.png
+projects/*/qa/**/*.jpg
+projects/*/qa/critic*_frames/
+projects/*/qa/strips/
+projects/*/audio/stems/music_parts/
+projects/*/assets/flow/*/extracted/
+projects/*/assets/flow/*/qc/
+projects/*/source/media/
+projects/*/delivery/editable-project/media/
+projects/*/delivery/audio-stems/
+projects/mk-gallery*/

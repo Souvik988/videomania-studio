@@ -1,0 +1,11 @@
+/* Look: warm editorial (paper, print, Vox-like). Playbook §12. Change hues to the brand; keep the roles. */
+:root {
+  --mk-ground: #f5eee2; --mk-surface: #fffaf2; --mk-card: #fffaf2; --mk-ink: #1f1a14; --mk-muted: #8b8173; --mk-line: #e6dccb;
+  --mk-accent: #e23a2e; --mk-accent2: #f3a712; --mk-go: #2e9e5b;
+  --mk-display: "Barlow Condensed", "Inter", sans-serif; --mk-ui: "Inter", sans-serif; --mk-mono: "JetBrains Mono", monospace;
+  --mk-serif: "EB Garamond", serif; --mk-radius: 28px;
+  --mk-cap-bg: rgba(31, 26, 20, 0.86); --mk-cap-edge: rgba(255, 250, 242, 0.28); --mk-cap-ink: #fffaf2;
+}
+.mk-bg { background-color: var(--mk-ground);
+  background-image: radial-gradient(rgba(31,26,20,0.075) 2px, transparent 2.4px); background-size: 54px 54px; }
+.mk-vignette { background: radial-gradient(ellipse 80% 62% at 50% 44%, rgba(0,0,0,0) 60%, rgba(90,60,20,0.14) 100%); }

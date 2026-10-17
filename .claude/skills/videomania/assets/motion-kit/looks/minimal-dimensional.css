@@ -1,0 +1,13 @@
+/* Look: minimal dimensional (objects with thickness, light and contact shadows). Playbook §12. */
+:root {
+  --mk-ground: #e9e6e1; --mk-surface: #f7f5f1; --mk-card: #f7f5f1; --mk-ink: #23211e; --mk-muted: #8c877f; --mk-line: #d9d4cc;
+  --mk-accent: #ff5a1f; --mk-accent2: #2b3bff; --mk-go: #1f9d63;
+  --mk-display: "Inter", sans-serif; --mk-ui: "Inter", sans-serif; --mk-mono: "JetBrains Mono", monospace; --mk-serif: "EB Garamond", serif;
+  --mk-radius: 30px;
+  --mk-cap-bg: rgba(35, 33, 30, 0.84); --mk-cap-edge: rgba(255,255,255,0.3); --mk-cap-ink: #ffffff;
+}
+.mk-bg { background: radial-gradient(ellipse 100% 70% at 30% 20%, #f3f1ec 0%, #e9e6e1 60%, #dcd8d1 100%); }
+.mk-vignette { background: radial-gradient(ellipse 85% 65% at 50% 45%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.10) 100%); }
+/* thickness: add class mk-slab to cards (bevel highlight + extrusion + contact shadow) */
+.mk-slab { box-shadow: inset 0 2px 0 rgba(255,255,255,0.9), inset 0 -3px 0 rgba(0,0,0,0.06),
+  0 2px 0 #cfc9bf, 0 4px 0 #c6bfb4, 0 6px 0 #bdb6aa, 0 24px 40px rgba(40,30,20,0.18); }

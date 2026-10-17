@@ -1,0 +1,194 @@
+name: voiceover-film
+version: "1.0"
+description: >
+  Voiceover-led film: the user supplies a finished narration recording (or a script
+  that is voiced with an authorized TTS provider first) and the pipeline builds the
+  complete picture around it — contextual visuals, original motion graphics, B-roll,
+  transitions, kinetic typography, captions, background music, sound design, mix,
+  final export, and independent review. The recorded narration is the timing master:
+  its word-level alignment drives every scene boundary, caption, and accent. Music and
+  SFX support the speech; they never re-time it. Driven by the /videomania skill.
+category: custom
+stability: beta
+default_checkpoint_policy: guided
+
+orchestration:
+  mode: executive-producer
+  skill: pipelines/voiceover-film/executive-producer
+  budget_default_usd: 0.00          # local-only by default; paid generation needs explicit approval
+  max_revisions_per_stage: 3
+  max_send_backs: 3
+  max_wall_time_minutes: 90
+
+extensions:
+  custom_scripts: true
+  custom_playbooks: true
+  custom_skills: true
+  custom_tools: true
+
+required_skills:
+  - pipelines/voiceover-film/executive-producer
+  - pipelines/voiceover-film/idea-director
+  - pipelines/voiceover-film/script-director
+  - pipelines/voiceover-film/scene-director
+  - pipelines/voiceover-film/asset-director
+  - pipelines/voiceover-film/edit-director
+  - pipelines/voiceover-film/compose-director
+  - pipelines/voiceover-film/publish-director
+  - meta/reviewer
+  - meta/checkpoint-protocol
+
+compatible_playbooks:
+  recommended:
+    - premium-minimalist
+    - flat-motion-graphics
+  also_works:
+    - clean-professional
+    - minimalist-diagram
+  custom_allowed: true
+
+stages:
+  - name: idea
+    skill: pipelines/voiceover-film/idea-director
+    produces:
+      - brief
+      - decision_log
+    tools_available:
+      - transcriber
+      - audio_probe
+      - audio_energy
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - Brief is inferred from the narration itself (genre, audience, promise, emotional arc), with assumptions stated
+      - Two or three genuinely different visual concepts were compared before one was chosen
+      - render_runtime chosen explicitly and logged as render_runtime_selection with every available runtime considered
+      - Music plan decided (user track / library / procedural original / none) and logged as music_source
+      - If the user pre-authorized the full run, an approval_policy decision records exactly what it covers (never paid spend)
+    success_criteria:
+      - Schema-valid brief whose target_duration_seconds is derived from the narration length
+      - decision_log contains pipeline_selection, concept_selection, render_runtime_selection, music_source
+
+  - name: script
+    skill: pipelines/voiceover-film/script-director
+    required_artifacts_in:
+      - brief
+    produces:
+      - script
+    tools_available:
+      - transcriber
+      - subtitle_gen
+    checkpoint_required: true
+    # The script is the user's own recording, transcribed. Nothing creative is
+    # decided here; transcript corrections are logged evidence, not choices.
+    human_approval_default: false
+    review_focus:
+      - Every section's start/end comes from word-level alignment, not estimates
+      - ASR corrections are listed with reasons; raw transcript preserved
+      - Semantic beat roles (hook, problem, contrast, reveal, proof, CTA) assigned with exact times
+    success_criteria:
+      - Schema-valid script whose total_duration_seconds equals the narration duration (±0.1 s)
+      - SRT and VTT captions exist and break on sentence boundaries
+
+  - name: scene_plan
+    skill: pipelines/voiceover-film/scene-director
+    required_artifacts_in:
+      - brief
+      - script
+    produces:
+      - scene_plan
+    tools_available: []
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - Each scene has one strong visual idea tied to its spoken words, not a keyword illustration
+      - A named continuity element carries across each scene boundary (or a deliberate hard cut is justified)
+      - Shot-size and motion variety; stillness used on purpose
+      - Text plan respects reading time (~0.2 s/word) and caption safe zones
+      - No invented brand logos, fake UIs or unsupported metrics
+    success_criteria:
+      - Schema-valid scene_plan covering 0..narration end with no gaps
+      - Every scene has asset_plan, motion_plan, sound_plan and transition_to_next
+
+  - name: assets
+    skill: pipelines/voiceover-film/asset-director
+    required_artifacts_in:
+      - scene_plan
+    produces:
+      - asset_manifest
+    tools_available:
+      - procedural_score
+      - procedural_sfx
+      - audio_enhance
+      - audio_mixer
+      - music_library
+      - image_selector
+      - video_selector
+    checkpoint_required: true
+    human_approval_default: true
+    review_focus:
+      - Every asset has provenance and license recorded; no unlicensed music or footage
+      - Music actually exists as a file and its cue sheet aligns with narration anchors
+      - Paid generation only after an explicit budget approval; failures not retried in loops
+      - Per-scene review stills exist for code-authored scenes
+    success_criteria:
+      - Schema-valid asset_manifest; every scene_id referenced has at least one asset
+      - Music stem, SFX stem and cleaned voice stem present (unless music explicitly declined)
+
+  - name: edit
+    skill: pipelines/voiceover-film/edit-director
+    required_artifacts_in:
+      - scene_plan
+      - asset_manifest
+    produces:
+      - edit_decisions
+    tools_available:
+      - audio_mixer
+      - subtitle_gen
+    checkpoint_required: true
+    human_approval_default: false
+    review_focus:
+      - Cuts land on narration phrase boundaries or stressed words; never mid-word
+      - render_runtime carried unchanged from the proposal decision
+      - Caption track does not collide with key visual content
+    success_criteria:
+      - Schema-valid edit_decisions with render_runtime set
+
+  - name: compose
+    skill: pipelines/voiceover-film/compose-director
+    required_artifacts_in:
+      - edit_decisions
+    produces:
+      - render_report
+      - final_review
+    tools_available:
+      - video_compose
+      - hyperframes_compose
+      - composition_validator
+      - frame_sampler
+      - visual_qa
+    checkpoint_required: true
+    human_approval_default: false
+    review_focus:
+      - Draft render inspected (contact sheet, phone preview, transition strips) before final
+      - Independent critic pass found and fixed the top defects; review log updated
+      - Final has expected video+audio streams, duration, dimensions, loudness, captions
+    success_criteria:
+      - Schema-valid render_report and final_review
+      - qa/technical_report.json and qa/audio_report.json exist with measured values
+
+  - name: publish
+    skill: pipelines/voiceover-film/publish-director
+    required_artifacts_in:
+      - render_report
+    produces:
+      - publish_log
+    tools_available: []
+    checkpoint_required: true
+    # Local delivery packaging only (delivery/ folder). Posting to any external
+    # platform is out of scope here and always requires a separate explicit approval.
+    human_approval_default: false
+    review_focus:
+      - Delivery folder lists only files that exist; provenance manifest complete
+    success_criteria:
+      - Schema-valid publish_log with status exported
