@@ -77,7 +77,7 @@ log "projects dir: $REPO/projects"
 log "HyperFrames browser"
 npx --yes "hyperframes@$HF_VERSION" browser ensure
 npx --yes "hyperframes@$HF_VERSION" doctor --json > "$WB/hyperframes-doctor.json" || true
-node -e 'const d=require(process.argv[1]); console.log("    doctor ok:", d.ok); if(!d.ok){for(const c of (d.checks||[])) if(c.status!=="ok") console.log("    -", c.name, c.status, c.message||"")}' "$WB/hyperframes-doctor.json" || true
+node -e 'const d=require(process.argv[1]); const bad=(d.checks||[]).filter(c=>c.ok===false); console.log("    doctor: "+((d.checks||[]).length-bad.length)+" ok, "+bad.length+" not ok"); for(const c of bad) console.log("    - "+c.name+": "+(c.detail||""));console.log("    (not-ok lines about a newer HyperFrames, whisper-cpp, Kokoro, MusicGen or Docker are optional and safe to ignore)")' "$WB/hyperframes-doctor.json" || true
 node "$SKILL/assets/motion-kit/motion-kit.test.cjs" | tail -1
 
 # ---------- optional smoke test ----------
