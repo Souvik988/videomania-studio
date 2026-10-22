@@ -42,6 +42,12 @@ still loop for any freeze). Put that single `<video>` in one wrapper and animate
 pushes on the cuts as wrapper transforms. Always check device screens on frames from the real
 render, never only on snapshots.
 
+## Render-only text pitfall
+`background-clip: text` (chrome gradient type) on an element whose **text changes** during the film
+(a count-up), with a `filter` on the same element, rendered blank in HyperFrames screenshot capture,
+although snapshots showed it. Count-ups and other live text use a solid colour plus `text-shadow`
+glow. Gradient type is fine on static, split units (`rise()` puts the class on each char).
+
 ## Rules
 - The background the user supplies is used as delivered. If the video version carries a mark,
   prefer the clean still of the same set (with coded motion) over cropping the mark.
