@@ -35,7 +35,7 @@ spotlight on one element, measured pacing, captions and sound rules. Read
 **`references/typography-and-captions.md` before placing any word**: the 7-font type kit
 (`typography/`: Impact, Helvetica, Garamond, Cormorant Garamond, Rockwell, Snell Roundhand,
 Blacksword, each with a labelled open-source fallback), the 8 pairings and 10 presets, hierarchy and
-contrast, rhythmic subject-aware placement, sizes, word sync, motion and depth.
+contrast, one fixed bottom-centre subtitle home, sizes, word sync, motion and depth.
 **`references/house-rules.md` before every edit**: the user's own notes, turned into rules. They
 override every other default. The rest of this file is the operating procedure; load other
 references only when the step needs them.
@@ -185,8 +185,8 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
    `projects/ID/source/` (read `/hyperframes-core`;
    footage as `<video muted>` layers graded to the film, bracketed with poster and last-frame
    stills; `caption_track.py --mode type` → `TK.captions` (preset MULTI_FONT_STORYTELLING: Helvetica
-   body, Garamond italic payoff, Impact punch, depth shadow), slots planned from snapshots in
-   `CAP_PLAN` (open third opposite the subject, stack ↔ line rhythm); hero words via `TK.title` /
+   body, Garamond italic payoff, Impact punch, depth shadow), always bottom-centre on one fixed
+   baseline with stack ↔ line rhythm (chips keep out of that band); hero words via `TK.title` /
    `TK.extrude`; big words re-aligned on the waveform before placing; craft laws in playbook §13).
    `npx hyperframes check` = 0 errors. → `references/typography-and-captions.md`,
    `references/rendering-and-delivery.md`; compositing and grading rules: `references/editor-doctrine.md` §8

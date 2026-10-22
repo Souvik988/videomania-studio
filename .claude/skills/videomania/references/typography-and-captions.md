@@ -23,7 +23,7 @@ in place via CSS `local()`; their files are never copied, bundled or committed.
 ## 2. Choosing (typography/src/typography.py `select()`; `scripts/select_type.py`)
 
 - Talking head → `clean_caption` + `classical_highlight` (pairing helvetica_garamond).
-- Promo / SaaS talking head (the user's default) → MULTI_FONT_STORYTELLING: Helvetica says, Garamond
+- Promo / SaaS talking head (the user's default) → MULTI_FONT_STORYTELLING, bottom-centre: Helvetica says, Garamond
   italic savours the payoff word, Impact shouts the problem word.
 - Hook, price, CTA → Impact (VIRAL_IMPACT_HOOK); an ad hook may sit over a Rockwell line (IMPACT_ROCKWELL_AD).
 - Luxury / premium → Cormorant Garamond (+ Helvetica for facts, or a script accent for the title).
@@ -42,16 +42,19 @@ Three faces in one frame only with a clear hierarchy and room; never force every
 - Tracking: display −0.01 to −0.03 em (video softens letter detail); Impact +0.005 em; small caps +0.12–0.18 em.
 - Light-on-dark reads heavier: body 600–700 is enough; keep line-height ≥ 1.05 on stacked rows.
 
-## 4. Placement: rhythmic, subject-aware (house rule 2026-10-22)
+## 4. Placement: one fixed subtitle home (house rule 2026-10-22)
 
-- Captions live in the **open third opposite the subject**. They switch side only when the subject
-  moves (scene change), so placement reads as rhythm, not randomness.
-- Inside one scene: alternate tiers (low ↔ mid) or call-and-response sides (under the device ↔ across
-  the presenter's lap) when the frame allows; the lower-middle is home when the subject is centred.
-- Never over the face or mouth. Giant words behind the subject only while ≥ 75 % of the letters stay
-  visible; otherwise put them **in front, below the chin** (the PATA HAI fix).
-- Never where a chip, device or headline already sits: plan slots from snapshots of the film without
-  captions (`npx hyperframes snapshot --at <cue mids>`), then fill `CAP_PLAN` / `layout(cue)`.
+- **Subtitle captions live bottom-centre on one fixed baseline, always.** The user tried rhythmic
+  side placement and rejected it: the eye had to hunt for every new line and lost the picture. One home
+  lets the viewer read and watch at once. 16:9: block bottom at y 1040 (1080 frame); 9:16: block
+  bottom at y ~1360 (clear of the Reels caption/UI band); the block grows upward, so stack cues and
+  line cues share the same baseline.
+- Rhythm comes from the type, not the position: stack ↔ line alternation, the Garamond / Impact key word.
+- **Hero words** (scene titles, questions, prices, CTAs: DIWALI OFFER, KYA?, PATA HAI?, ₹50,000) are
+  not subtitles: they go where the composition needs them, behind the subject while ≥ 75 % of the
+  letters stay visible, otherwise in front below the chin.
+- Never over the face or mouth. Chips, devices and labels keep out of the caption band (move them up);
+  check every cue midpoint on snapshots of the film.
 - When a giant headline already spells the words (SALE SHURU, PROBLEM, COMPLETE SYSTEM) the caption
   steps aside (`CAP_OFF`); when a caption says what a chip says, change or drop the chip.
 - Safe zones: 9:16 Reels/Shorts keep text between y 250 and y 1420 and out of the right 120 px. A

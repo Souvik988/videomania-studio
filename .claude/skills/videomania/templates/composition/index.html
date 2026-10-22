@@ -75,14 +75,14 @@
 
       // ---- captions (data.js from caption_track.py) ----
       // type (default): TK.captions, preset MULTI_FONT_STORYTELLING — Helvetica-style body, Garamond italic payoff,
-      // Impact problem word, depth shadow, stack <-> line rhythm. layout(cue, i) puts each cue in the open third
-      // opposite the subject (references/typography-and-captions.md §4); fill CAP_PLAN from snapshots of the film.
-      const CAP_PLAN = {};   // cue start (s) → { x, y, align: "left"|"right"|"center", style: "stack"|"line" }
+      // Impact problem word, depth shadow, stack <-> line rhythm, always bottom-centre on one baseline
+      // (house rule 2026-10-22; references/typography-and-captions.md §4). CAP_PLAN may only change a cue's style.
+      const CAP_PLAN = {};   // cue start (s) → { style: "stack"|"line" }
       if (window.CUES && {{TK_CAPS}}) {
         TK.captions(tl, "#captions", window.CUES, {
           preset: "{{CAP_PRESET}}", scale: {{CAP_SCALE}},
           skip: (c) => (window.CAP_OFF || []).some(([a, b]) => c.s >= a && c.s < b),
-          layout: (c, i) => CAP_PLAN[c.s] || { x: W / 2, y: H - {{CAP_BOTTOM}}, align: "center", style: i % 2 ? "line" : "stack" },
+          layout: (c, i) => ({ x: W / 2, y: H - {{CAP_BOTTOM}}, align: "center", style: i % 2 ? "line" : "stack", ...(CAP_PLAN[c.s] || {}) }),
         });
       } else if (window.CUES) {
         MK.captions(tl, "#captions", window.CUES, { off: window.CAP_OFF || [], className: "cue" + ({{CHUNK}} ? " chunk" : "") });

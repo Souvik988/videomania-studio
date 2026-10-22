@@ -85,7 +85,7 @@ def main() -> int:
         "{{CHUNK}}": "true" if caps == "chunk" else "false", "{{GRAIN}}": f"{a.grain:g}",
         "{{TK_CAPS}}": "true" if caps == "type" else "false", "{{CAP_CLASS}}": "tk" if caps == "type" else "",
         "{{CAP_PRESET}}": a.cap_preset, "{{CAP_SCALE}}": "1" if portrait else "1.3",
-        "{{CAP_BOTTOM}}": "560" if portrait else "60",
+        "{{CAP_BOTTOM}}": "560" if portrait else "40",   # one fixed subtitle baseline (house rule 2026-10-22)
     }
     for k, v in subs.items():
         html = html.replace(k, v)
@@ -109,7 +109,7 @@ def main() -> int:
     if not (src / "data.js").exists():
         (src / "data.js").write_text("// caption_track.py writes window.CUES here\nwindow.CUES = [];\nwindow.CAP_OFF = [];\n", encoding="utf-8")
     print(f"scaffold ready: {src} ({W}x{H}, {a.duration:g}s, look {a.look}, captions {caps})")
-    print(f"next: caption_track.py --project {a.project} --mode {caps}; add scenes; fill CAP_PLAN from snapshots; npx hyperframes check")
+    print(f"next: caption_track.py --project {a.project} --mode {caps}; add scenes; snapshot every cue (bottom-centre band clear?); npx hyperframes check")
     return 0
 
 
