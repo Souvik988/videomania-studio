@@ -1,0 +1,188 @@
+{
+  "Anton/Anton-Regular.ttf": {
+    "sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab",
+    "bytes": 170812,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/anton/Anton-Regular.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Anton"
+  },
+  "Anton/OFL.txt": {
+    "sha256": "ee67e6ee22790b7929f1a3769ca2801d565c64b5a9096942c1adf5596de9c9e4",
+    "bytes": 4484,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/anton/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "GreatVibes/GreatVibes-Regular.ttf": {
+    "sha256": "8d509802186f1b51572531ecf313e8098f9a5bfdfaca93f0c9b34467f9982d15",
+    "bytes": 457588,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/greatvibes/GreatVibes-Regular.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Great Vibes"
+  },
+  "GreatVibes/OFL.txt": {
+    "sha256": "61093a21f5e63dedf54222b3c09997e54c0fe43e3851d21386e02ddcbc246d49",
+    "bytes": 4399,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/greatvibes/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "Arvo/Arvo-Regular.ttf": {
+    "sha256": "f41bd41471ec2db7140351bdde614da5341524503598ff7fe79f3c89c13b605e",
+    "bytes": 38780,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/arvo/Arvo-Regular.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Arvo"
+  },
+  "Arvo/Arvo-Bold.ttf": {
+    "sha256": "6239b2edee762db0ab99343137c9ba15ae81fc843da2e76a0a395781748cc21f",
+    "bytes": 37652,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/arvo/Arvo-Bold.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Arvo"
+  },
+  "Arvo/Arvo-Italic.ttf": {
+    "sha256": "a2eb63a0771b8d13d8e54bf650a02aef813eeaa2e10f6298358e6b15d26c6686",
+    "bytes": 35156,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/arvo/Arvo-Italic.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Arvo"
+  },
+  "Arvo/Arvo-BoldItalic.ttf": {
+    "sha256": "fc29e57f5558873e41ca9ff9a9c77521565f12c6972756d0fbcc592e1f0f4edb",
+    "bytes": 36872,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/arvo/Arvo-BoldItalic.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Arvo"
+  },
+  "Arvo/OFL.txt": {
+    "sha256": "359671bf16c00cae69cb66d041296b2adc7a4becd73a463cb8c5e101d97c7986",
+    "bytes": 4393,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/arvo/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "Inter/OFL.txt": {
+    "sha256": "b3195af0fb14368d1b3b10fb9d3fe503b7163ea083859d2ee553bc74da07c320",
+    "bytes": 4472,
+    "source": "https://github.com/rsms/inter (via motion kit)",
+    "license": "SIL OFL 1.1"
+  },
+  "EBGaramond/OFL.txt": {
+    "sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+    "bytes": 4398,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/ebgaramond/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "CormorantGaramond/OFL.txt": {
+    "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+    "bytes": 4387,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/cormorantgaramond/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "Italianno/Italianno-Regular.ttf": {
+    "sha256": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
+    "bytes": 223708,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/italianno/Italianno-Regular.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Italianno"
+  },
+  "Italianno/OFL.txt": {
+    "sha256": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
+    "bytes": 4483,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/italianno/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "NotoSansDevanagari/OFL.txt": {
+    "sha256": "a216f6f8d85c7228093e0ee5e258d9d377e6671f68acb4db1930b29583d0f331",
+    "bytes": 4386,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/notosansdevanagari/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "HindSiliguri/HindSiliguri-Regular.ttf": {
+    "sha256": "45071a7da902a74877f432722f525d00502d61aef71fca4cab3da8a23156c33d",
+    "bytes": 250052,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/hindsiliguri/HindSiliguri-Regular.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Hind Siliguri"
+  },
+  "HindSiliguri/HindSiliguri-Medium.ttf": {
+    "sha256": "f2759c530d647720a4d4e99faef3c2d150e1452193a9c83fb81c8d29805c13ea",
+    "bytes": 266516,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/hindsiliguri/HindSiliguri-Medium.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Hind Siliguri"
+  },
+  "HindSiliguri/HindSiliguri-SemiBold.ttf": {
+    "sha256": "92a9a68240883467830b87b2568242a59e68d4535e9e15f087650e12c4aaca83",
+    "bytes": 272740,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/hindsiliguri/HindSiliguri-SemiBold.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Hind Siliguri"
+  },
+  "HindSiliguri/HindSiliguri-Bold.ttf": {
+    "sha256": "d135765781d1a4aebc7dd4a2af221427ec8689060121d8a48b19bca3eeb3977e",
+    "bytes": 287660,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/hindsiliguri/HindSiliguri-Bold.ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Hind Siliguri"
+  },
+  "HindSiliguri/OFL.txt": {
+    "sha256": "4b255eb44f613a8e426e195f0d0b7e10fcba1af7eb6047d9a7f4f3c449940e19",
+    "bytes": 4371,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/hindsiliguri/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "NotoSansBengali/OFL.txt": {
+    "sha256": "754f0e221aa7d5a915489f3bf1f20fe53ddc35ab2834a4d91656d78f9622de70",
+    "bytes": 4383,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/notosansbengali/OFL.txt",
+    "license": "SIL OFL 1.1"
+  },
+  "Inter/InterVariable.woff2": {
+    "sha256": "8af7bd5b545567adffb3dfceb5bedb353a522d7bf1b3a2b8af7b6064156babc0",
+    "bytes": 345588,
+    "source": "https://github.com/rsms/inter (via motion kit)",
+    "license": "SIL OFL 1.1",
+    "family": "Inter Variable"
+  },
+  "EBGaramond/EBGaramond[wght].ttf": {
+    "sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+    "bytes": 851176,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/ebgaramond/EBGaramond[wght].ttf",
+    "license": "SIL OFL 1.1",
+    "family": "EB Garamond"
+  },
+  "EBGaramond/EBGaramond-Italic[wght].ttf": {
+    "sha256": "bba2c4499c93c9612b90b9825d32b07da52fce2fe57562a1eb6b833553f93c4e",
+    "bytes": 754468,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/ebgaramond/EBGaramond-Italic[wght].ttf",
+    "license": "SIL OFL 1.1",
+    "family": "EB Garamond"
+  },
+  "CormorantGaramond/CormorantGaramond[wght].ttf": {
+    "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+    "bytes": 1195560,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/cormorantgaramond/CormorantGaramond[wght].ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Cormorant Garamond"
+  },
+  "CormorantGaramond/CormorantGaramond-Italic[wght].ttf": {
+    "sha256": "0f48ea6abb2084537854f7174c470991a463b13036309e3b50a81511611c530d",
+    "bytes": 715644,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/cormorantgaramond/CormorantGaramond-Italic[wght].ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Cormorant Garamond"
+  },
+  "NotoSansDevanagari/NotoSansDevanagari[wdth,wght].ttf": {
+    "sha256": "14ec4af41f27482216d1c2229f417ff9b1425e1babb014e57d1d40d03229853e",
+    "bytes": 641944,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/notosansdevanagari/NotoSansDevanagari[wdth,wght].ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Noto Sans Devanagari"
+  },
+  "NotoSansBengali/NotoSansBengali[wdth,wght].ttf": {
+    "sha256": "dcd42978094e584a849c84a51450eeac40c8826057d566ea6d4b9627a403a05a",
+    "bytes": 463668,
+    "source": "https://raw.githubusercontent.com/google/fonts/45e3d5269e4a17d823f6d84470bc084dc5ae46f6/ofl/notosansbengali/NotoSansBengali[wdth,wght].ttf",
+    "license": "SIL OFL 1.1",
+    "family": "Noto Sans Bengali"
+  }
+}

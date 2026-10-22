@@ -25,6 +25,8 @@
              font-size: {{CAP_PX}}px; line-height: 1.16; text-align: center; letter-spacing: -0.01em; }
       .cue .ln { display: block; white-space: nowrap; }
       .cue.chunk { text-transform: uppercase; font-size: {{CHUNK_PX}}px; }
+      /* type-kit captions (default): full-frame layer, TK.captions places each cue (typography/README.md) */
+      #captions.tk { left: 0; right: 0; top: 0; width: {{W}}px; height: {{H}}px; pointer-events: none; }
     </style>
   </head>
   <body>
@@ -35,7 +37,7 @@
         <!-- one <div class="scene" id="s01"> per beat; footage <video> layers sit in non-timed wrappers -->
       </div>
       <div id="vignette" class="layer mk-vignette"></div>
-      <div id="captions"></div>
+      <div id="captions" class="{{CAP_CLASS}}"></div>
       <audio id="mix" src="audio/mix.wav" data-start="0" data-duration="{{DUR}}" data-volume="1"></audio>
     </div>
     <script>
@@ -61,6 +63,9 @@
       async function build() {
       await Promise.all(["800 100px 'Barlow Condensed'", "400 100px Inter", "800 100px Inter", "900 100px Inter",
         "400 100px 'JetBrains Mono'", "700 100px 'JetBrains Mono'", "400 100px 'EB Garamond'"].map((f) => document.fonts.load(f)));
+      // the 7-font type kit (typography/): Impact, Helvetica→Inter, Garamond→EB Garamond, Cormorant Garamond,
+      // Rockwell→Arvo, Snell Roundhand→Great Vibes, Blacksword→Italianno (each labelled in FONT-LICENSE-REPORT.md)
+      if (window.TK) { TK.init({ W, H, fps: 30 }); await TK.load(); }
       await document.fonts.ready;
 
       // ---- scenes go here (one per beat of the motion brief's scene chain) ----
@@ -68,8 +73,18 @@
       //   MKFX.headline(tl, s, t0 + 0.15, { x: 90, y: 360, w: 900, lines: ["one idea", "per beat"], size: 150, accentWord: "beat" });
       // });
 
-      // ---- captions (data.js from caption_track.py; chunk mode for 9:16 short-form) ----
-      if (window.CUES) {
+      // ---- captions (data.js from caption_track.py) ----
+      // type (default): TK.captions, preset MULTI_FONT_STORYTELLING — Helvetica-style body, Garamond italic payoff,
+      // Impact problem word, depth shadow, stack <-> line rhythm. layout(cue, i) puts each cue in the open third
+      // opposite the subject (references/typography-and-captions.md §4); fill CAP_PLAN from snapshots of the film.
+      const CAP_PLAN = {};   // cue start (s) → { x, y, align: "left"|"right"|"center", style: "stack"|"line" }
+      if (window.CUES && {{TK_CAPS}}) {
+        TK.captions(tl, "#captions", window.CUES, {
+          preset: "{{CAP_PRESET}}", scale: {{CAP_SCALE}},
+          skip: (c) => (window.CAP_OFF || []).some(([a, b]) => c.s >= a && c.s < b),
+          layout: (c, i) => CAP_PLAN[c.s] || { x: W / 2, y: H - {{CAP_BOTTOM}}, align: "center", style: i % 2 ? "line" : "stack" },
+        });
+      } else if (window.CUES) {
         MK.captions(tl, "#captions", window.CUES, { off: window.CAP_OFF || [], className: "cue" + ({{CHUNK}} ? " chunk" : "") });
       }
       MK.grain(tl, "#root", DUR, { w: W, h: H, opacity: {{GRAIN}} });

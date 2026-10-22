@@ -32,6 +32,10 @@ the film's signature idea. Read
 **`references/storytelling-and-retention.md`** for why a viewer stays: a reason to stay by 3 s,
 open loops that pay off with the same object, one persistent world the camera moves through, a
 spotlight on one element, measured pacing, captions and sound rules. Read
+**`references/typography-and-captions.md` before placing any word**: the 7-font type kit
+(`typography/`: Impact, Helvetica, Garamond, Cormorant Garamond, Rockwell, Snell Roundhand,
+Blacksword, each with a labelled open-source fallback), the 8 pairings and 10 presets, hierarchy and
+contrast, rhythmic subject-aware placement, sizes, word sync, motion and depth.
 **`references/house-rules.md` before every edit**: the user's own notes, turned into rules. They
 override every other default. The rest of this file is the operating procedure; load other
 references only when the step needs them.
@@ -176,12 +180,14 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
    ka-ching + coins + an SMS ding. → `references/background-music-and-sound.md`
 6. **Build it** — start from the scaffold: `new_composition.py --project ID --look <look> --format
    <9:16|16:9> --duration <s> [--brand slug]` (one paused timeline built after fonts load, `scene()`
-   windows, caption module, grain, the toolkit copied in). Compose each beat from its planned
+   windows, caption module, grain, the toolkit and the 7-font type kit copied in). Compose each beat from its planned
    blueprint, rules and `MK`/`MKFX` parts (`references/motion-kit.md`). HyperFrames composition in
    `projects/ID/source/` (read `/hyperframes-core`;
    footage as `<video muted>` layers graded to the film, bracketed with poster and last-frame
-   stills; `caption_track.py --mode chunk` for 9:16 short-form, `--mode phrase` for 16:9 and
-   explainers, with one caption look for the whole film; craft laws in playbook §13).
+   stills; `caption_track.py --mode type` → `TK.captions` (preset MULTI_FONT_STORYTELLING: Helvetica
+   body, Garamond italic payoff, Impact punch, depth shadow), slots planned from snapshots in
+   `CAP_PLAN` (open third opposite the subject, stack ↔ line rhythm); hero words via `TK.title` /
+   `TK.extrude`; big words re-aligned on the waveform before placing; craft laws in playbook §13).
    `npx hyperframes check` = 0 errors. → `references/typography-and-captions.md`,
    `references/rendering-and-delivery.md`; compositing and grading rules: `references/editor-doctrine.md` §8
 7. **Judge it.**

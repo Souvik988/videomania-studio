@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "about": "Seven semantic font roles for Video Mania. 'preferred' is the font the user asked for; 'fallback' is the open-source face used when the preferred one is absent or unlicensed. audit_fonts.py resolves each role on this machine and writes FONT-LICENSE-REPORT.md. Never report a fallback as the preferred font.",
+  "google_fonts_commit": "45e3d5269e4a17d823f6d84470bc084dc5ae46f6",
+  "roles": {
+    "impact_hook": {
+      "preferred": {
+        "family": "Impact",
+        "system_names": ["Impact"],
+        "source": "https://learn.microsoft.com/en-us/typography/font-list/impact",
+        "license": "Proprietary (Monotype/Ascender); ships with Windows and macOS. Rendered pixels in your own videos are fine; the font file is never copied, bundled or committed.",
+        "purchase": "https://www.myfonts.com/collections/impact-font-monotype-imaging"
+      },
+      "fallback": {
+        "family": "Anton",
+        "files": {"400": "Anton/Anton-Regular.ttf"},
+        "gf_dir": "ofl/anton",
+        "license_file": "Anton/OFL.txt",
+        "license": "SIL Open Font License 1.1"
+      },
+      "css_family": "VM Impact",
+      "category": "heavy condensed sans-serif",
+      "weights": [400],
+      "uppercase": true,
+      "usage": ["first-3-second hooks", "viral headlines", "price reveals", "problem words", "CTAs"],
+      "animations": ["punchIn", "scalePop", "impactBounce", "kineticWords"],
+      "readability": {"min_px_1080w": 64, "max_words": 4, "never": "paragraphs or ordinary subtitles"},
+      "line_height": 0.92,
+      "tracking_em": 0.005
+    },
+    "elegant_script": {
+      "preferred": {
+        "family": "Snell Roundhand",
+        "system_names": ["Snell Roundhand"],
+        "source": "https://developer.apple.com/fonts/system-fonts/",
+        "license": "Apple system font: licensed for use on Apple devices only. Usable when rendering on a Mac that has it; never copied.",
+        "purchase": null
+      },
+      "fallback": {
+        "family": "Great Vibes",
+        "files": {"400": "GreatVibes/GreatVibes-Regular.ttf"},
+        "gf_dir": "ofl/greatvibes",
+        "license_file": "GreatVibes/OFL.txt",
+        "license": "SIL Open Font License 1.1"
+      },
+      "css_family": "VM Elegant Script",
+      "category": "formal connected cursive",
+      "weights": [400],
+      "uppercase": false,
+      "usage": ["emotional moments", "short elegant phrases", "luxury accents", "storytelling transitions"],
+      "animations": ["handwriting", "gracefulFade", "scriptFloat"],
+      "readability": {"min_px_1080w": 90, "max_words": 4, "never": "per-letter animation (breaks the joins)"},
+      "line_height": 1.05,
+      "tracking_em": 0
+    },
+    "editorial_slab": {
+      "preferred": {
+        "family": "Rockwell",
+        "system_names": ["Rockwell"],
+        "source": "https://learn.microsoft.com/en-us/typography/font-list/rockwell",
+        "license": "Proprietary (Monotype); ships with Microsoft Office. Usable when installed; never copied.",
+        "purchase": "https://www.myfonts.com/collections/rockwell-font-monotype-imaging"
+      },
+      "fallback": {
+        "family": "Arvo",
+        "files": {"400": "Arvo/Arvo-Regular.ttf", "700": "Arvo/Arvo-Bold.ttf", "400i": "Arvo/Arvo-Italic.ttf", "700i": "Arvo/Arvo-BoldItalic.ttf"},
+        "gf_dir": "ofl/arvo",
+        "license_file": "Arvo/OFL.txt",
+        "license": "SIL Open Font License 1.1"
+      },
+      "css_family": "VM Editorial Slab",
+      "category": "geometric slab-serif",
+      "weights": [400, 700],
+      "uppercase": false,
+      "usage": ["editorial headlines", "product introductions", "storytelling captions", "supporting statements"],
+      "animations": ["editorialSlide", "staggeredHeadline", "structuredReveal"],
+      "readability": {"min_px_1080w": 44, "max_words": 8},
+      "line_height": 1.1,
+      "tracking_em": -0.005
+    },
+    "clean_caption": {
+      "preferred": {
+        "family": "Helvetica",
+        "system_names": ["Helvetica"],
+        "not_the_same_as": ["Helvetica Neue", "Helvetica Now"],
+        "source": "https://developer.apple.com/fonts/system-fonts/",
+        "license": "Proprietary (Monotype). macOS system font; on Windows it needs a licence. Never copied.",
+        "purchase": "https://www.monotype.com/fonts/helvetica-now"
+      },
+      "fallback": {
+        "family": "Inter",
+        "files": {"100-900": "Inter/InterVariable.woff2"},
+        "gf_dir": null,
+        "upstream": "https://github.com/rsms/inter",
+        "license_file": "Inter/OFL.txt",
+        "license": "SIL Open Font License 1.1"
+      },
+      "css_family": "VM Clean",
+      "category": "neo-grotesque sans-serif",
+      "weights": [400, 500, 600, 700, 800],
+      "uppercase": false,
+      "usage": ["talking-head subtitles", "explanations", "lower thirds", "UI overlays"],
+      "animations": ["minimalFade", "cleanWordReveal", "captionSlide", "activeHighlight"],
+      "readability": {"min_px_1080w": 40, "max_words": 7},
+      "line_height": 1.12,
+      "tracking_em": -0.012
+    },
+    "classical_highlight": {
+      "preferred": {
+        "family": "Garamond",
+        "system_names": ["Garamond"],
+        "source": "https://learn.microsoft.com/en-us/typography/font-list/garamond",
+        "license": "Proprietary (Monotype); ships with Microsoft Office. Usable when installed; never copied.",
+        "purchase": "https://www.myfonts.com/collections/garamond-font-monotype-imaging"
+      },
+      "fallback": {
+        "family": "EB Garamond",
+        "files": {"400-800": "EBGaramond/EBGaramond[wght].ttf", "400-800i": "EBGaramond/EBGaramond-Italic[wght].ttf"},
+        "gf_dir": "ofl/ebgaramond",
+        "license_file": "EBGaramond/OFL.txt",
+        "license": "SIL Open Font License 1.1"
+      },
+      "css_family": "VM Classical",
+      "category": "classical serif",
+      "weights": [400, 500, 600, 700, 800],
+      "uppercase": false,
+      "usage": ["highlighted keywords beside Helvetica", "editorial emphasis", "narrative titles"],
+      "animations": ["editorialHighlight", "elegantFade", "serifAccent"],
+      "readability": {"min_px_1080w": 56, "max_words": 3, "note": "italic 500-600 survives video compression better than 400"},
+      "line_height": 1.0,
+      "tracking_em": -0.01
+    },
+    "luxury_serif": {
+      "preferred": {
+        "family": "Cormorant Garamond",
+        "system_names": ["Cormorant Garamond"],
+        "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond",
+        "license": "SIL Open Font License 1.1 (open source; the preferred font itself is bundled)",
+        "purchase": null,
+        "bundled": true
+      },
+      "fallback": {
+        "family": "Cormorant Garamond",
+        "files": {"300-700": "CormorantGaramond/CormorantGaramond[wght].ttf", "300-700i": "CormorantGaramond/CormorantGaramond-Italic[wght].ttf"},
+        "gf_dir": "ofl/cormorantgaramond",
+        "license_file": "CormorantGaramond/OFL.txt",
+        "license": "SIL Open Font License 1.1"
+      },
+      "css_family": "VM Luxury",
+      "category": "high-contrast display serif",
+      "weights": [300, 400, 500, 600, 700],
+      "uppercase": false,
+      "usage": ["luxury headlines", "cinematic brand intros", "premium product storytelling"],
+      "animations": ["luxuryReveal", "cinematicLetters", "softTitle"],
+      "readability": {"min_px_1080w": 72, "max_words": 5, "note": "hairlines vanish below ~70 px at 1080 wide; prefer 500-600"},
+      "line_height": 1.0,
+      "tracking_em": 0.01
+    },
+    "expressive_script": {
+      "preferred": {
+        "family": "Blacksword",
+        "system_names": ["Blacksword"],
+        "designer": "Youssef Habchi",
+        "source": "https://youssef-habchi.com/fonts/blacksword",
+        "license": "LICENSE_REQUIRED: the free download is personal use only. Ads, client work and published videos need a commercial licence from the designer. Put a licensed copy in fonts/private/ and set licensed_user_fonts.Blacksword in config/local.json.",
+        "purchase": "https://youssef-habchi.com/license"
+      },
+      "fallback": {
+        "family": "Italianno",
+        "files": {"400": "Italianno/Italianno-Regular.ttf"},
+        "gf_dir": "ofl/italianno",
+        "license_file": "Italianno/OFL.txt",
+        "license": "SIL Open Font License 1.1",
+        "note": "Stylistically related, not a copy of Blacksword"
+      },
+      "css_family": "VM Expressive Script",
+      "category": "decorative calligraphic script",
+      "weights": [400],
+      "uppercase": false,
+      "usage": ["one highlighted word", "romantic or emotional accents", "premium ad accents"],
+      "animations": ["writeOn", "expressiveReveal", "maskEntrance"],
+      "readability": {"min_px_1080w": 110, "max_words": 3, "note": "Italianno runs small: set it ~1.35x the size you would set Great Vibes"},
+      "line_height": 1.0,
+      "tracking_em": 0
+    }
+  },
+  "script_fallbacks": {
+    "devanagari": {
+      "family": "Noto Sans Devanagari",
+      "files": {"100-900": "NotoSansDevanagari/NotoSansDevanagari[wdth,wght].ttf"},
+      "gf_dir": "ofl/notosansdevanagari",
+      "license_file": "NotoSansDevanagari/OFL.txt",
+      "css_family": "VM Devanagari",
+      "unicode_range": "U+0900-097F, U+1CD0-1CFF, U+A8E0-A8FF, U+200C-200D, U+25CC"
+    },
+    "bengali": {
+      "family": "Hind Siliguri",
+      "files": {"400": "HindSiliguri/HindSiliguri-Regular.ttf", "500": "HindSiliguri/HindSiliguri-Medium.ttf", "600": "HindSiliguri/HindSiliguri-SemiBold.ttf", "700": "HindSiliguri/HindSiliguri-Bold.ttf"},
+      "gf_dir": "ofl/hindsiliguri",
+      "license_file": "HindSiliguri/OFL.txt",
+      "css_family": "VM Bengali",
+      "unicode_range": "U+0980-09FF, U+200C-200D, U+25CC"
+    },
+    "bengali_display": {
+      "family": "Noto Sans Bengali",
+      "files": {"100-900": "NotoSansBengali/NotoSansBengali[wdth,wght].ttf"},
+      "gf_dir": "ofl/notosansbengali",
+      "license_file": "NotoSansBengali/OFL.txt",
+      "css_family": "VM Bengali Display",
+      "unicode_range": "U+0980-09FF, U+200C-200D, U+25CC"
+    }
+  }
+}

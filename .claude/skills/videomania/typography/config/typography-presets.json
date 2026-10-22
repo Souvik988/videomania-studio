@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "about": "Ten production presets, consumed by type-kit.js (TK.captions / TK.title). Sizes are px at a 1080 px short side and scale with min(W,H)/1080. 'depth' names a shadow recipe in type-kit.js (the soft multi-layer drop shadow the user asked for, 2026-10-22). 'layout' names a placement rule: open_third (the third of the frame opposite the subject), lower_middle, hero_center, top_band.",
+  "presets": [
+    {
+      "id": "CLEAN_TALKING_HEAD", "pairing": null, "roles": {"body": "clean_caption"},
+      "body": {"weight": 700, "px": 50, "case": "sentence", "color": "#fffaf2", "tracking_em": -0.012},
+      "depth": "soft", "background": "none (depth shadow only)",
+      "animation": {"in": "cleanWordReveal", "out": "minimalFade", "word_sync": true, "lead_s": 0.04},
+      "layout": "lower_middle", "max_words": 6, "max_lines": 2, "line_height": 1.12,
+      "timing": "words appear on their spoken time; the cue leaves 0.12 s after its last word ends",
+      "categories": ["talking_head", "educational", "explainer"]
+    },
+    {
+      "id": "HELVETICA_GARAMOND_HIGHLIGHT", "pairing": "helvetica_garamond", "roles": {"body": "clean_caption", "accent": "classical_highlight"},
+      "body": {"weight": 700, "px": 48, "case": "sentence", "color": "#fffaf2", "tracking_em": -0.012},
+      "accent": {"weight": 600, "italic": true, "px": 104, "case": "as-spoken", "color": "#ffcf96", "tracking_em": -0.01},
+      "depth": "soft", "background": "none",
+      "animation": {"in": "cleanWordReveal", "accent_in": "editorialHighlight", "out": "minimalFade", "word_sync": true, "lead_s": 0.04},
+      "layout": "open_third", "max_words": 6, "max_lines": 3, "line_height": 1.05,
+      "timing": "accent word gets its own line and lands on its spoken time; one accent per cue",
+      "categories": ["talking_head", "educational", "creator"]
+    },
+    {
+      "id": "VIRAL_IMPACT_HOOK", "pairing": "impact_helvetica_garamond", "roles": {"title": "impact_hook", "body": "clean_caption"},
+      "title": {"weight": 400, "px": 220, "case": "upper", "color": "#ffffff", "tracking_em": 0.005},
+      "body": {"weight": 700, "px": 52, "case": "sentence", "color": "#fffaf2"},
+      "depth": "hard", "background": "none; optional dim of the plate to 60 %",
+      "animation": {"in": "punchIn", "out": "fastDrop", "word_sync": true, "lead_s": 0.02},
+      "layout": "hero_center", "max_words": 4, "max_lines": 2, "line_height": 0.92,
+      "timing": "lands on the stressed syllable; holds ≥ 0.6 s; leaves on the next beat",
+      "categories": ["viral", "promo", "saas", "hook"]
+    },
+    {
+      "id": "ROCKWELL_EDITORIAL", "pairing": "rockwell_helvetica", "roles": {"title": "editorial_slab", "body": "clean_caption"},
+      "title": {"weight": 700, "px": 120, "case": "title", "color": "#fff4e6", "tracking_em": -0.005},
+      "body": {"weight": 500, "px": 44, "case": "sentence", "color": "rgba(255,244,230,.86)"},
+      "depth": "soft", "background": "none",
+      "animation": {"in": "editorialSlide", "out": "minimalFade", "stagger_s": 0.06},
+      "layout": "open_third", "max_words": 8, "max_lines": 3, "line_height": 1.08,
+      "timing": "headline line by line, body follows 0.2 s later",
+      "categories": ["cinematic", "storytelling", "business"]
+    },
+    {
+      "id": "LUXURY_CORMORANT", "pairing": "cormorant_snell", "roles": {"title": "luxury_serif", "accent": "elegant_script"},
+      "title": {"weight": 500, "px": 150, "case": "title", "color": "#f6ead8", "tracking_em": 0.02},
+      "accent": {"weight": 400, "px": 150, "case": "title", "color": "#e9c27a"},
+      "depth": "glow", "background": "plate dimmed 30 %, warm vignette",
+      "animation": {"in": "luxuryReveal", "accent_in": "handwriting", "out": "softFade"},
+      "layout": "hero_center", "max_words": 5, "max_lines": 2, "line_height": 1.0,
+      "timing": "slow: 0.9 s reveals, ≥ 1.5 s holds",
+      "categories": ["luxury", "fashion", "beauty", "brand_intro"]
+    },
+    {
+      "id": "SNELL_CINEMATIC", "pairing": "impact_snell", "roles": {"title": "impact_hook", "accent": "elegant_script"},
+      "title": {"weight": 400, "px": 230, "case": "upper", "color": "#ffffff"},
+      "accent": {"weight": 400, "px": 170, "case": "title", "color": "#ffd9a0"},
+      "depth": "hard", "background": "none",
+      "animation": {"in": "punchIn", "accent_in": "handwriting", "out": "fastDrop"},
+      "layout": "hero_center", "max_words": 3, "max_lines": 2, "line_height": 0.9,
+      "timing": "script writes on first (0.5 s), the Impact word punches under it",
+      "categories": ["cinematic", "motivational", "title"]
+    },
+    {
+      "id": "BLACKSWORD_ELEGANT_ACCENT", "pairing": "helvetica_blacksword", "roles": {"body": "clean_caption", "accent": "expressive_script"},
+      "body": {"weight": 600, "px": 46, "case": "sentence", "color": "#fffaf2"},
+      "accent": {"weight": 400, "px": 150, "case": "title", "color": "#ffd2a0"},
+      "depth": "glow", "background": "none",
+      "animation": {"in": "minimalFade", "accent_in": "writeOn", "out": "softFade"},
+      "layout": "lower_middle", "max_words": 6, "max_lines": 2, "line_height": 1.0,
+      "timing": "one script word per scene, written on over 0.6 s",
+      "categories": ["emotional", "artistic", "premium_ad"]
+    },
+    {
+      "id": "IMPACT_ROCKWELL_AD", "pairing": "impact_rockwell", "roles": {"title": "impact_hook", "body": "editorial_slab"},
+      "title": {"weight": 400, "px": 200, "case": "upper", "color": "#ffffff"},
+      "body": {"weight": 700, "px": 56, "case": "sentence", "color": "#fff4e6"},
+      "depth": "hard", "background": "none",
+      "animation": {"in": "scalePop", "body_in": "structuredReveal", "out": "fastDrop"},
+      "layout": "open_third", "max_words": 6, "max_lines": 3, "line_height": 0.95,
+      "timing": "Impact noun/number on the beat, Rockwell sentence 0.15 s after",
+      "categories": ["promo", "saas", "ad", "educational"]
+    },
+    {
+      "id": "HELVETICA_CORMORANT_PREMIUM", "pairing": "helvetica_cormorant", "roles": {"title": "luxury_serif", "body": "clean_caption"},
+      "title": {"weight": 600, "px": 140, "case": "title", "color": "#f6ead8", "tracking_em": 0.01},
+      "body": {"weight": 500, "px": 40, "case": "upper", "color": "rgba(246,234,216,.8)", "tracking_em": 0.18},
+      "depth": "soft", "background": "none",
+      "animation": {"in": "cinematicLetters", "body_in": "minimalFade", "out": "softFade"},
+      "layout": "hero_center", "max_words": 5, "max_lines": 2, "line_height": 1.0,
+      "timing": "letters settle over 0.8 s; small-caps line follows",
+      "categories": ["luxury", "product", "lifestyle"]
+    },
+    {
+      "id": "MULTI_FONT_STORYTELLING", "pairing": "impact_helvetica_garamond", "roles": {"body": "clean_caption", "accent": "classical_highlight", "punch": "impact_hook"},
+      "body": {"weight": 700, "px": 46, "case": "sentence", "color": "#fffaf2", "tracking_em": -0.012},
+      "accent": {"weight": 600, "italic": true, "px": 100, "case": "as-spoken", "color": "#ffc98a", "tracking_em": -0.01},
+      "punch": {"weight": 400, "px": 104, "case": "upper", "color": "#ff4a3d", "tracking_em": 0.01},
+      "depth": "soft", "background": "none",
+      "animation": {"in": "cleanWordReveal", "accent_in": "editorialHighlight", "punch_in": "punchIn", "out": "minimalFade", "word_sync": true, "lead_s": 0.04},
+      "layout": "open_third", "max_words": 6, "max_lines": 3, "line_height": 1.0,
+      "rhythm": "alternate a stacked cue (small line + big word on its own line) with a single-line cue; captions sit in the third opposite the subject and alternate low / high tiers inside a scene",
+      "timing": "words on their spoken time; accent and punch words own a line",
+      "categories": ["talking_head", "promo", "storytelling", "creator_ad"]
+    }
+  ]
+}

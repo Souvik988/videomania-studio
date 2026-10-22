@@ -1,6 +1,6 @@
 """Build the burned-in caption data for a HyperFrames composition.
 
-Usage: caption_track.py --project ID [--mode phrase|chunk] [--friction w1,w2] [--go w1,w2]
+Usage: caption_track.py --project ID [--mode phrase|chunk|type] [--friction w1,w2] [--go w1,w2]
                         [--fps 30] [--out source/data.js]
 
 Reads transcript/captions.json (phrase-locked cues from ingest.py) and writes
@@ -14,6 +14,9 @@ Modes (see references/storytelling-and-retention.md §7):
   chunk   1-3 words per cue, split on phrase boundaries, hard swap, shown 2 frames before the
           first word; the accent class is applied to the WHOLE chunk (cue-level "c") so colour
           lands on 25-45 % of chunks with meaning (9:16 short-form house style, herk-edit-kit)
+  type    3-6 word cues split on phrase boundaries for the type kit (TK.captions, default since
+          2026-10-22): the class sits on the MATCHED word only — go → the Garamond payoff word,
+          fr → the Impact problem word — one key word per cue (typography/README.md)
 """
 
 from __future__ import annotations
@@ -36,7 +39,7 @@ BREAK = (",", ".", "?", "!", ";", ":", "—", "–")
 
 
 def chunk_cues(cues: list[dict], fr: set[str], go: set[str], fps: float, max_words: int = 3,
-               max_chars: int = 18) -> list[dict]:
+               max_chars: int = 18, word_level: bool = False) -> list[dict]:
     words = [w for c in cues for w in c["words"]]
     chunks: list[list[dict]] = []
     cur: list[dict] = []
@@ -59,8 +62,12 @@ def chunk_cues(cues: list[dict], fr: set[str], go: set[str], fps: float, max_wor
         keys = {_key(w["word"]) for w in ch}
         cls = "fr" if keys & fr else ("go" if keys & go else "")
         e = max(e, s + 0.1) if nxt_s is None else min(max(e, s + 0.1), nxt_s - 1.0 / fps)
-        out.append({"s": round(s, 3), "e": round(e, 3), "c": cls,
-                    "lines": [[{"w": w["word"].strip(), "s": w["start"], "e": w["end"], "c": cls} for w in ch]]})
+        if word_level:   # one key word per cue: the first friction word, else the first payoff word
+            kw = next((w for w in ch if _key(w["word"]) in fr), None) or next((w for w in ch if _key(w["word"]) in go), None)
+            line = [{"w": w["word"].strip(), "s": w["start"], "e": w["end"], "c": (cls if w is kw else "")} for w in ch]
+        else:
+            line = [{"w": w["word"].strip(), "s": w["start"], "e": w["end"], "c": cls} for w in ch]
+        out.append({"s": round(s, 3), "e": round(e, 3), "c": cls, "lines": [line]})
     return out
 
 
@@ -70,7 +77,7 @@ def main() -> int:
     ap.add_argument("--friction", default="")
     ap.add_argument("--go", default="")
     ap.add_argument("--out", default="source/data.js")
-    ap.add_argument("--mode", choices=["phrase", "chunk"], default="phrase")
+    ap.add_argument("--mode", choices=["phrase", "chunk", "type"], default="phrase")
     ap.add_argument("--fps", type=float, default=30.0)
     args = ap.parse_args()
     vm_env.ensure_openmontage_on_path()
@@ -97,10 +104,11 @@ def main() -> int:
         nxt = cues[i + 1]["start"] if i + 1 < len(cues) else None
         e = c["display_end"] if nxt is None else min(c["display_end"], nxt - 0.04)
         out.append({"s": c["start"], "e": round(e, 3), "lines": lines})
-    if args.mode == "chunk":
-        out = chunk_cues(cues, fr, go, args.fps)
+    if args.mode in ("chunk", "type"):
+        out = (chunk_cues(cues, fr, go, args.fps) if args.mode == "chunk"
+               else chunk_cues(cues, fr, go, args.fps, max_words=6, max_chars=34, word_level=True))
         accented = sum(1 for c in out if c["c"]) / max(1, len(out))
-        print(f"chunk mode: {len(out)} chunks, {accented:.0%} accented (house range 25-45 %)", file=sys.stderr)
+        print(f"{args.mode} mode: {len(out)} cues, {accented:.0%} with a key word (house range 25-45 %)", file=sys.stderr)
     for a, b in zip(out, out[1:]):
         assert a["e"] <= b["s"] - 0.03, "overlapping caption windows"
     path = proj / args.out

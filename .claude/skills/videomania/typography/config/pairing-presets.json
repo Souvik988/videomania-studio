@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "about": "Eight font pairings. Each tier names a role from font-registry.json; type-kit.js renders a tier's words with that role's face and treatment. 'contrast' says what the pairing contrasts (the reason it works).",
+  "pairings": [
+    {
+      "id": "helvetica_garamond", "name": "Helvetica + Garamond", "style": "clean, minimal, editorial",
+      "tiers": {"body": "clean_caption", "accent": "classical_highlight"},
+      "accent_case": "as-spoken", "accent_italic": true, "accent_scale": 2.0,
+      "contrast": "neutral grotesque vs. classical italic serif; small vs. large",
+      "best_for": ["talking-head videos", "creator education", "sophisticated explanations"],
+      "rule": "Helvetica for every word; Garamond only for the one word the sentence is about"
+    },
+    {
+      "id": "helvetica_cormorant", "name": "Helvetica + Cormorant Garamond", "style": "contemporary luxury",
+      "tiers": {"body": "clean_caption", "accent": "luxury_serif"},
+      "accent_case": "title", "accent_italic": false, "accent_scale": 2.4,
+      "contrast": "information vs. expression; heavy sans vs. hairline serif",
+      "best_for": ["premium branding", "lifestyle", "product showcases"],
+      "rule": "Cormorant carries the headline; Helvetica carries prices, specs and the CTA"
+    },
+    {
+      "id": "helvetica_blacksword", "name": "Helvetica + Blacksword", "style": "minimal plus expressive",
+      "tiers": {"body": "clean_caption", "accent": "expressive_script"},
+      "accent_case": "title", "accent_italic": false, "accent_scale": 2.8,
+      "contrast": "rigid geometry vs. brush flourish",
+      "best_for": ["artistic creator content", "cinematic highlights", "elegant product ads"],
+      "rule": "One script word per scene at most; Blacksword only with a commercial licence, else Italianno (labelled)"
+    },
+    {
+      "id": "impact_snell", "name": "Impact + Snell Roundhand", "style": "powerful plus elegant",
+      "tiers": {"body": "impact_hook", "accent": "elegant_script"},
+      "accent_case": "title", "accent_italic": false, "accent_scale": 1.25,
+      "contrast": "tall condensed block vs. flowing script overlapping it",
+      "best_for": ["emotional motivational videos", "dramatic title cards", "premium promos"],
+      "rule": "The script word overlaps the Impact word's top or bottom edge by ~25 % of its cap height"
+    },
+    {
+      "id": "impact_rockwell", "name": "Impact + Rockwell", "style": "bold editorial",
+      "tiers": {"body": "editorial_slab", "accent": "impact_hook"},
+      "accent_case": "upper", "accent_italic": false, "accent_scale": 2.1,
+      "contrast": "condensed shout vs. slab-serif statement",
+      "best_for": ["marketing hooks", "SaaS ads", "educational reels"],
+      "rule": "Impact for the number or noun, Rockwell for the sentence around it"
+    },
+    {
+      "id": "rockwell_helvetica", "name": "Rockwell + Helvetica", "style": "editorial but readable",
+      "tiers": {"body": "clean_caption", "accent": "editorial_slab"},
+      "accent_case": "title", "accent_italic": false, "accent_scale": 1.7,
+      "contrast": "slab structure vs. neutral sans",
+      "best_for": ["explanations", "business storytelling", "branded education"],
+      "rule": "Rockwell headline line, Helvetica explanation line below it"
+    },
+    {
+      "id": "cormorant_snell", "name": "Cormorant Garamond + Snell Roundhand", "style": "luxury cinematic",
+      "tiers": {"body": "luxury_serif", "accent": "elegant_script"},
+      "accent_case": "title", "accent_italic": false, "accent_scale": 1.3,
+      "contrast": "upright high-contrast serif vs. connected script",
+      "best_for": ["title sequences", "fashion and lifestyle", "premium storytelling"],
+      "rule": "Sparingly: both faces are loud; one title card, never captions"
+    },
+    {
+      "id": "impact_helvetica_garamond", "name": "Impact + Helvetica + Garamond", "style": "high-retention mixed hierarchy",
+      "tiers": {"body": "clean_caption", "accent": "classical_highlight", "punch": "impact_hook"},
+      "accent_case": "as-spoken", "accent_italic": true, "accent_scale": 2.0, "punch_scale": 2.0,
+      "contrast": "three voices: shout (Impact), say (Helvetica), savour (Garamond italic)",
+      "best_for": ["talking-head promos", "creator ads", "storytelling reels"],
+      "rule": "Impact for problem/warning words, Garamond for the payoff word, Helvetica for the rest; only with a clear hierarchy and room"
+    }
+  ]
+}
