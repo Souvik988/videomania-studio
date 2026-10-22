@@ -42,11 +42,12 @@ still loop for any freeze). Put that single `<video>` in one wrapper and animate
 pushes on the cuts as wrapper transforms. Always check device screens on frames from the real
 render, never only on snapshots.
 
-## Render-only text pitfall
-`background-clip: text` (chrome gradient type) on an element whose **text changes** during the film
-(a count-up), with a `filter` on the same element, rendered blank in HyperFrames screenshot capture,
-although snapshots showed it. Count-ups and other live text use a solid colour plus `text-shadow`
-glow. Gradient type is fine on static, split units (`rise()` puts the class on each char).
+## Render-only visibility pitfall (snapshot shows it, the render doesn't)
+`tl.fromTo(el, { opacity: 1, y: -600 }, { y: 0 })`, with opacity only in the FROM values, rendered
+the element hidden in the sequential, multi-worker render (the ₹50,000 tag and the SMS banner
+appeared only when their exit tween started), while `snapshot` (a direct seek) showed it. **Every
+property in a fromTo's from-vars must also be in its to-vars** (`{ opacity: 1, y: 0 }`). Verify money
+and CTA moments on frames from the real render.
 
 ## Rules
 - The background the user supplies is used as delivered. If the video version carries a mark,
