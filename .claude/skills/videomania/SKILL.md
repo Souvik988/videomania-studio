@@ -37,7 +37,8 @@ override every other default. The rest of this file is the operating procedure; 
 references only when the step needs them.
 
 Engine: **OpenMontage** (pipeline `voiceover-film`, checkpoints, gates) · renderer **HyperFrames**
-(HTML/GSAP, 447 registry blocks) · generated media **Google Flow MCP** (`google-flow`).
+(HTML/GSAP, 447 registry blocks) · generated footage **Google Flow MCP** (`google-flow`) ·
+generated images **ChatGPT** in the built-in browser (`references/chatgpt-asset-production.md`).
 
 ## 0. Preflight (always)
 
@@ -60,6 +61,8 @@ tool list for `mcp__google-flow__*`; if absent say "Google Flow: not connected" 
 | audio file (mp3/wav/m4a/flac/ogg) | **AUTO** — the flagship: full edit from the voiceover |
 | narration text / .txt | SCRIPT — voice it first (Kokoro local via `npx hyperframes tts`, consented voices only), then AUTO |
 | video file(s) + "edit" | EDIT — `scripts/edit_clip.py` + the same doctrine |
+| green-screen talking head + a background plate | KEY — `greenscreen_key.py` (preview, then parallel ranges) → `greenscreen_relight.py` → VP9-alpha `presenter.webm`, layered plate → type behind → subject → graphics; then AUTO on its audio. → `references/greenscreen-compositing.md` |
+| screen recordings of the user's app / site / dashboard | crop letterbox (`cropdetect`), 30 fps, then play them inside coded device mockups on the words that name them |
 | raw talking recording (retakes, pauses) | EDIT — first `cut_speech.py` (dead air cut between phrases, never inside one; retakes and fillers proposed in `edit/cut_candidates.json` for the user to approve; one-pass frame-exact render), then ingest the cut and edit as above |
 | `--director` | AUTO, but stop at every gate (idea, scene plan, assets) |
 | `--broll`, `--motion` | one scene / insert (HyperFrames `/motion-graphics`) |
@@ -154,12 +157,23 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
      `motion_refs.py --cards`).
    - Given a reference video, measure it first with `analyze_video.py`.
    - Also `references/storyboard-and-shot-grammar.md` and `references/motion-and-camera.md`.
-4. **Source it** — asset plan per beat: coded graphics / Flow clip / Flow still / user asset /
-   registry block (restyled, never a stock look). Generation sheet → approval → one at a time →
-   `flow_once.mjs` + `flow_ingest.py` → visual QC of every clip. → `references/flow-asset-production.md`,
-   `references/media-sourcing-and-google-flow-mcp.md`
-5. **Sound it** — `make_audio.py` (VO cleanup, score, SFX on picture events, ducked master).
-   → `references/background-music-and-sound.md`
+4. **Source it** — asset plan per beat: coded graphics / **ChatGPT image** / Flow clip / user asset /
+   registry block (restyled, never a stock look).
+   - **Every image asset comes from ChatGPT** in the built-in browser (the user keeps it signed in;
+     standing instruction 2026-10-22): 3D icons, objects, stickers, UI pieces, illustrations, B-roll
+     and background stills. Ask for transparent 3×2 sticker sheets in one shared style, download,
+     and slice them with `chatgpt_slice.py`. No approval is needed per image; plan them freely, as
+     many as the edit map needs. → `references/chatgpt-asset-production.md`
+   - Flow (moving footage) keeps its rule: generation sheet → approval → one at a time →
+     `flow_once.mjs` + `flow_ingest.py` → visual QC of every clip. → `references/flow-asset-production.md`,
+     `references/media-sourcing-and-google-flow-mcp.md`
+   - Text, prices, numbers, logos and exact UI are always coded.
+5. **Sound it** — `make_audio.py` (VO cleanup, score, ducked master). For designed SFX beyond its
+   seven procedural types, use `sfx_design.py` (taps, whooshes, booms, risers, typing, message send,
+   SMS ding, cash-register ka-ching, coin burst, tick-tock, paper, glitch). Every cue in
+   `storyboard/sfx_cues.json` names its picture event. Mix the stem onto `audio/mix.wav` and bring
+   the master to −14 LUFS with true peak ≤ −1.5 dBTP. Money moments (a price, a payment) get
+   ka-ching + coins + an SMS ding. → `references/background-music-and-sound.md`
 6. **Build it** — start from the scaffold: `new_composition.py --project ID --look <look> --format
    <9:16|16:9> --duration <s> [--brand slug]` (one paused timeline built after fonts load, `scene()`
    windows, caption module, grain, the toolkit copied in). Compose each beat from its planned
