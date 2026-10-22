@@ -29,7 +29,8 @@ def pixel_hash(png: Path) -> str:
 
 
 def capture(source: Path, times: list[float], out: Path, software: bool) -> dict[float, Path]:
-    args = ["snapshot", "--at", ",".join(f"{t:g}" for t in times), "--no-end", "-o", str(out)]
+    # heavy compositions (alpha video, many fonts) need longer than the 5 s default to initialise
+    args = ["snapshot", "--at", ",".join(f"{t:g}" for t in times), "--no-end", "--timeout", "45000", "--describe", "false", "-o", str(out)]
     if software:
         args.append("--no-browser-gpu")
     vm_env.npx_hf(args, cwd=source, timeout=900)
@@ -50,7 +51,8 @@ def main() -> int:
     vm_env.ensure_openmontage_on_path()
     source = Path(args.source).resolve()
     times = [float(x) for x in args.times.split(",")]
-    out = Path(args.out) if args.out else source.parent / "qa" / "seek_test"
+    # absolute: snapshot runs with cwd=source, so a relative -o would land inside source/
+    out = (Path(args.out) if args.out else source.parent / "qa" / "seek_test").resolve()
     rnd = random.Random(1234)
     order_a = times[:]
     rnd.shuffle(order_a)
