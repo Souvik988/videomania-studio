@@ -33,6 +33,15 @@ shadows beside the body, composited into a dark neon room plate.
    - A still plate still lives: a slow camera push, parallax against the subject (the plate moves
      about 25 % opposite), and coded light (neon flare, dim, flicker).
 
+## Device screens playing several recordings (HyperFrames 0.8.162 pitfall)
+Several short `<video>` clips swapped inside one device screen (same container, back to back)
+**look right in `snapshot` but render with the wrong frames.** On the Shotlin promo, Campaign and
+Customer Log both showed the Theme recording, and unique ids did not fix it. Pre-cut the segments
+into ONE frame-exact screen video with ffmpeg (trim each one, `-vf fps=30,scale=W:H`, concat, a
+still loop for any freeze). Put that single `<video>` in one wrapper and animate the zooms and the
+pushes on the cuts as wrapper transforms. Always check device screens on frames from the real
+render, never only on snapshots.
+
 ## Rules
 - The background the user supplies is used as delivered. If the video version carries a mark,
   prefer the clean still of the same set (with coded motion) over cropping the mark.
