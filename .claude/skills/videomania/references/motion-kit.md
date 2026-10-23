@@ -96,3 +96,13 @@ thing alive in its hold and returns handles that the next scene can use as a bri
 - Build, breathe, resolve within every scene; exits are faster than entrances.
 - Effects are vocabulary, not the film. The motion brief's concept and central visual rule decide
   which effect a beat uses and how its result becomes the next scene's bridge.
+
+## MKS: shot & effect library (motion-shots.js, 2026-10-23)
+
+`MKS.orbit, casualCam, uiWorld, frameBreak, digitalZoom, phoneMockup, checklist, headlineWall,
+zoomThrough, chartGrid, pullbackReveal, greenScreen, paperGround/paperCut, doodleBoil, vertigo,
+coverStory, glassType, slideUpText` and the log-space camera `MKS.logCam`. Same contract as MKFX
+(seek-safe, caller supplies words and media, returns handles). Catalogue, story jobs and timings:
+`motion-effects-library.md`. Test stage: `projects/mks-gallery` (18 × 3 s, snapshot-verified);
+unit checks: `node assets/motion-kit/motion-shots.test.cjs`.
+

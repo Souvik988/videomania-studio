@@ -32,6 +32,12 @@ the film's signature idea. Read
 **`references/storytelling-and-retention.md`** for why a viewer stays: a reason to stay by 3 s,
 open loops that pay off with the same object, one persistent world the camera moves through, a
 spotlight on one element, measured pacing, captions and sound rules. Read
+**`references/motion-effects-library.md` before designing any beat**: 18 tested shots and effects
+(`MKS`: orbit, casualCam, uiWorld, frameBreak, digitalZoom, phoneMockup, checklist, headlineWall,
+zoomThrough, chartGrid, pullbackReveal, greenScreen, paperCut, doodleBoil, vertigo, coverStory,
+glassType, slideUpText), each with its story job, inputs and timing. Explainers and narrated pieces
+also read `references/editorial-collage-and-diorama.md` (Vox collage, paper diorama, the story engine);
+real 3D beats: `references/blender-3d-route.md` (optional, Blender not installed here).
 **`references/typography-and-captions.md` before placing any word**: the 7-font type kit
 (`typography/`: Impact, Helvetica, Garamond, Cormorant Garamond, Rockwell, Snell Roundhand,
 Blacksword, each with a labelled open-source fallback), the 8 pairings and 10 presets, hierarchy and
@@ -181,7 +187,7 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
 6. **Build it** — start from the scaffold: `new_composition.py --project ID --look <look> --format
    <9:16|16:9> --duration <s> [--brand slug]` (one paused timeline built after fonts load, `scene()`
    windows, caption module, grain, the toolkit and the 7-font type kit copied in). Compose each beat from its planned
-   blueprint, rules and `MK`/`MKFX` parts (`references/motion-kit.md`). HyperFrames composition in
+   blueprint, rules and `MK`/`MKFX`/`MKS` parts (`references/motion-kit.md`, `references/motion-effects-library.md`). HyperFrames composition in
    `projects/ID/source/` (read `/hyperframes-core`;
    footage as `<video muted>` layers graded to the film, bracketed with poster and last-frame
    stills; `caption_track.py --mode type` → `TK.captions` (preset MULTI_FONT_STORYTELLING: Helvetica

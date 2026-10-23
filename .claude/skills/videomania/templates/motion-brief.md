@@ -44,7 +44,7 @@ apple-product | dark-lit | minimal-dimensional>, and why it fits the story.
 Research each beat, not just the film: run `motion_refs.py --query "<this beat's subject + move>"`
 and cite the reference that fed it.
 
-| t (s) | beat | hero object | the one change | built with (blueprint / 2–4 rules / MK·MKFX / runtime) | reference used | bridge into next scene | real words on screen |
+| t (s) | beat | hero object | the one change | built with (MKS effect / blueprint / 2–4 rules / MK·MKFX / runtime) | reference used | bridge into next scene | real words on screen |
 |---|---|---|---|---|---|---|---|
 
 ## 8. Banned for this film

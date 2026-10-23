@@ -11,6 +11,9 @@ Creates projects/ID/source/ with:
   mk/motion-fx.js     premium effects (headline, chartMorph, dashboardZoom, cardToWorkspace,
                       springStack, flowingPaths, counterTag, notifications, cursorClick, irisPass,
                       particleWord)
+  mk/motion-shots.js  shot & effect library MKS (orbit, casualCam, uiWorld, frameBreak, digitalZoom,
+                      phoneMockup, checklist, headlineWall, zoomThrough, chartGrid, pullbackReveal,
+                      greenScreen, paperCut, doodleBoil, vertigo, coverStory, glassType, slideUpText)
   fonts/, vendor/gsap-3.14.2.min.js
   tk/type-kit.js + tk/type-kit.config.js + fonts/vm/   the 7-font type kit (typography/scripts/build_typekit.py),
                       its @font-face block inlined into index.html; captions default to TK.captions
@@ -63,7 +66,7 @@ def main() -> int:
     W, H = (1080, 1920) if portrait else (1920, 1080)
     caps = a.captions
     (src / "mk").mkdir(exist_ok=True)
-    for f in ("motion-kit.js", "motion-fx.js"):
+    for f in ("motion-kit.js", "motion-fx.js", "motion-shots.js"):
         shutil.copy2(KIT / f, src / "mk" / f)
     shutil.copytree(KIT / "fonts", src / "fonts", dirs_exist_ok=True)
     (src / "vendor").mkdir(exist_ok=True)

@@ -38,3 +38,16 @@ Update the first two with `motion_refs.py --update` (a `git pull`; ask nothing, 
   technique taken from each) and the resulting concept, central visual rule, look and banned list.
   The critic checks the film against that file.
 - Stop researching when the motion brief is decided. Research is input to design, not a substitute.
+
+## Added 2026-10-23 (the user's pack)
+
+- nextwork-projects/ai-video-editor-cooked (MIT) — cloned read-only to
+  `~/video-production-workbench/research/ai-video-editor-cooked`: product-video shot library
+  (`plugins/ai-editor/remotion/src/product/Shots.tsx`), zoom rules (`skills/style-edit/references/motion.md`),
+  stills/storyboard critics (`agents/`), motion-design timing tables (`skills/motion-design/reference/`).
+- vox-motion-graphics skill (user's file) — collage and paper-diorama grammar, story engine →
+  `editorial-collage-and-diorama.md`.
+- Daniel Do, DD_Slide_Up_Text_Animation (DaVinci Resolve Fusion macro) → `MKS.slideUpText`.
+- Nate Herk, "Claude + Blender: Make 3D Motion Graphics From Code" (AI Automation Society) →
+  `blender-3d-route.md`.
+
