@@ -51,3 +51,13 @@ Update the first two with `motion_refs.py --update` (a `git pull`; ask nothing, 
 - Nate Herk, "Claude + Blender: Make 3D Motion Graphics From Code" (AI Automation Society) →
   `blender-3d-route.md`.
 
+## Added 2026-10-29 (cloned read-only, all MIT; distilled in `research-digest-2026-10.md`)
+
+| Source | Use |
+|---|---|
+| `iart-ai/motion-skills` | index of 19 motion packs; deliver-and-verify loop |
+| `bangtutorial/bang-motion` | anti-slide-deck laws, transition and background menus (Indonesian) |
+| `Barty-Bart/motion-graphics` | hero-and-stations one-take, measured sound pass |
+| `Mort1d/motion-graphics-skills` (`research/mort1d-motion-graphics-skills`) | direction card, three concepts, reference pace in numbers |
+| `tuzhechen2005/opus-video-skills` | kinetic-reel: mechanism per shot, proportions |
+| `greensock/gsap-skills` | official GSAP rules |

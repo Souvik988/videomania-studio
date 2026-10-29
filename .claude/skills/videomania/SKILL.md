@@ -38,6 +38,10 @@ zoomThrough, chartGrid, pullbackReveal, greenScreen, paperCut, doodleBoil, verti
 glassType, slideUpText), each with its story job, inputs and timing. Explainers and narrated pieces
 also read `references/editorial-collage-and-diorama.md` (Vox collage, paper diorama, the story engine);
 real 3D beats: `references/blender-3d-route.md` (optional, Blender not installed here).
+For the user's **"Vox style"** (colour editorial poster look) read `references/vox-poster-system.md` and lift from
+`templates/vox-poster/`. Before showing any draft run `scripts/template_lint.py <source dir>` (mechanical
+anti-slide-deck tests); the rules behind it, the hero-and-stations one-take shot, direction-card
+discipline and the sound-pass licence check are in `references/research-digest-2026-10.md`.
 **`references/typography-and-captions.md` before placing any word**: the 7-font type kit
 (`typography/`: Impact, Helvetica, Garamond, Cormorant Garamond, Rockwell, Snell Roundhand,
 Blacksword, each with a labelled open-source fallback), the 8 pairings and 10 presets, hierarchy and

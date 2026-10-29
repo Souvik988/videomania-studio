@@ -10,3 +10,21 @@
 	path = research/herk-edit-kit
 	url = https://github.com/nateherkai/herk-edit-kit.git
 	shallow = true
+[submodule "research/motion-skills"]
+	path = research/motion-skills
+	url = https://github.com/iart-ai/motion-skills.git
+[submodule "research/bang-motion"]
+	path = research/bang-motion
+	url = https://github.com/bangtutorial/bang-motion.git
+[submodule "research/motion-graphics"]
+	path = research/barty-motion-graphics
+	url = https://github.com/Barty-Bart/motion-graphics.git
+[submodule "research/opus-video-skills"]
+	path = research/opus-video-skills
+	url = https://github.com/tuzhechen2005/opus-video-skills.git
+[submodule "research/gsap-skills"]
+	path = research/gsap-skills
+	url = https://github.com/greensock/gsap-skills.git
+[submodule "research/mort1d-motion-graphics-skills"]
+	path = research/mort1d-motion-graphics-skills
+	url = https://github.com/Mort1d/motion-graphics-skills.git
