@@ -125,7 +125,15 @@ beats; `defaults` on the timeline; timeline `duration` is its children, not a co
 nest sub-timelines under one master. All consistent with the seek-safe contract already in
 `playbook §13` (one paused timeline, from-vars repeated in to-vars, no `repeat:-1`).
 
-## 7. Where else to look next (not vendored; read on demand)
+## 7. Talking-head references (2026-10-29)
+
+- `iart-ai/talking-head-skills` (MIT, pinned as `research/iart-talking-head-skills`): photos + voice to
+  speaking shots (fal MiniMax H3, paid) plus motion-graphic scenes; its useful craft: one short
+  on-camera line per scene (2 to 11 s), graphics lead their anchor word by about 6 frames, keep
+  overlays off the face, keep the generated audio on speaking shots, never silently retry a paid call.
+- Our default is the local coded character; see `talking-head-reels.md`.
+
+## 8. Where else to look next (not vendored; read on demand)
 
 - iart-ai packs: kinetic-typography, map-animation (Vox-style editorial maps), lower-thirds
   (transparent WebM/ProRes 4444 for NLEs), b-roll (drawn from what is said), manim (math).

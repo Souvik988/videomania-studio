@@ -38,6 +38,10 @@ zoomThrough, chartGrid, pullbackReveal, greenScreen, paperCut, doodleBoil, verti
 glassType, slideUpText), each with its story job, inputs and timing. Explainers and narrated pieces
 also read `references/editorial-collage-and-diorama.md` (Vox collage, paper diorama, the story engine);
 real 3D beats: `references/blender-3d-route.md` (optional, Blender not installed here).
+For **talking-head reels** ("here is an image, make it a talking character with motion graphics"): read
+`references/talking-head-reels.md`; the default route is a coded character (`scripts/viseme_track.py`,
+`scripts/character_parts.py`, `MKTC` in `assets/motion-kit/talking-character.js`), with generated footage
+(Flow, one approval per click) or a paid API only as the explicit alternatives.
 For the user's **"Vox style"** (colour editorial poster look) read `references/vox-poster-system.md` and lift from
 `templates/vox-poster/`. Before showing any draft run `scripts/template_lint.py <source dir>` (mechanical
 anti-slide-deck tests); the rules behind it, the hero-and-stations one-take shot, direction-card

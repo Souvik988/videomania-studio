@@ -53,3 +53,13 @@ See `research-digest-2026-10.md`. Short form:
 - Sound is judged by numbers on the exported MP4; at most one boom per ~10 s; every sound and
   track has a known licence; Mixkit files are never committed (this repo is public).
 - Measure the reference's pace (changing-frame share, hits per minute, dead stretches) and beat it.
+
+## Talking-head reels (2026-10-29)
+
+- A user image that should talk becomes a coded character by default (`talking-head-reels.md`, route R1).
+  Photoreal speaking footage goes through Flow (Omni Flash only, one approval per generation); paid
+  APIs (fal, ElevenLabs) only when the user asks and supplies their own keys.
+- Only the user's own face and voice, a character they made, or someone who consented. No public
+  figures, no cloned voice without consent; realistic generated speakers are labelled AI-generated.
+- Lip-sync from the estimator is an estimate: never claim phoneme accuracy, never claim to have
+  heard it; report cue counts, speaking share and the frames inspected.

@@ -97,6 +97,14 @@ thing alive in its hold and returns handles that the next scene can use as a bri
 - Effects are vocabulary, not the film. The motion brief's concept and central visual rule decide
   which effect a beat uses and how its result becomes the next scene's bridge.
 
+## MKTC: talking character (talking-character.js, 2026-10-29)
+
+`MKTC.rig(tl, parent, voiceStart, {x,y,w,track,parts,base,seed})` builds a layered character driven by
+`talk.json` (mouth cues, loudness envelope, accents); `MKTC.show / look / reaction` add entrances,
+glances and beats. Seeded blinks, explicit segments instead of yoyo, every tween a `fromTo` with
+`immediateRender:false`. Method and layouts: `references/talking-head-reels.md`.
+Unit checks: `node assets/motion-kit/talking-character.test.cjs`.
+
 ## MKS: shot & effect library (motion-shots.js, 2026-10-23)
 
 `MKS.orbit, casualCam, uiWorld, frameBreak, digitalZoom, phoneMockup, checklist, headlineWall,

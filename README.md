@@ -43,6 +43,7 @@ happens on your machine; everything else can run in the cloud.
 - `references/vox-poster-system.md` + `templates/vox-poster/`: the colour editorial "Vox style" poster look, with the critic's lessons.
 - `references/research-digest-2026-10.md`: anti-slide-deck tests, hero-and-stations one-take, direction card, sound-pass licence discipline.
 - `scripts/template_lint.py`: mechanical anti-template lint for a composition's source.
+- **Talking-head reels**: give an image and a voiceover, get an animated talking character with motion graphics. `references/talking-head-reels.md`, `scripts/viseme_track.py`, `scripts/character_parts.py`, `assets/motion-kit/talking-character.js` (+ tests), `templates/talking-head/`.
 - `assets/motion-kit/motion-shots.js`: 18 tested shots (MKS).
 
 Credits: see `NOTICE.md`.

@@ -28,3 +28,6 @@
 [submodule "research/mort1d-motion-graphics-skills"]
 	path = research/mort1d-motion-graphics-skills
 	url = https://github.com/Mort1d/motion-graphics-skills.git
+[submodule "research/iart-talking-head-skills"]
+	path = research/iart-talking-head-skills
+	url = https://github.com/iart-ai/talking-head-skills.git

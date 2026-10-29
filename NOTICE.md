@@ -14,6 +14,8 @@ included only as pinned git submodules under `research/`, each under its own lic
 | motion-graphics-skills | Mort1d | MIT | direction card, reference pace in numbers |
 | opus-video-skills | tuzhechen2005 | MIT | kinetic-reel: mechanism per shot |
 | gsap-skills | GreenSock | MIT | official GSAP guidance |
+| talking-head-skills | iart.ai | MIT | talking-head film craft (one line per scene, graphics lead the word) |
+| rhubarb-lip-sync | Daniel Wolf | MIT | mouth-shape letters A-H used by `viseme_track.py` (not vendored) |
 | HyperFrames skills | HeyGen | Apache-2.0 | vendored unchanged (`HYPERFRAMES-LICENSE`) |
 | Fonts | various | SIL OFL 1.1 | bundled with the type kit |
 
