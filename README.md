@@ -13,6 +13,24 @@ session) using the **Video Mania** skill.
 | `scripts/cloud-setup.sh` | one-command setup for a Linux cloud session |
 | `projects/<id>/` | one folder per film: `input/` voiceover, `assets/flow/incoming/` your Flow clips, `delivery/` the finished film |
 
+## Make the director film on a new machine (any model: Sonnet 5.5, Opus, Fable)
+
+```bash
+git clone https://github.com/Souvik988/videomania-studio && cd videomania-studio
+bash .claude/skills/videomania/scripts/install_skills.sh    # copies the skill into ~/.claude/skills (and ~/.qoder)
+bash .claude/skills/videomania/scripts/bootstrap.sh         # OpenMontage workbench, Python venv, HyperFrames 0.8.166 (needs git, Node 22+, ffmpeg)
+```
+
+Then, in Claude Code with any model: `/videomania <voiceover.mp3>` (or a script text). The skill's first screen is a
+route table; for a narrated pixel-world film it sends the model to
+`.claude/skills/videomania/references/director-film-runbook.md` (12 steps with exact commands, plus a 10-15 s
+short-clip lane tested by Sonnet 5.5). `scripts/new_film.py` sets up a project with the bundled starter assets
+(`.claude/skills/videomania/assets/voxel-starter/`: mascot, icons, screens, stage backdrop, plates).
+
+Not in the repo on purpose: video clips, voice recordings, the creator's photo, and songs (commercial tracks;
+bring your own licensed or royalty-free ones). Image generation uses the `gpt-image-bridge` skill (codex CLI
+logged in with a ChatGPT account); without it the starter assets still cover a film.
+
 ## Workflow in a Claude Code cloud session
 
 1. Start a cloud session on this repo and run `bash scripts/cloud-setup.sh --smoke` the first time.

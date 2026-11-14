@@ -1,0 +1,25 @@
+{
+  "name": "color-studio",
+  "about": "A seamless one-colour studio (floor curving into the back wall) with a few floating blocks for depth. For hooks, punch statements and type-led beats. Change `palette.base` for another colour.",
+  "palette": { "base": "#e8561c", "base2": "#f06a28", "deep": "#b83a0e", "lite": "#ff9a52", "block": "#ffb070" },
+  "marks": { "stage": [0, 0, 8], "stage-left": [-6, 0, 8], "stage-right": [6, 0, 9], "front": [0, 0, 14] },
+  "cams": {
+    "wide": { "from": [-6, 10, 52], "to": [5, 9, 46], "look": [0, 8, -4], "fov": 36 },
+    "low": { "from": [8, 2.5, 26], "to": [4, 3.5, 22], "look": [0, 7, 4], "fov": 38 }
+  },
+  "castLight": { "key": "#fff1e0", "keySide": -1, "rim": "#ffd166", "rimSide": 1, "shade": 0.22 },
+  "items": [
+    { "repeat": { "count": 24, "step": [4, 0, 0] }, "items": [ { "box": [-48, -1, -30, 3.96, 1, 80], "color": "$base", "jitter": 0.015 } ] },
+    { "repeat": { "count": 10, "step": [0, 0, 0] }, "items": [] },
+    { "box": [-48, 0, -30, 96, 1, 4], "color": "$base2" }, { "box": [-48, 1, -31, 96, 1.5, 3], "color": "$base2" }, { "box": [-48, 2.5, -32, 96, 2, 2.5], "color": "$base" },
+    { "repeat": { "count": 24, "step": [4, 0, 0] }, "items": [ { "box": [-48, 4.5, -33, 3.96, 50, 1], "color": "$base", "jitter": 0.015 } ] },
+    { "box": [-34, 0, -10, 4, 4, 4], "color": "$deep" }, { "box": [-33, 4, -9, 2, 2, 2], "color": "$lite" },
+    { "box": [28, 0, -14, 6, 6, 6], "color": "$deep" }, { "box": [30, 6, -12, 3, 3, 3], "color": "$block" },
+    { "box": [-22, 18, -20, 2.5, 2.5, 2.5], "color": "$lite", "glow": 1.2 }, { "box": [20, 22, -24, 2, 2, 2], "color": "#ffd166", "glow": 1.4 },
+    { "box": [-14, 1, 20, 2, 2, 2], "color": "$deep" }, { "box": [16, 1, 22, 3, 3, 3], "color": "$lite" },
+    { "prefab": "dust", "box": [-30, 1, -10, 60, 24, 40], "count": 120, "color": "#ffe0c0" },
+    { "light": { "kind": "point", "color": "#fff1e0", "intensity": 380, "at": [-10, 26, 24], "dist": 100 } },
+    { "light": { "kind": "point", "color": "#ffb070", "intensity": 160, "at": [16, 14, 6], "dist": 70 } },
+    { "light": { "kind": "hemi", "color": "#ffc8a0", "ground": "#6a2408", "intensity": 1.0 } }
+  ]
+}

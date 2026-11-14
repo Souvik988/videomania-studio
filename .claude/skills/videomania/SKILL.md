@@ -20,43 +20,78 @@ data, kinetic type), how long each lasts, how it moves, cuts and sounds — to m
 premium, visually-told, engaging film possible. The user gives you a voiceover; you deliver the
 finished edit.
 
-Read **`references/editor-doctrine.md` first** for any full edit: it is how you think (edit map,
-visual hook, element palette, pacing, layered frames, compositing, sound, self-review). Read
-**`references/motion-design-playbook.md` before designing any coded motion**: it is how premium Opus
-5.5 work moves (concept and central visual rule, scene-to-scene continuity, one object changing
-shape, springs and stagger, a three-role type system, a banned list, 16 effect recipes). Generic
-motion graphics are a failure even when the timing is right. Read **`references/motion-kit.md`** before building: films are built from tested parts (the
-installed hyperframes-animation 22 blueprints and 48 rules, Video Mania's `MK` toolkit and `MKFX`
-premium effects, card donors, transition catalogue, runtime adapters), with custom code only for
-the film's signature idea. Read
-**`references/storytelling-and-retention.md`** for why a viewer stays: a reason to stay by 3 s,
-open loops that pay off with the same object, one persistent world the camera moves through, a
-spotlight on one element, measured pacing, captions and sound rules. Read
-**`references/motion-effects-library.md` before designing any beat**: 18 tested shots and effects
-(`MKS`: orbit, casualCam, uiWorld, frameBreak, digitalZoom, phoneMockup, checklist, headlineWall,
-zoomThrough, chartGrid, pullbackReveal, greenScreen, paperCut, doodleBoil, vertigo, coverStory,
-glassType, slideUpText), each with its story job, inputs and timing. Explainers and narrated pieces
-also read `references/editorial-collage-and-diorama.md` (Vox collage, paper diorama, the story engine);
-real 3D beats: `references/blender-3d-route.md` (optional, Blender not installed here).
-For **talking-head reels** ("here is an image, make it a talking character with motion graphics"): read
-`references/talking-head-reels.md`; the default route is a coded character (`scripts/viseme_track.py`,
-`scripts/character_parts.py`, `MKTC` in `assets/motion-kit/talking-character.js`), with generated footage
-(Flow, one approval per click) or a paid API only as the explicit alternatives.
-For the user's **"Vox style"** (colour editorial poster look) read `references/vox-poster-system.md` and lift from
-`templates/vox-poster/`. Before showing any draft run `scripts/template_lint.py <source dir>` (mechanical
-anti-slide-deck tests); the rules behind it, the hero-and-stations one-take shot, direction-card
-discipline and the sound-pass licence check are in `references/research-digest-2026-10.md`.
-**`references/typography-and-captions.md` before placing any word**: the 7-font type kit
-(`typography/`: Impact, Helvetica, Garamond, Cormorant Garamond, Rockwell, Snell Roundhand,
-Blacksword, each with a labelled open-source fallback), the 8 pairings and 10 presets, hierarchy and
-contrast, one fixed bottom-centre subtitle home, sizes, word sync, motion and depth.
-**`references/house-rules.md` before every edit**: the user's own notes, turned into rules. They
-override every other default. The rest of this file is the operating procedure; load other
-references only when the step needs them.
+**This file works the same for every model (Sonnet 5.5, Opus, Fable).** Do not improvise the order of work:
+pick the route below, open its runbook, and follow it step by step. The reasoning is in the references; the
+order is in the runbooks; the gates (`brain.py check`, `qa.py`, `template_lint.py`, the loudness numbers)
+decide whether a step is done, not your judgement.
 
-Engine: **OpenMontage** (pipeline `voiceover-film`, checkpoints, gates) · renderer **HyperFrames**
-(HTML/GSAP, 447 registry blocks) · generated footage **Google Flow MCP** (`google-flow`) ·
-generated images **ChatGPT** in the built-in browser (`references/chatgpt-asset-production.md`).
+## Pick the route (first thing, every request)
+
+| the user gives / asks | route | follow, step by step |
+|---|---|---|
+| a **voiceover or script** for a narrated film about themselves, their work, a tool ("like the director film", pixel / voxel world, mascot) | **Director film** (voxel-diorama kit) | **`references/director-film-runbook.md`** — the exact steps of the user's approved film, with commands; worked example `templates/voxel-diorama/examples/director-film-v5.*` |
+| a **short clip (10-15 s)** in the same world | **Short-clip lane** | `references/director-film-runbook.md` -> "Short-clip lane"; `scripts/new_film.py`, `examples/clip10-short.*` (tested by Sonnet 5.5) |
+| a voiceover for a general explainer / ad / product film in another look | **Motion-graphics edit** (HyperFrames scaffold) | §4 below (the editing loop), with `references/editor-doctrine.md` and `references/motion-design-playbook.md` |
+| "**Vox style**" | Vox poster system | `references/vox-poster-system.md`, `templates/vox-poster/` |
+| an image that should **talk** (talking-head reel) | coded character | `references/talking-head-reels.md` |
+| green-screen footage, screen recordings, raw talking clips | EDIT / KEY | §1 table below |
+| a **reel / short** of a finished film | reel export | runbook Step 11 (4:5 film padded to 9:16, `scripts/reel_frame.py`) |
+| a note on a delivered film | change only what is named | runbook "When the user asks for a change"; then §4b (the note becomes a rule) |
+| a generic "edit this" | the menu | `scripts/pocket.py menu` (`references/pocket-menu.md`), let the user pick, then one of the routes above |
+
+## Always, on every route
+
+1. **House rules first** — `references/house-rules.md`: the user's own notes as rules. They override every other default.
+2. **Format** — 16:9, reel (4:5 in a 9:16 frame) or full 9:16. Ask if not given.
+3. **ASSET-FIRST** — `references/asset-first.md`: generate every icon, screen, object, backdrop and character with
+   the ChatGPT image bridge (`~/.claude/skills/gpt-image-bridge/bin/gpt-image-2`, or `scripts/gpt_image_ref.sh`
+   with reference images), or use real footage, THEN let code stitch, light and animate them. `brain.py check`
+   fails a shot list that draws these in code.
+4. **Rhythm, never a clock** — `references/rhythm-and-direction.md`: chapters as long takes that change on the word.
+5. **Sound is measured, never "heard"** — `references/audio-cinematography.md` (songs cast by meaning) and
+   `scripts/sound_mix.py` (spread against the reference, −14 LUFS).
+6. **Google Flow video**: Omni Flash only, one approval per generation (§2).
+7. **Every user note becomes a rule** (§4b) and is synced with `install_skills.sh`.
+
+## Where everything is
+
+**`references/README.md` is the map of every reference, grouped by the stage that needs it** (think, plan,
+assets, characters, build, type, sound, judge, deliver, special routes). Open a reference only when its step
+needs it. The main ones:
+
+- How to think about a whole edit: `editor-doctrine.md`; why a viewer stays: `storytelling-and-retention.md`;
+  how premium motion moves: `motion-design-playbook.md`; tested parts: `motion-kit.md`, `motion-effects-library.md`.
+- Type: `typography-and-captions.md` (7-font kit in `typography/`). Collage and diorama: `editorial-collage-and-diorama.md`.
+- The creator's mascot: `mascot-from-photo.md`. Ready-made assets for the voxel film (mascot, icons, screens, backdrop, plates): `assets/voxel-starter/` (README inside). Real 3D: `blender-3d-route.md` (optional; Blender not installed).
+
+Engine: **OpenMontage** (pipeline `voiceover-film`, checkpoints, gates) · renderer **HyperFrames** (HTML/GSAP,
+447 registry blocks; pin `npx hyperframes@0.8.166` for the voxel kit) · generated footage **Google Flow MCP**
+(`google-flow`) · generated images **the ChatGPT image bridge** (codex; the browser pane only as a fallback,
+`references/chatgpt-asset-production.md`).
+
+**Tools every session uses, whatever model or IDE runs this skill:**
+
+1. **The Pocket** (`scripts/pocket.py`, `references/pocket-menu.md`): the searchable index of every style,
+   treatment, transition, effect, text animation, template, sound, decoded move and prompt across all engines.
+   A generic request **always** starts with `pocket.py menu`. Styles are looked up, never recalled from memory.
+2. **The crew** (`crew/README.md`): nine jobs, one page each (producer, director, storyboard artist, art
+   director, animator, editor, sound designer, critic, teacher). Each page says what to read, what to do, the
+   file to hand over and the check to pass. Do one job at a time with its page open.
+3. **The engines** (`engines/engines.json`, `scripts/vm_engines.py list|doctor|sync`): 35 upstream repos under
+   the workbench's `research/` folder. Read an engine's own pages (`pocket.py show <id>`) before using it.
+   No Blender: 3D goes through raea (`<workbench>/tools/raea/raea/bin/raea.exe`). `uv` runs as `python -m uv`.
+4. **The director's brain** (`scripts/brain.py`, `brain/lessons.md`): `recall` and `ideas` before planning,
+   `check` on the shot list before building (rhythm, novelty, surprise, asset-first, a `why` on every shot —
+   must PASS), `log` / `bet` / `learn` after delivery. `scripts/vm_next.py <project>` says which crew job is next.
+
+**House style cards** live in `references/styles/` (`voxel-diorama.md`: a voxel room, a pixel-art cast, lens
+and lamp light, three type roles, pixel transitions). Its kit is `templates/voxel-diorama/` (Three.js on
+HyperFrames, every field in its `README.md`). **Worlds without Blender:** a set is data (`sets/<name>.json`);
+crew job 4b (`crew/04b-set-builder.md`) builds one from a ChatGPT concept picture with `scripts/set_preview.py`.
+Low-memory rules (everything runs in 4–6 GB of RAM; one render at a time): `references/low-memory-and-brain.md`.
+**Mixing engines in one film:** `references/orchestration.md`. Shot choices: `references/cinematography.md`.
+Sub-agents with their own memory: `.claude/agents/vm-*.md` in the studio repo. `scripts/build_aseprite.sh`
+builds Aseprite from source for personal use.
 
 ## 0. Preflight (always)
 
@@ -88,7 +123,16 @@ tool list for `mcp__google-flow__*`; if absent say "Google Flow: not connected" 
 | `--reference <video>` | `analyze_video.py REF --out qa/reference` (cuts, shot lengths, visual-event rate, dead stretches, loudness, onsets, beat offsets, contact sheets) → design to its numbers and grammar (never copy), then AUTO |
 | `--variants N` | reuse assets; vary hook / crop / pacing (N ≤ 3) |
 
-**Format:** the user says 16:9 or 9:16. If they didn't, ask that one question before planning
+**The menu (crew job 1, `crew/01-producer.md`).** Before planning, run
+`pocket.py menu "<request + subject + mood>" --has <footage,voiceover,topic,product>`. If the request
+is generic, show the user the ways to treat it and the looks (your recommendation first), let them
+pick, then confirm the plan on one screen. If the request already names a style, confirm it exists in
+the Pocket and go on. Record picks with `pocket.py pick` and in `brief/picks.json`, and read every file
+`pocket.py show <id>` lists for each pick. → `references/pocket-menu.md`
+
+**Format:** the user says 16:9, reel or 9:16. If they didn't, ask that one question before planning.
+This user's **reel** = the film composed at 4:5 and padded to 1080x1920 with black bars (`scripts/reel_frame.py`,
+`references/director-film-runbook.md` Step 11)
 (16:9 → 1920×1080, 9:16 → 1080×1920; 30 fps; H.264/AAC; burned captions + SRT/VTT; music on;
 −14 LUFS). Details: `references/input-contracts.md`.
 
@@ -177,11 +221,13 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
    - Also `references/storyboard-and-shot-grammar.md` and `references/motion-and-camera.md`.
 4. **Source it** — asset plan per beat: coded graphics / **ChatGPT image** / Flow clip / user asset /
    registry block (restyled, never a stock look).
-   - **Every image asset comes from ChatGPT** in the built-in browser (the user keeps it signed in;
-     standing instruction 2026-10-22): 3D icons, objects, stickers, UI pieces, illustrations, B-roll
-     and background stills. Ask for transparent 3×2 sticker sheets in one shared style, download,
-     and slice them with `chatgpt_slice.py`. No approval is needed per image; plan them freely, as
-     many as the edit map needs. → `references/chatgpt-asset-production.md`
+   - **Asset-first: every image asset is generated before the build** (standing instruction 2026-10-22,
+     restated 2026-11-14): 3D icons, objects, stickers, UI screens, illustrations, plates, B-roll stills.
+     Default route: the ChatGPT image bridge (`~/.claude/skills/gpt-image-bridge/bin/gpt-image-2`,
+     `scripts/gpt_image_ref.sh` with reference images), 3 at a time in the background; magenta-background
+     sheets cut with `pose_sheet.py` (or transparent sheets with `chatgpt_slice.py`). The browser-pane ChatGPT
+     is the fallback. No approval is needed per image. → `references/asset-first.md`,
+     `references/chatgpt-asset-production.md`
    - Flow (moving footage) keeps its rule: generation sheet → approval → one at a time →
      `flow_once.mjs` + `flow_ingest.py` → visual QC of every clip. → `references/flow-asset-production.md`,
      `references/media-sourcing-and-google-flow-mcp.md`
@@ -205,6 +251,8 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
    `npx hyperframes check` = 0 errors. → `references/typography-and-captions.md`,
    `references/rendering-and-delivery.md`; compositing and grading rules: `references/editor-doctrine.md` §8
 7. **Judge it.**
+   - Run `scripts/template_lint.py <source dir>` (mechanical anti-slide-deck tests; rules in
+     `references/research-digest-2026-10.md`).
    - Snapshot a still every 1 s and self-check against the motion brief (playbook §11).
    - Run the choreography audit (`animation-map.mjs`, command in `references/motion-kit.md`). Fix
      dead zones, identical eases and staggers repeated across scenes, and offscreen or degenerate
@@ -223,6 +271,10 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
    → `references/review-gates-and-critique.md`
 8. **Finish it** — `render -q delivery` → `mux_master.py` → `qa.py --tag final` → `seek_test.py`
    → `deliver.py`.
+
+**Crew pages for the same loop:** steps 1–2 = `crew/02-director.md`, `crew/03-storyboard.md`; step 3–4 =
+`crew/04-art-director.md`; step 6 = `crew/05-animator.md`, `crew/06-editor.md`; step 5 =
+`crew/07-sound.md`; step 7 = `crew/08-critic.md`; §4b = `crew/09-teacher.md`.
 
 ## 4b. Notes become rules (after every user note)
 

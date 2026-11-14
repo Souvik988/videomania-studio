@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Voxel diorama film</title>
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three/three.module.js" } }
+    </script>
+    <style>
+      @font-face { font-family: "Inter"; src: url("fonts/InterVariable.woff2") format("woff2"); font-weight: 100 900; }
+      @font-face { font-family: "Anton"; src: url("fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; }
+      @font-face { font-family: "EB Garamond"; src: url("fonts/EBGaramond-Italic[wght].ttf") format("truetype"); font-weight: 400 800; font-style: italic; }
+      @font-face { font-family: "Pixelify Sans"; src: url("fonts/PixelifySans.ttf") format("truetype"); font-weight: 400 700; }
+      :root { --voice: #e11d2e; --voice2: #ff6a1a; --accent: #19c8b9; --ink: #ffffff; }
+      html, body { margin: 0; background: #050304; }
+      #root { position: relative; overflow: hidden; background: #050304; }
+      #vd-canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+      #vd-type { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+      /* Three type roles. say = the sentence; punch = the one loud word of the beat; accent = one italic word;
+         num = numbers; soft = small secondary line. Never add a fourth face. */
+      .vd-block { position: absolute; display: none; font-family: "Inter", system-ui, sans-serif; font-weight: 800; color: var(--ink);
+                  line-height: 1.08; letter-spacing: -0.02em; text-shadow: 0 0.04em 0.5em rgba(0, 0, 0, 0.6); }
+      .vd-line { display: none; }
+      .vd-w { display: inline-block; margin: 0 0.3em 0.06em 0; opacity: 0; transform-origin: 50% 80%; will-change: transform, opacity; }
+      .vd-punch { font-family: "Anton", sans-serif; font-weight: 400; font-size: 1.9em; line-height: 0.95; color: var(--voice);
+                  text-transform: uppercase; letter-spacing: 0.005em; margin-top: 0.05em; }
+      .vd-accent { font-family: "EB Garamond", Georgia, serif; font-style: italic; font-weight: 600; font-size: 1.22em; letter-spacing: -0.01em; }
+      .vd-num { font-family: "Pixelify Sans", monospace; font-weight: 600; font-size: 2.5em; line-height: 0.9; color: var(--voice2); letter-spacing: 0; }
+      .vd-soft { font-weight: 500; font-size: 0.5em; opacity: 0.85; letter-spacing: 0; color: rgba(255, 255, 255, 0.86); }
+      .vd-teal { color: var(--accent); }
+      /* word effects */
+      .vd-compose { left: 0 !important; top: 0 !important; width: 100% !important; height: 100%; }
+      .vd-compose .vd-line { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+      .vd-depth { perspective: 1100px; perspective-origin: 50% 45%; }
+      .vd-depth .vd-line { transform-style: preserve-3d; }
+      .vd-depth .vd-w { transform-style: preserve-3d; }
+      .vd-compose .vd-w { margin: 0; white-space: nowrap; transform-origin: 0% 100%; }
+      .vd-compose br { display: none; }
+      .vd-ch { display: inline-block; white-space: pre; opacity: 0; transform-origin: 50% 100%; }
+      .vd-fx-mark { padding: 0 0.16em; margin-left: -0.02em; background: linear-gradient(var(--voice), var(--voice)) no-repeat 0 60% / 0% 100%; border-radius: 0.08em; text-shadow: none; }
+      .vd-fx-bracket { position: relative; padding: 0.06em 0.22em; --b: 0; }
+      .vd-fx-bracket::before, .vd-fx-bracket::after { content: ""; position: absolute; width: 0.3em; height: 0.3em; border: 0.07em solid var(--voice); opacity: var(--b);
+        transform: scale(calc(2 - var(--b))); }
+      .vd-fx-bracket::before { left: 0; top: 0; border-right: 0; border-bottom: 0; }
+      .vd-fx-bracket::after { right: 0; bottom: 0; border-left: 0; border-top: 0; }
+      .vd-fx-type { font-family: "Pixelify Sans", monospace; font-weight: 500; letter-spacing: 0; }
+      /* on-screen moves */
+      .vd-moves { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: none; font-family: "Inter", system-ui, sans-serif; }
+      .vd-burst, .vd-cursor, .vd-click { position: absolute; left: 0; top: 0; opacity: 0; will-change: transform, opacity; }
+      .vd-burst svg { filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45)); }
+      .vd-cursor svg { filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)); }
+      .vd-click { border-radius: 50%; border: 4px solid #fff; box-sizing: border-box; }
+      .vd-search { position: absolute; opacity: 0; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; padding: 0.55em 0.6em 0.55em 1.1em;
+        border-radius: 2em; background: rgba(18, 18, 22, 0.86); border: 2px solid rgba(255, 255, 255, 0.22); color: #fff; font-weight: 500; box-shadow: 0 0.4em 1.6em rgba(0, 0, 0, 0.5); transform-origin: 50% 50%; }
+      .vd-search-btn { display: inline-flex; align-items: center; justify-content: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: #fff; color: #111; font-weight: 800; }
+      .vd-meter { position: absolute; opacity: 0; color: rgba(255, 255, 255, 0.8); font-weight: 700; letter-spacing: 0.14em; }
+      .vd-meter-row { display: flex; gap: 0.3em; margin-bottom: 0.5em; }
+      .vd-meter-row i { display: block; width: 1.5em; height: 2.2em; background: rgba(255, 255, 255, 0.14); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="20">
+      <canvas id="vd-canvas" width="1920" height="1080"></canvas>
+      <div id="vd-type"></div>
+    </div>
+    <script src="vendor/gsap-3.14.2.min.js"></script>
+    <script src="shots.js"></script>
+    <script type="module">
+      import { createFilm } from "./kit/voxel-kit.js";
+      const root = document.getElementById("root"), S = window.SHOTS;
+      const [W, H] = S.size || [1920, 1080];
+      root.dataset.width = W; root.dataset.height = H; root.dataset.duration = S.duration;
+      root.style.width = W + "px"; root.style.height = H + "px";
+      for (const [k, v] of Object.entries(S.palette || {})) document.documentElement.style.setProperty("--" + k, v);
+      const film = (window.VD = createFilm(S));
+      // A paused GSAP timeline carries the film's clock, so HyperFrames knows the duration and can seek through it.
+      const clock = { t: 0 }, tl = gsap.timeline({ paused: true });
+      tl.to(clock, { t: film.duration, duration: film.duration, ease: "none", onUpdate: () => film.renderAt(clock.t) }, 0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

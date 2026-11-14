@@ -1,0 +1,57 @@
+{
+ "ref": "script",
+ "tall_px": 256,
+ "scale": 0.9078,
+ "poses": {
+  "script": {
+   "src": "script.png",
+   "w": 245,
+   "h": 260
+  },
+  "storyboard": {
+   "src": "storyboard.png",
+   "w": 244,
+   "h": 259
+  },
+  "animation": {
+   "src": "animation.png",
+   "w": 245,
+   "h": 260
+  },
+  "captions": {
+   "src": "captions.png",
+   "w": 245,
+   "h": 261
+  },
+  "voiceover": {
+   "src": "voiceover.png",
+   "w": 247,
+   "h": 261
+  },
+  "sound": {
+   "src": "sound.png",
+   "w": 245,
+   "h": 268
+  },
+  "mix": {
+   "src": "mix.png",
+   "w": 245,
+   "h": 268
+  },
+  "prompt": {
+   "src": "prompt.png",
+   "w": 242,
+   "h": 261
+  },
+  "course": {
+   "src": "course.png",
+   "w": 245,
+   "h": 269
+  },
+  "skill": {
+   "src": "skill.png",
+   "w": 247,
+   "h": 268
+  }
+ }
+}

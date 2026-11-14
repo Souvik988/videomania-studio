@@ -1,0 +1,990 @@
+{
+  "about": "Video Mania's engine registry. Every engine is an exact upstream clone under the workbench research/ folder, pinned to a commit; scripts/vm_engines.py syncs and checks them, scripts/pocket.py indexes what each can make. Personal, non-commercial use (user decision 2026-11-11). 'entry' is what Claude reads before using the engine; 'needs' lists apps and keys beyond Node, Python, ffmpeg and Chrome.",
+  "root": "research",
+  "engines": [
+    {
+      "id": "hyperframes",
+      "dir": "hyperframes",
+      "repo": "https://github.com/heygen-com/hyperframes",
+      "commit": "76222e41d776",
+      "licence": "Apache-2.0",
+      "lanes": [
+        "motion-graphics",
+        "core"
+      ],
+      "entry": [
+        "installed skills: /hyperframes, /hyperframes-core, /hyperframes-animation"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "openfilm",
+      "dir": "openfilm",
+      "repo": "https://github.com/openfilm/openfilm.git",
+      "commit": "758b1a388881",
+      "licence": "MIT (library CC0)",
+      "lanes": [
+        "timeline",
+        "library"
+      ],
+      "entry": [
+        "packages/openfilm/SPEC.md",
+        "packages/openfilm/MANUAL.md",
+        "packages/openfilm/manual/"
+      ],
+      "output": "timeline",
+      "needs": []
+    },
+    {
+      "id": "lemo-opuscar",
+      "dir": "lemo-opuscar",
+      "repo": "https://github.com/lemomo-ai/lemo-opuscar",
+      "commit": "9eb7739a0fca",
+      "licence": "MIT (demo films CC BY 4.0)",
+      "lanes": [
+        "film-styles"
+      ],
+      "entry": [
+        "DIRECTOR.md",
+        "TECHNIQUE.md",
+        "styles/<slug>/STYLE.md",
+        "core/README.md"
+      ],
+      "output": "page",
+      "needs": [
+        "Kokoro TTS (optional)",
+        "sample libraries via tools/fetch.sh (optional)"
+      ]
+    },
+    {
+      "id": "huashu-art-motion",
+      "dir": "huashu-art-motion",
+      "repo": "https://github.com/alchaincyf/huashu-art-motion.git",
+      "commit": "1468196505a5",
+      "licence": "MIT",
+      "lanes": [
+        "painting"
+      ],
+      "entry": [
+        "README.en.md",
+        "SKILL.md",
+        "references/风格配方/<style>.md",
+        "references/动画语法/"
+      ],
+      "output": "page",
+      "needs": [
+        "uv (installed: python -m uv)",
+        "Playwright Chromium: python -m uv run --with playwright playwright install chromium"
+      ],
+      "notes": "Docs mostly Chinese; read them directly, translate in your head."
+    },
+    {
+      "id": "claude-drawing-skill",
+      "dir": "claude-drawing-skill",
+      "repo": "https://github.com/cloveric/claude-drawing-skill.git",
+      "commit": "6af36dc717b6",
+      "licence": "MIT",
+      "lanes": [
+        "drawing"
+      ],
+      "entry": [
+        "SKILL.md",
+        "docs/STYLES.md",
+        "docs/PRINCIPLES.md",
+        "lib/<style>.py"
+      ],
+      "output": "clip",
+      "needs": [
+        "pip: requirements.txt (numpy, Pillow)"
+      ]
+    },
+    {
+      "id": "ClaudeAnimationBase",
+      "dir": "ClaudeAnimationBase",
+      "repo": "https://github.com/JohnHeibel/ClaudeAnimationBase",
+      "commit": "0ac8bf2b3194",
+      "licence": "MIT",
+      "lanes": [
+        "drawing",
+        "character"
+      ],
+      "entry": [
+        "ANIMATION_GUIDE.md",
+        "README.md"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Avoid p5.brush watercolour fills on this laptop: seconds per frame."
+    },
+    {
+      "id": "pixel-studio",
+      "dir": "pixel-studio",
+      "repo": "https://github.com/MuhammadaliMS/pixel-studio.git",
+      "commit": "4a031875a4fa",
+      "licence": "MIT",
+      "lanes": [
+        "pixel"
+      ],
+      "entry": [
+        "skill/SKILL.md",
+        "src/pixel.js",
+        "README.md"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "aseprite-ai-artist",
+      "dir": "aseprite-ai-artist",
+      "repo": "https://github.com/with-pebbly/aseprite-ai-artist.git",
+      "commit": "9def814c655a",
+      "licence": "MIT",
+      "lanes": [
+        "pixel"
+      ],
+      "entry": [
+        "skills/README.md",
+        "skills/<skill>/SKILL.md",
+        "docs/TOOLS.md"
+      ],
+      "output": "sprite",
+      "needs": [
+        "Aseprite 1.3+ built from source for personal use: scripts/build_aseprite.sh (needs VS Build Tools; no redistribution of the binary)",
+        "Node 22.6+"
+      ]
+    },
+    {
+      "id": "onetake",
+      "dir": "onetake",
+      "repo": "https://github.com/feitangyuan/onetake",
+      "commit": "abb6d17279cd",
+      "licence": "PolyForm Noncommercial 1.0.0 (personal use only)",
+      "lanes": [
+        "one-take"
+      ],
+      "entry": [
+        "SKILL.md",
+        "references/",
+        "looks/looks.json",
+        "cases/<case>/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "motionmaxxing",
+      "dir": "motionmaxxing",
+      "repo": "https://github.com/Tejashmakwana/motionmaxxing",
+      "commit": "8c8ec0f2a6f6",
+      "licence": "Apache-2.0",
+      "lanes": [
+        "motion-graphics",
+        "learn"
+      ],
+      "entry": [
+        "SKILL.md",
+        "references/",
+        "library/moments.jsonl",
+        "taste/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "raea",
+      "dir": "raea",
+      "repo": "https://github.com/shinyobjectz/raea.git",
+      "commit": "ce920a5530b0",
+      "licence": "FSL-1.1-ALv2 (personal use fine; no competing product)",
+      "lanes": [
+        "3d",
+        "gpu-motion"
+      ],
+      "entry": [
+        "README.md",
+        "sdk/guides/craft/ROUTER.md",
+        "sdk/guides/craft/floor.md",
+        "sdk/guides/craft/bevy.md",
+        "sdk/guides/craft/motion/gen.md"
+      ],
+      "output": "clip",
+      "needs": [
+        "raea CLI 0.1.1 unpacked at <workbench>/tools/raea/raea/bin/raea.exe (checksum-verified GitHub release)",
+        "DX12/Vulkan GPU (Radeon RX 5500M here)",
+        "a provider key only for `raea gen` (mesh, image, video)"
+      ],
+      "notes": "3D lane. No Blender."
+    },
+    {
+      "id": "hypit",
+      "dir": "hypit",
+      "repo": "https://github.com/hypit-ai/hypit.git",
+      "commit": "47bfe6e9a231",
+      "licence": "Modified Apache-2.0 (own use fine; no resale or hosting)",
+      "lanes": [
+        "footage",
+        "learn",
+        "formats"
+      ],
+      "entry": [
+        "skills/hypit/SKILL.md",
+        "skills/hypit/references/creation/reference-video.md",
+        "skills/hypit/references/playbooks/index.md"
+      ],
+      "output": "clip",
+      "needs": [
+        "model keys for generation (optional)"
+      ]
+    },
+    {
+      "id": "ai-video-editor-cooked",
+      "dir": "ai-video-editor-cooked",
+      "repo": "https://github.com/nextwork-projects/ai-video-editor-cooked.git",
+      "commit": "fd4096556f65",
+      "licence": "MIT (Remotion: free for individuals)",
+      "lanes": [
+        "footage",
+        "learn"
+      ],
+      "entry": [
+        "plugins/ai-editor/PRINCIPLES.md",
+        "plugins/ai-editor/skills/<skill>/SKILL.md",
+        "plugins/creator-teardown/skills/creator-teardown/SKILL.md"
+      ],
+      "output": "clip",
+      "needs": []
+    },
+    {
+      "id": "video-use",
+      "dir": "video-use",
+      "repo": "https://github.com/browser-use/video-use.git",
+      "commit": "43cfc5668335",
+      "licence": "MIT",
+      "lanes": [
+        "footage"
+      ],
+      "entry": [
+        "SKILL.md",
+        "helpers/"
+      ],
+      "output": "clip",
+      "needs": [
+        "ElevenLabs Scribe key (or swap in local whisper)"
+      ]
+    },
+    {
+      "id": "vox-director",
+      "dir": "vox-director",
+      "repo": "https://github.com/Alisa0808/vox-director.git",
+      "commit": "6a85a7c34161",
+      "licence": "MIT",
+      "lanes": [
+        "collage"
+      ],
+      "entry": [
+        "SKILL.md",
+        "references/prompt-guide.md",
+        "references/local-engine.md"
+      ],
+      "output": "clip",
+      "needs": [
+        "Atlas Cloud key, or route images to ChatGPT and clips to Flow Omni Flash"
+      ]
+    },
+    {
+      "id": "vox-explainer-skill",
+      "dir": "vox-explainer-skill",
+      "repo": "https://github.com/CK42BB/vox-explainer-skill.git",
+      "commit": "7003225dc3ed",
+      "licence": "MIT",
+      "lanes": [
+        "collage"
+      ],
+      "entry": [
+        "SKILL.md",
+        "references/"
+      ],
+      "output": "clip",
+      "needs": [
+        "Atlas Cloud key, or route to ChatGPT + Flow"
+      ]
+    },
+    {
+      "id": "gbro-collage-broll",
+      "dir": "gbro-collage-broll",
+      "repo": "https://github.com/pyang5166/gbro-collage-broll",
+      "commit": "a1a4ee2e2abf",
+      "licence": "MIT",
+      "lanes": [
+        "collage"
+      ],
+      "entry": [
+        "SKILL.md"
+      ],
+      "output": "clip",
+      "needs": [
+        "Flow Omni Flash for the first/last-frame clip (house rule)"
+      ]
+    },
+    {
+      "id": "bang-motion",
+      "dir": "bangtutorial_bang-motion",
+      "repo": "https://github.com/bangtutorial/bang-motion.git",
+      "commit": "c1aa65e921c9",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "SKILL.md or skills/",
+        "references/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "camera-to-blender",
+      "dir": "camera-to-blender",
+      "repo": "https://github.com/ahujasid/camera-to-blender.git",
+      "commit": "dee5daedaa6f",
+      "licence": "MIT",
+      "lanes": [
+        "3d"
+      ],
+      "entry": [
+        "relay_server.py"
+      ],
+      "output": "model",
+      "needs": [
+        "Tripo3D key"
+      ],
+      "notes": "Use only its photo -> Tripo3D -> .glb step; the model goes to raea, never Blender."
+    },
+    {
+      "id": "OpenMontage",
+      "dir": "../OpenMontage",
+      "repo": "https://github.com/calesthio/OpenMontage",
+      "commit": "e45f5b12bd46",
+      "licence": "AGPL-3.0",
+      "lanes": [
+        "tools"
+      ],
+      "entry": [
+        "AGENT_GUIDE.md"
+      ],
+      "output": "clip",
+      "needs": []
+    },
+    {
+      "id": "awesome-opus5-5-videos",
+      "dir": "awesome-opus5-5-videos",
+      "repo": "https://github.com/yihui-dev/awesome-opus5-5-videos",
+      "commit": "92aee2f586ac",
+      "licence": "MIT (prompts belong to their authors)",
+      "lanes": [
+        "ideas"
+      ],
+      "entry": [
+        "data/videos.json",
+        "prompts/<slug>.md"
+      ],
+      "output": "idea",
+      "needs": []
+    },
+    {
+      "id": "NullMotion",
+      "dir": "NullMotion",
+      "repo": "https://github.com/blixvip/NullMotion",
+      "commit": "d8b6e0e7390f",
+      "licence": "none (repo deleted upstream; local read-only copy)",
+      "lanes": [
+        "ideas"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "idea",
+      "needs": [],
+      "notes": "Cannot re-sync: upstream is gone."
+    },
+    {
+      "id": "iart-motion-skills",
+      "dir": "iart-ai_motion-skills",
+      "repo": "https://github.com/iart-ai/motion-skills.git",
+      "commit": "238dfc55aac1",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "README.md",
+        "skills/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "iart-b-roll",
+      "dir": "iart_b-roll-skills",
+      "repo": "https://github.com/iart-ai/b-roll-skills.git",
+      "commit": "a51e34b0a8de",
+      "licence": "MIT",
+      "lanes": [
+        "footage",
+        "motion-graphics"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "iart-talking-head",
+      "dir": "iart_talking-head-skills",
+      "repo": "https://github.com/iart-ai/talking-head-skills.git",
+      "commit": "a315032ccffa",
+      "licence": "MIT",
+      "lanes": [
+        "character"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "clip",
+      "needs": [
+        "fal key (paid) for speaking shots"
+      ]
+    },
+    {
+      "id": "barty-motion",
+      "dir": "Barty-Bart_motion-graphics",
+      "repo": "https://github.com/Barty-Bart/motion-graphics.git",
+      "commit": "3d83d987d658",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "skills/ or SKILL.md"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "mort1d-motion",
+      "dir": "Mort1d_motion-graphics-skills",
+      "repo": "https://github.com/Mort1d/motion-graphics-skills.git",
+      "commit": "7f0c3714dc81",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "opus-video-skills",
+      "dir": "tuzhechen2005_opus-video-skills",
+      "repo": "https://github.com/tuzhechen2005/opus-video-skills.git",
+      "commit": "59744a69c7b9",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "painting"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "charlie-motion",
+      "dir": "motion-graphics-skills",
+      "repo": "https://github.com/charlie947/motion-graphics-skills.git",
+      "commit": "229022ebca76",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "learn"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "page",
+      "needs": []
+    },
+    {
+      "id": "herk-edit-kit",
+      "dir": "herk-edit-kit",
+      "repo": "https://github.com/nateherkai/herk-edit-kit.git",
+      "commit": "10511e5af86f",
+      "licence": "MIT",
+      "lanes": [
+        "footage"
+      ],
+      "entry": [
+        "README.md",
+        "skills/"
+      ],
+      "output": "clip",
+      "needs": []
+    },
+    {
+      "id": "gsap-skills",
+      "dir": "greensock_gsap-skills",
+      "repo": "https://github.com/greensock/gsap-skills.git",
+      "commit": "aed9cfd32777",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "doc",
+      "needs": []
+    },
+    {
+      "id": "remotion-skills",
+      "dir": "remotion-dev_skills",
+      "repo": "https://github.com/remotion-dev/skills.git",
+      "commit": "30d4553ecd46",
+      "licence": "see repo",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "doc",
+      "needs": []
+    },
+    {
+      "id": "mamdouh-motion",
+      "dir": "imMamdouhaboammar_motion-graphics-skills",
+      "repo": "https://github.com/imMamdouhaboammar/motion-graphics-skills.git",
+      "commit": "29919c1ff91d",
+      "licence": "see repo",
+      "lanes": [
+        "motion-graphics"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "doc",
+      "needs": []
+    },
+    {
+      "id": "frankx-index",
+      "dir": "frankxai_awesome-motion-design-agent-skills",
+      "repo": "https://github.com/frankxai/awesome-motion-design-agent-skills.git",
+      "commit": "b45d60fa5b0f",
+      "licence": "CC",
+      "lanes": [
+        "ideas"
+      ],
+      "entry": [
+        "README.md",
+        "rubrics/"
+      ],
+      "output": "doc",
+      "needs": []
+    },
+    {
+      "id": "aiev",
+      "dir": "notivn_AIEV",
+      "repo": "https://github.com/notivn/AIEV.git",
+      "commit": "e40fe034837d",
+      "licence": "MIT",
+      "lanes": [
+        "footage"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "clip",
+      "needs": []
+    },
+    {
+      "id": "anidoodle",
+      "dir": "anidoodle",
+      "repo": "https://github.com/alexgreensh/anidoodle",
+      "commit": "4ae27d2c281f",
+      "licence": "Apache-2.0",
+      "lanes": [
+        "drawing"
+      ],
+      "entry": [
+        "skills/anidoodle/SKILL.md",
+        "README.md"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Hand-drawn art as code: illustrations, drawing timelapses, films and explainers in 32 styles."
+    },
+    {
+      "id": "manim-skill",
+      "dir": "manim_skill",
+      "repo": "https://github.com/adithya-s-k/manim_skill",
+      "commit": "cef045011722",
+      "licence": "MIT",
+      "lanes": [
+        "math",
+        "explainer"
+      ],
+      "entry": [
+        "skills/manim-composer/SKILL.md",
+        "skills/manimce-best-practices/SKILL.md"
+      ],
+      "output": "clip",
+      "needs": [
+        "manim (pip, via uv)",
+        "LaTeX only for formulas"
+      ],
+      "notes": "3Blue1Brown-style math and diagram animation."
+    },
+    {
+      "id": "whiteboard-animation-vi",
+      "dir": "whiteboard-animation-vi",
+      "repo": "https://github.com/letuandat131/whiteboard-animation-vi",
+      "commit": "c689bf7fd75f",
+      "licence": "CC0-1.0",
+      "lanes": [
+        "whiteboard",
+        "drawing"
+      ],
+      "entry": [
+        "README.md",
+        "docs/"
+      ],
+      "output": "clip",
+      "needs": [
+        "pip: requirements.txt (Gradio app)"
+      ],
+      "notes": "Turns an illustration into a whiteboard draw-on animation with moving hands."
+    },
+    {
+      "id": "whiteboard-animation-skill",
+      "dir": "whiteboard-animation-skill",
+      "repo": "https://github.com/yangagent/whiteboard-animation-skill",
+      "commit": "36798ab30c3a",
+      "licence": "see repo",
+      "lanes": [
+        "whiteboard"
+      ],
+      "entry": [
+        "SKILL.md or skills/"
+      ],
+      "output": "clip",
+      "needs": []
+    },
+    {
+      "id": "varg-skills",
+      "dir": "varg-skills",
+      "repo": "https://github.com/vargHQ/skills",
+      "commit": "70d1ccb51b2b",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "footage",
+        "ideas"
+      ],
+      "entry": [
+        "README.md",
+        "<skill>/SKILL.md"
+      ],
+      "output": "page",
+      "needs": [
+        "provider keys only for generated media"
+      ],
+      "notes": "73 video skills: 17 kinetic-type templates, title design, transitions, overlays, maps and data motion, a named-edit library."
+    },
+    {
+      "id": "iart-web-animation",
+      "dir": "iart_web-animation-skills",
+      "repo": "https://github.com/iart-ai/web-animation-skills",
+      "commit": "ed3a04519267",
+      "licence": "MIT",
+      "lanes": [
+        "vector"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Lottie, SVG and web animation skills."
+    },
+    {
+      "id": "iart-motion-design",
+      "dir": "iart_motion-design-skills",
+      "repo": "https://github.com/iart-ai/motion-design-skills",
+      "commit": "b85e50c4cef5",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "after-effects"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "doc",
+      "needs": [],
+      "notes": "Motion fundamentals plus an After Effects skill (expressions, rigs, MOGRT, Lottie export)."
+    },
+    {
+      "id": "iart-kinetic-type",
+      "dir": "iart_kinetic-typography-skills",
+      "repo": "https://github.com/iart-ai/kinetic-typography-skills",
+      "commit": "2b79c81230c6",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "type"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Kinetic typography: splitting, stagger, masks, variable fonts, text on a path."
+    },
+    {
+      "id": "claudedesignskills",
+      "dir": "claudedesignskills",
+      "repo": "https://github.com/freshtechbro/claudedesignskills",
+      "commit": "1da73febff0c",
+      "licence": "MIT",
+      "lanes": [
+        "vector",
+        "3d-web"
+      ],
+      "entry": [
+        "plugins/"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Lottie, Rive, Three.js, GSAP and other web-motion skills."
+    },
+    {
+      "id": "lottiefiles-motion",
+      "dir": "lottiefiles_motion-design-skill",
+      "repo": "https://github.com/LottieFiles/motion-design-skill",
+      "commit": "f9a8a041b851",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "vector"
+      ],
+      "entry": [
+        "SKILL.md"
+      ],
+      "output": "doc",
+      "needs": [],
+      "notes": "Timing, easing, choreography and Disney principles."
+    },
+    {
+      "id": "animation-principles",
+      "dir": "animation-principles",
+      "repo": "https://github.com/dylantarre/animation-principles",
+      "commit": "83597134ba8f",
+      "licence": "MIT",
+      "lanes": [
+        "motion-graphics",
+        "character"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "doc",
+      "needs": [],
+      "notes": "The 12 animation principles per tool (Rive, CSS, GSAP and more)."
+    },
+    {
+      "id": "ffmpeg-skill",
+      "dir": "ffmpeg-skill",
+      "repo": "https://github.com/kajisho5/ffmpeg-skill",
+      "commit": "92dabd8372da",
+      "licence": "MIT",
+      "lanes": [
+        "footage",
+        "finishing"
+      ],
+      "entry": [
+        "README.md",
+        "skills/ or SKILL.md"
+      ],
+      "output": "clip",
+      "needs": [],
+      "notes": "42 local FFmpeg tools with an MCP server: cut, captions, reframe, loudness, platform exports."
+    },
+    {
+      "id": "img2threejs",
+      "dir": "img2threejs",
+      "repo": "https://github.com/img2threejs/img2threejs",
+      "commit": "0c0c49bc168e",
+      "licence": "Apache-2.0",
+      "lanes": [
+        "3d-web",
+        "sets"
+      ],
+      "entry": [
+        "README.md",
+        "SKILL.md or skills/"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Rebuilds the object in a reference picture as code-only Three.js with a look-and-correct loop. The method behind crew job 4b."
+    },
+    {
+      "id": "img2threejs-interior",
+      "dir": "img2threejs-plugin-interior",
+      "repo": "https://github.com/img2threejs/plugin-interior",
+      "commit": "f2c3667bb6d3",
+      "licence": "see repo",
+      "lanes": [
+        "3d-web",
+        "sets"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "page",
+      "needs": [],
+      "notes": "Interiors authored for Three.js delivery."
+    },
+    {
+      "id": "threejs-skills",
+      "dir": "threejs-skills",
+      "repo": "https://github.com/CloudAI-X/threejs-skills",
+      "commit": "0e181866f095",
+      "licence": "MIT",
+      "lanes": [
+        "3d-web"
+      ],
+      "entry": [
+        "skills/"
+      ],
+      "output": "doc",
+      "needs": [],
+      "notes": "Three.js fundamentals, materials, lighting, shaders, post-processing."
+    },
+    {
+      "id": "depth-anything-v2",
+      "dir": "Depth-Anything-V2",
+      "repo": "https://github.com/DepthAnything/Depth-Anything-V2",
+      "commit": "a561b849ebae",
+      "licence": "Apache-2.0 (small model)",
+      "lanes": [
+        "depth",
+        "2.5d"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "data",
+      "needs": [
+        "the Small model as ONNX (about 100 MB), runs on CPU"
+      ],
+      "notes": "Depth map from one picture, for relief plates with real parallax."
+    },
+    {
+      "id": "depthflow",
+      "dir": "DepthFlow",
+      "repo": "https://github.com/BrokenSource/DepthFlow",
+      "commit": "4d002b49f0ee",
+      "licence": "AGPL-3.0",
+      "lanes": [
+        "2.5d"
+      ],
+      "entry": [
+        "Readme.md"
+      ],
+      "output": "clip",
+      "needs": [
+        "pip: depthflow (via uv)"
+      ],
+      "notes": "One picture to a parallax video clip."
+    },
+    {
+      "id": "spark",
+      "dir": "spark",
+      "repo": "https://github.com/sparkjsdev/spark",
+      "commit": "ffe210dc0a45",
+      "licence": "MIT",
+      "lanes": [
+        "3d-web",
+        "splats"
+      ],
+      "entry": [
+        "README.md",
+        "docs/"
+      ],
+      "output": "page",
+      "needs": [
+        "a splat file (.ply/.spz) from a hosted world generator"
+      ],
+      "notes": "Gaussian-splat worlds rendered in Three.js."
+    },
+    {
+      "id": "perfectpixel-studio",
+      "dir": "perfectpixel-studio",
+      "repo": "https://github.com/gykim80/perfectpixel-studio",
+      "commit": "a1385cc99eb4",
+      "licence": "MIT",
+      "lanes": [
+        "pixel",
+        "character"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "sprite",
+      "needs": [
+        "an image provider key"
+      ],
+      "notes": "Sprite sheets in 8 directions with 100+ motion presets; reference for cast actions."
+    },
+    {
+      "id": "three-pixelate",
+      "dir": "three-pixelate-showcase",
+      "repo": "https://github.com/WoodNeck/three-pixelate-showcase",
+      "commit": "12c4b72a8456",
+      "licence": "MIT",
+      "lanes": [
+        "pixel",
+        "3d-web"
+      ],
+      "entry": [
+        "README.md",
+        "src/"
+      ],
+      "output": "doc",
+      "needs": [],
+      "notes": "3D rendered as pixel art: pixelate, palette and dithering shaders."
+    },
+    {
+      "id": "verbalized-sampling",
+      "dir": "verbalized-sampling",
+      "repo": "https://github.com/CHATS-lab/verbalized-sampling",
+      "commit": "8ffec17a8138",
+      "licence": "see repo",
+      "lanes": [
+        "ideas",
+        "brain"
+      ],
+      "entry": [
+        "README.md"
+      ],
+      "output": "doc",
+      "needs": [],
+      "notes": "Ask for several answers with a probability each and pick from the unlikely end: the variety method for the idea engine."
+    }
+  ]
+}

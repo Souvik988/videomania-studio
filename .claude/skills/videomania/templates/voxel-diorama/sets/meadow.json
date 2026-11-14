@@ -1,0 +1,12 @@
+{
+  "name": "meadow",
+  "about": "The real world: one photoreal ChatGPT picture (a desk with a computer alone in a grass meadow) pushed back along its depth map, so the camera gets true parallax as it pushes into the monitor. Open a film here, then switch into a pixel world through the screen.",
+  "marks": { "stage": [0, 0, 8] },
+  "cams": { "wide": { "from": [0, 12, 46], "to": [0, 15, 10], "look": [0, 16, -45], "fov": 40 } },
+  "castLight": { "key": "#fff3d6", "keySide": -1, "rim": "#ffe2a0", "rimSide": -1, "shade": 0.2 },
+  "items": [
+    { "relief": { "src": "assets/plates/open_world.png", "depth": "assets/plates/open_world_depth.png", "at": [0, 12, -72], "w": 186, "h": 124, "amount": 58, "view": 115, "seg": 360, "glow": 1.05 } },
+    { "prefab": "dust", "box": [-40, 0, -30, 80, 30, 60], "count": 160, "color": "#fff3c0" },
+    { "light": { "kind": "hemi", "color": "#fff3e0", "ground": "#3a5a20", "intensity": 1.0 } }
+  ]
+}

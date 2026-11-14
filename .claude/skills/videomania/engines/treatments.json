@@ -1,0 +1,595 @@
+{
+  "about": "Edit treatments Video Mania can offer on the menu: a way of treating a film or a piece of footage, built from one or more engines. 'fits' says what the user must have given (footage, voiceover, topic, product). The Pocket indexes these as kind 'treatment'.",
+  "treatments": [
+    {
+      "id": "voxel-diorama-director",
+      "name": "Voxel diorama with a pixel-art cast",
+      "fits": [
+        "voiceover",
+        "topic"
+      ],
+      "engines": [
+        "hyperframes"
+      ],
+      "read": [
+        "references/styles/voxel-diorama.md",
+        "crew/"
+      ],
+      "tags": [
+        "pixel",
+        "voxel",
+        "3d",
+        "character",
+        "explainer",
+        "dark",
+        "cinematic",
+        "depth of field",
+        "kinetic type"
+      ],
+      "summary": "One dark 3D voxel room the whole film lives in, two pixel-art sprite characters who act the story, warm lamp light with shallow depth of field, word-by-word type with a red punch word, pixel-dissolve transitions. For explainers, launches and creator videos that need a host."
+    },
+    {
+      "id": "pixel-switch",
+      "name": "Switch into pixel art on punchlines",
+      "fits": [
+        "footage"
+      ],
+      "engines": [
+        "video-use",
+        "pixel-studio",
+        "openfilm"
+      ],
+      "read": [
+        "engines: pixel-studio skill/SKILL.md",
+        "references/styles/voxel-diorama.md#pixel-transitions"
+      ],
+      "tags": [
+        "pixel",
+        "podcast",
+        "talking head",
+        "transformation",
+        "mosaic",
+        "retro",
+        "game"
+      ],
+      "summary": "Live footage (podcast, talking head) that, on chosen words, breaks into a mosaic and becomes a pixel-art version of the moment, then resolves back. Cut on the transcript's word times."
+    },
+    {
+      "id": "pixel-scene",
+      "name": "Full pixel-art scene",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "pixel-studio",
+        "aseprite-ai-artist"
+      ],
+      "read": [
+        "engines: pixel-studio skill/SKILL.md",
+        "engines: aseprite-ai-artist skills/"
+      ],
+      "tags": [
+        "pixel",
+        "8-bit",
+        "retro",
+        "chiptune",
+        "sprite",
+        "game",
+        "viral short"
+      ],
+      "summary": "A whole scene drawn pixel by pixel in code at low resolution with a 12-colour palette, stepped 12 fps animation, precomputed physics and chiptune sound. From a reference image or a one-line idea."
+    },
+    {
+      "id": "vox-poster",
+      "name": "Vox editorial poster look",
+      "fits": [
+        "voiceover",
+        "topic"
+      ],
+      "engines": [
+        "hyperframes"
+      ],
+      "read": [
+        "references/vox-poster-system.md",
+        "templates/vox-poster/"
+      ],
+      "tags": [
+        "vox",
+        "editorial",
+        "poster",
+        "explainer",
+        "collage",
+        "bold type",
+        "colour blocks"
+      ],
+      "summary": "Editorial poster frames in bold colour fields with cut-out imagery and strong type, timed to a voiceover. The house Vox look from the user's reference reel."
+    },
+    {
+      "id": "vox-collage",
+      "name": "Paper-collage explainer",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "vox-director",
+        "vox-explainer-skill",
+        "gbro-collage-broll"
+      ],
+      "read": [
+        "engines: vox-director SKILL.md",
+        "engines: gbro-collage-broll SKILL.md"
+      ],
+      "tags": [
+        "collage",
+        "halftone",
+        "paper",
+        "stop motion",
+        "vox",
+        "documentary",
+        "b-roll"
+      ],
+      "summary": "Halftone paper cut-outs on flat colour that slide in and assemble like stop motion. As a full explainer or as 5-second B-roll under a line of voiceover."
+    },
+    {
+      "id": "kinetic-captions",
+      "name": "Kinetic word-by-word captions",
+      "fits": [
+        "footage",
+        "voiceover"
+      ],
+      "engines": [
+        "hyperframes",
+        "ai-video-editor-cooked"
+      ],
+      "read": [
+        "references/typography-and-captions.md",
+        "engines: ai-video-editor-cooked presets/captions"
+      ],
+      "tags": [
+        "captions",
+        "subtitles",
+        "karaoke",
+        "kinetic type",
+        "emphasis",
+        "reels"
+      ],
+      "summary": "Captions that land on each spoken word with one emphasised punch word per line, in the type kit's roles. For any footage or voiceover."
+    },
+    {
+      "id": "talking-head-recut",
+      "name": "Tight talking-head cut",
+      "fits": [
+        "footage"
+      ],
+      "engines": [
+        "video-use",
+        "ai-video-editor-cooked"
+      ],
+      "read": [
+        "engines: video-use SKILL.md",
+        "engines: ai-video-editor-cooked plugins/ai-editor/skills/cut/SKILL.md"
+      ],
+      "tags": [
+        "talking head",
+        "retakes",
+        "pauses",
+        "jump cut",
+        "podcast",
+        "shorts"
+      ],
+      "summary": "Removes retakes, false starts and pauses on word boundaries, with punch-ins and clean audio joins. The base for every footage edit."
+    },
+    {
+      "id": "copy-a-style",
+      "name": "Edit it like these reference videos",
+      "fits": [
+        "footage",
+        "voiceover",
+        "topic"
+      ],
+      "engines": [
+        "ai-video-editor-cooked",
+        "hypit",
+        "motionmaxxing"
+      ],
+      "read": [
+        "engines: ai-video-editor-cooked plugins/creator-teardown",
+        "engines: hypit skills/hypit/references/creation/reference-video.md"
+      ],
+      "tags": [
+        "reference",
+        "style transfer",
+        "teardown",
+        "creator",
+        "learn"
+      ],
+      "summary": "Give 3 to 6 videos you like. Their cut speed, zooms, captions, graphics and sound are measured into a saved style, and your video is edited that way. Editing grammar only, never their footage or words."
+    },
+    {
+      "id": "one-take-launch",
+      "name": "One-take product launch",
+      "fits": [
+        "product",
+        "topic"
+      ],
+      "engines": [
+        "onetake"
+      ],
+      "read": [
+        "engines: onetake SKILL.md"
+      ],
+      "tags": [
+        "launch",
+        "product",
+        "one take",
+        "continuous camera",
+        "teaser",
+        "demo"
+      ],
+      "summary": "A launch film with no cuts: every beat grows out of the one before and one camera follows it all. Personal, non-commercial use."
+    },
+    {
+      "id": "film-style",
+      "name": "A named film style",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "lemo-opuscar"
+      ],
+      "read": [
+        "engines: lemo-opuscar DIRECTOR.md",
+        "engines: lemo-opuscar styles/<slug>/STYLE.md"
+      ],
+      "tags": [
+        "style",
+        "watercolor",
+        "newsreel",
+        "blueprint",
+        "ukiyo-e",
+        "anime",
+        "paper",
+        "documentary"
+      ],
+      "summary": "The whole film in one of 68 code-made styles, from watercolour and ink wash to newsreel, blueprint, LiDAR survey and broadcast news package."
+    },
+    {
+      "id": "moving-painting",
+      "name": "A painting that moves",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "huashu-art-motion",
+        "claude-drawing-skill"
+      ],
+      "read": [
+        "engines: huashu-art-motion SKILL.md",
+        "engines: claude-drawing-skill SKILL.md"
+      ],
+      "tags": [
+        "painting",
+        "art",
+        "van gogh",
+        "monet",
+        "ink wash",
+        "ghibli",
+        "stroke by stroke",
+        "drawing"
+      ],
+      "summary": "Art-history styles brought to life: 50 painting styles that animate, or 83 media drawn stroke by stroke as if by hand."
+    },
+    {
+      "id": "hand-drawn-character",
+      "name": "Hand-drawn character animation",
+      "fits": [
+        "topic"
+      ],
+      "engines": [
+        "ClaudeAnimationBase"
+      ],
+      "read": [
+        "engines: ClaudeAnimationBase ANIMATION_GUIDE.md"
+      ],
+      "tags": [
+        "character",
+        "hand drawn",
+        "brush",
+        "boiling line",
+        "no text",
+        "music video"
+      ],
+      "summary": "A brush-drawn 2D character with boiling linework acting out a short story, shot by shot, with no on-screen text."
+    },
+    {
+      "id": "3d-product-shot",
+      "name": "3D product shot",
+      "fits": [
+        "product"
+      ],
+      "engines": [
+        "raea",
+        "camera-to-blender"
+      ],
+      "read": [
+        "engines: raea sdk/guides/craft/bevy.md",
+        "engines: raea sdk/guides/craft/motion/gen.md"
+      ],
+      "tags": [
+        "3d",
+        "product",
+        "turntable",
+        "camera",
+        "lights",
+        "gpu"
+      ],
+      "summary": "A picture of the product becomes a 3D model that a camera flies around under real lights. Rendered on the GPU with raea, no Blender."
+    },
+    {
+      "id": "motion-graphics-explainer",
+      "name": "Coded motion-graphics explainer",
+      "fits": [
+        "voiceover",
+        "topic"
+      ],
+      "engines": [
+        "hyperframes",
+        "motionmaxxing",
+        "bang-motion"
+      ],
+      "read": [
+        "references/motion-design-playbook.md",
+        "engines: motionmaxxing SKILL.md"
+      ],
+      "tags": [
+        "motion graphics",
+        "explainer",
+        "ui",
+        "data",
+        "charts",
+        "icons",
+        "saas",
+        "launch"
+      ],
+      "summary": "UI mockups, icons, data visuals and kinetic type choreographed to a voiceover with measured eases and a moving camera. The default Video Mania film."
+    },
+    {
+      "id": "shorts-from-long",
+      "name": "Shorts from a long video",
+      "fits": [
+        "footage"
+      ],
+      "engines": [
+        "ai-video-editor-cooked",
+        "hypit"
+      ],
+      "read": [
+        "engines: ai-video-editor-cooked plugins/ai-editor/skills/clips/SKILL.md"
+      ],
+      "tags": [
+        "shorts",
+        "reels",
+        "clips",
+        "podcast",
+        "repurpose",
+        "vertical"
+      ],
+      "summary": "Finds the strongest moments in a long video or podcast and edits each into a vertical short."
+    },
+    {
+      "id": "format-playbook",
+      "name": "A proven social format",
+      "fits": [
+        "topic",
+        "footage"
+      ],
+      "engines": [
+        "hypit"
+      ],
+      "read": [
+        "engines: hypit skills/hypit/references/playbooks/index.md"
+      ],
+      "tags": [
+        "podcast",
+        "street interview",
+        "ranking",
+        "listicle",
+        "short drama",
+        "ugc",
+        "demo"
+      ],
+      "summary": "Two-person podcast, street interview, ranking listicle, short drama, presenter explainer or narrated demo, built to that format's rules."
+    },
+    {
+      "id": "generated-b-roll",
+      "name": "Generated cinematic B-roll",
+      "fits": [
+        "voiceover",
+        "topic",
+        "footage"
+      ],
+      "engines": [],
+      "read": [
+        "references/flow-asset-production.md"
+      ],
+      "tags": [
+        "b-roll",
+        "cinematic",
+        "google flow",
+        "omni flash",
+        "real world"
+      ],
+      "summary": "Real-world shots made with Google Flow Omni Flash to sit under the voiceover. Each generation needs your approval."
+    },
+    {
+      "id": "whiteboard-draw-on",
+      "name": "Whiteboard draw-on",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "whiteboard-animation-vi",
+        "anidoodle",
+        "claude-drawing-skill"
+      ],
+      "read": [
+        "engines: whiteboard-animation-vi README.md",
+        "engines: anidoodle skills/anidoodle/SKILL.md"
+      ],
+      "tags": [
+        "whiteboard",
+        "hand drawn",
+        "doodle",
+        "draw on",
+        "explainer",
+        "sketch"
+      ],
+      "summary": "An illustration drawn line by line as if by a hand, lines first, then colour. From a ChatGPT picture or drawn in code in 32 doodle styles."
+    },
+    {
+      "id": "math-explainer",
+      "name": "Math and diagram explainer",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "manim-skill",
+        "huashu-art-motion"
+      ],
+      "read": [
+        "engines: manim-skill skills/manim-composer/SKILL.md"
+      ],
+      "tags": [
+        "math",
+        "3blue1brown",
+        "diagram",
+        "graph",
+        "equation",
+        "science",
+        "education"
+      ],
+      "summary": "Precise diagrams, graphs and equations that build and transform step by step, in the 3Blue1Brown manner (Manim)."
+    },
+    {
+      "id": "vector-character",
+      "name": "Vector and stick-figure animation",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "hyperframes",
+        "claudedesignskills",
+        "iart-web-animation",
+        "animation-principles"
+      ],
+      "read": [
+        "engines: animation-principles skills/",
+        "installed skill /hyperframes-animation adapters/lottie.md"
+      ],
+      "tags": [
+        "vector",
+        "stick figure",
+        "lottie",
+        "svg",
+        "rive",
+        "flat",
+        "character",
+        "rig"
+      ],
+      "summary": "Flat vector characters and stick figures rigged from simple shapes, animated with the 12 principles, or Lottie and SVG animations played on the timeline."
+    },
+    {
+      "id": "kinetic-3d-type",
+      "name": "Kinetic 3D typography",
+      "fits": [
+        "voiceover",
+        "topic"
+      ],
+      "engines": [
+        "hyperframes",
+        "varg-skills",
+        "iart-kinetic-type",
+        "raea"
+      ],
+      "read": [
+        "engines: varg-skills kinetic-type-art/SKILL.md",
+        "references/typography-and-captions.md"
+      ],
+      "tags": [
+        "kinetic type",
+        "3d text",
+        "extrude",
+        "typography",
+        "lyric",
+        "manifesto",
+        "word corridor"
+      ],
+      "summary": "Words as the picture: type that slams, extrudes, tunnels and turns in 3D on the beat, from one-word hits to a word corridor."
+    },
+    {
+      "id": "open-world",
+      "name": "A world to move through",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "hyperframes",
+        "raea"
+      ],
+      "read": [
+        "crew/04b-set-builder.md",
+        "templates/voxel-diorama/README.md",
+        "templates/voxel-diorama/sets/cafe.json"
+      ],
+      "tags": [
+        "environment",
+        "world",
+        "open world",
+        "city",
+        "room",
+        "voxel",
+        "3d",
+        "camera flight"
+      ],
+      "summary": "A built environment the cast walks through and the camera travels in: generate one concept picture, rebuild it as a 3D set in data (no Blender), then film inside it. A night cafe ships as the first set."
+    },
+    {
+      "id": "picture-world",
+      "name": "Step into a generated picture",
+      "fits": [
+        "topic",
+        "voiceover"
+      ],
+      "engines": [
+        "hyperframes",
+        "depth-anything-v2"
+      ],
+      "read": [
+        "crew/04b-set-builder.md",
+        "templates/voxel-diorama/README.md",
+        "templates/voxel-diorama/sets/vista.json"
+      ],
+      "tags": [
+        "2.5d",
+        "parallax",
+        "depth",
+        "landscape",
+        "world",
+        "fantasy",
+        "space",
+        "city",
+        "generated image",
+        "backdrop"
+      ],
+      "summary": "Any generated picture becomes a world with real camera depth: a depth map made on the laptop pushes the picture into relief, the cast stands in front, and near parts slide faster than far parts as the camera moves. A new world costs one picture."
+    }
+  ]
+}

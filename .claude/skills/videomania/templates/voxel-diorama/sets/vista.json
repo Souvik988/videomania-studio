@@ -1,0 +1,25 @@
+{
+  "name": "vista",
+  "about": "A rock ledge in front of a relief plate: one generated landscape picture pushed back along its depth map, so the camera gets real parallax. Swap the two pictures (assets/plates/vista.png and vista_depth.png, made with scripts/vm_depth.py) for any other world.",
+  "palette": { "rock": "#2a1c3d", "rock2": "#352449", "moss": "#2f6b5a", "crystal": "#3cf0dd" },
+  "marks": { "stage": [0, 0, 8], "stage-left": [-5, 0, 8], "stage-right": [5, 0, 9], "edge": [0, 0, 2] },
+  "cams": {
+    "wide": { "from": [-15, 10, 46], "to": [13, 9, 42], "look": [0, 20, -60], "fov": 40 },
+    "rise": { "from": [8, 5, 44], "to": [-6, 17, 40], "look": [0, 20, -60], "fov": 40 }
+  },
+  "items": [
+    { "relief": { "src": "assets/plates/vista.png", "depth": "assets/plates/vista_depth.png", "at": [0, 24, -72], "w": 186, "h": 124, "amount": 58, "view": 115, "seg": 360, "glow": 1.15 } },
+    { "box": [-34, -8, -4, 68, 8, 26], "color": "$rock" },
+    { "repeat": { "count": 17, "step": [4, 0, 0] }, "items": [ { "box": [-34, 0, -4, 3.9, 0.5, 26], "color": "$rock2", "jitter": 0.02 } ] },
+    { "vox": [-34, 0, -4, 6, 5, 4], "color": "$rock", "unit": 1, "jitter": 0.04 }, { "vox": [-30, 5, -4, 3, 3, 3], "color": "$rock2", "unit": 1, "jitter": 0.04 },
+    { "vox": [28, 0, -4, 6, 7, 4], "color": "$rock", "unit": 1, "jitter": 0.04 }, { "vox": [29, 7, -3, 3, 3, 2], "color": "$rock2", "unit": 1, "jitter": 0.04 },
+    { "vox": [-32, 5, -2, 1.5, 3, 1.5], "color": "$crystal", "unit": 0.5, "glow": 1.8 }, { "vox": [30, 10, -2, 1.5, 3.5, 1.5], "color": "$crystal", "unit": 0.5, "glow": 1.8 },
+    { "vox": [-24, 0.5, 14, 2, 2, 2], "color": "$crystal", "unit": 0.5, "glow": 1.6 },
+    { "prefab": "plant", "at": [22, 0.5, 14], "size": [2.4, 6], "pot": "$rock2", "colors": ["#2f6b5a", "#3f8a70", "#245244"] },
+    { "prefab": "dust", "box": [-30, 1, -2, 60, 22, 40], "count": 150, "color": "#ffd9c0" },
+    { "light": { "kind": "dir", "color": "#ff9a5a", "intensity": 1.1, "at": [0, 30, -60] } },
+    { "light": { "kind": "point", "color": "#ffb890", "intensity": 220, "at": [-4, 16, 28], "dist": 80 } },
+    { "light": { "kind": "point", "color": "#3cf0dd", "intensity": 60, "at": [-30, 7, 2], "dist": 40 } },
+    { "light": { "kind": "hemi", "color": "#a07ac8", "ground": "#1a1026", "intensity": 0.8 } }
+  ]
+}

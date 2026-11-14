@@ -23,3 +23,13 @@ projects/*/source/media/
 projects/*/delivery/editable-project/media/
 projects/*/delivery/audio-stems/
 projects/mk-gallery*/
+
+# user rule 2026-11-14: no video clips, songs or voice recordings in the repo (public); films are delivered locally
+output/
+.claude/skills/videomania/**/*.mp4
+.claude/skills/videomania/**/*.mov
+.claude/skills/videomania/**/*.webm
+.claude/skills/videomania/**/music*/
+.claude/skills/videomania/**/mix.wav
+.claude/skills/videomania/**/master.wav
+.claude/skills/videomania/**/clips/

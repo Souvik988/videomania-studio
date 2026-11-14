@@ -1,0 +1,109 @@
+{
+ "ref": "talk",
+ "tall_px": 260,
+ "scale": 0.5628,
+ "poses": {
+  "talk": {
+   "src": "talk.png",
+   "w": 141,
+   "h": 268,
+   "depth": "talk_depth.png"
+  },
+  "point": {
+   "src": "point.png",
+   "w": 161,
+   "h": 267,
+   "depth": "point_depth.png"
+  },
+  "walk": {
+   "src": "walk.png",
+   "w": 154,
+   "h": 262,
+   "depth": "walk_depth.png"
+  },
+  "jump": {
+   "src": "jump.png",
+   "w": 135,
+   "h": 207,
+   "depth": "jump_depth.png"
+  },
+  "sit_code": {
+   "src": "sit_code.png",
+   "w": 183,
+   "h": 241,
+   "depth": "sit_code_depth.png"
+  },
+  "think": {
+   "src": "think.png",
+   "w": 91,
+   "h": 270,
+   "depth": "think_depth.png"
+  },
+  "cheer": {
+   "src": "cheer.png",
+   "w": 141,
+   "h": 269,
+   "depth": "cheer_depth.png"
+  },
+  "wave": {
+   "src": "wave.png",
+   "w": 115,
+   "h": 270,
+   "depth": "wave_depth.png"
+  },
+  "run": {
+   "src": "run.png",
+   "w": 187,
+   "h": 240,
+   "depth": "run_depth.png"
+  },
+  "floor_code": {
+   "src": "floor_code.png",
+   "w": 160,
+   "h": 208,
+   "depth": "floor_code_depth.png"
+  },
+  "shrug": {
+   "src": "shrug.png",
+   "w": 170,
+   "h": 260,
+   "depth": "shrug_depth.png"
+  },
+  "fly": {
+   "src": "fly.png",
+   "w": 230,
+   "h": 136,
+   "depth": "fly_depth.png"
+  },
+  "hold_doc": {
+   "src": "hold_doc.png",
+   "w": 115,
+   "h": 267,
+   "depth": "hold_doc_depth.png"
+  },
+  "surprised": {
+   "src": "surprised.png",
+   "w": 96,
+   "h": 268,
+   "depth": "surprised_depth.png"
+  },
+  "holo_type": {
+   "src": "holo_type.png",
+   "w": 130,
+   "h": 267,
+   "depth": "holo_type_depth.png"
+  },
+  "thumbs": {
+   "src": "thumbs.png",
+   "w": 109,
+   "h": 269,
+   "depth": "thumbs_depth.png"
+  },
+  "idle": {
+   "src": "idle.png",
+   "w": 95,
+   "h": 270,
+   "depth": "idle_depth.png"
+  }
+ }
+}
