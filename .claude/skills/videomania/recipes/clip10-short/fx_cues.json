@@ -1,0 +1,52 @@
+{
+ "duration": 10.16,
+ "rules": "references/editor-effects-and-hook-sound.md",
+ "cues": [
+  {
+   "t": 0.0,
+   "fx": "universe_warp",
+   "amount": 1.0,
+   "why": "HOOK: frame 0 must break the scroll: an editor effect + an ominous hit, in the first second."
+  },
+  {
+   "t": 3.45,
+   "fx": "rgb_split",
+   "dur": 0.3,
+   "amount": 0.5,
+   "sfx": [
+    {
+     "id": "cinematic-drum-big",
+     "at": "start",
+     "gain_db": -2
+    }
+   ],
+   "why": "Kit transition 'flash' at A->B: sound it and add a light colour tear."
+  },
+  {
+   "t": 4.75,
+   "fx": "glitch_cut",
+   "amount": 0.9,
+   "why": "Chapter turn B->C: a pattern interrupt with its sound."
+  },
+  {
+   "t": 6.44,
+   "fx": "shake",
+   "amount": 0.85,
+   "why": "Punch word 'ASSETS': hit it."
+  },
+  {
+   "t": 8.95,
+   "fx": "rgb_split",
+   "dur": 0.3,
+   "amount": 0.5,
+   "sfx": [
+    {
+     "id": "whoosh-fast-hard",
+     "at": "start",
+     "gain_db": -2
+    }
+   ],
+   "why": "Kit transition 'pixelate' at C->D: sound it and add a light colour tear."
+  }
+ ]
+}

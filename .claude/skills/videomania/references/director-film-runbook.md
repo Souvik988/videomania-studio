@@ -12,6 +12,10 @@ themselves or their work, or says "like the director film" / "voxel" / "pixel wo
 Worked example to copy at every step: `templates/voxel-diorama/examples/director-film-v5.shots.js`,
 `director-film-v5.score.sh`, `director-film-v5-reel4x5.shots.js`.
 
+> **Faster:** every step below has a `vm` command (`references/claude-editor.md`): `vm new`, `vm hear`, `vm plan`,
+> `vm shots --from-recipe`, `vm check`, `vm look`, `vm score`, `vm render --reel`, `vm fx`, `vm deliver`, `vm brain log`.
+> This page stays the reference for what each step means and how to judge it.
+
 ## Names used below
 
 ```bash
@@ -34,6 +38,8 @@ measured). Write Python patches to a file and run it; bash heredocs break on apo
 2. Ask the format if the user did not say it: **16:9**, **reel** (4:5 film in a 9:16 frame, black bars) or
    **full 9:16**. The reel is this user's "short / reels format"; see Step 11.
 3. `"$PY" "$S/preflight.py" --input "<voiceover>"`.
+4. **Launch OpsGen first** (`bash <repo>/opsgen/opsgen-dev.sh desktop`) and, once the film exists, `vm studio <film>`:
+   the person watches every stage land (`references/opsgen.md`).
 
 **Done when:** format known, preflight green.
 
@@ -223,6 +229,23 @@ cd "$P/source" && $HF render -o ../renders/<film-id>.mp4
 Then frames from the render at the hook (0.5, 1.5, 3 s), every chapter turn and the end; `ffmpeg -i ... -af
 ebur128 -f null -` → integrated about −14 LUFS, peak ≤ −1 dBFS.
 
+## Step 9b. Editor effects and hook sound (5 min; EVERY film)
+
+Read `references/editor-effects-and-hook-sound.md`. The render is the edit; this pass is what a CapCut / Premiere
+editor adds on top: the hook on frame 0, a pattern interrupt at every chapter turn, a hit on punch words, each
+effect with its sound.
+
+```bash
+"$PY" "$S/fx_pass.py" plan "$P"                                   # -> storyboard/fx_cues.json from the shot list
+#   read the plan; swap any effect whose job does not fit the line (fx_pass.py list)
+"$PY" "$S/fx_pass.py" check "$P/storyboard/fx_cues.json"          # must print PASS
+"$PY" "$S/fx_pass.py" apply "$P/renders/<film>.mp4" "$P/storyboard/fx_cues.json" -o "$P/renders/<film>_fx.mp4"
+```
+
+Then frames at 0, 0.1, 0.2, 0.4 s (the hook must be visible on frame 0) and at every cue, and the loudness (-14 LUFS,
+peak about -1.5 dBFS). **Reel:** apply the same cues to the 4:5 render, THEN `reel_frame.py pad` (Step 11).
+**Done when:** `check` PASS, frame 0 shows the hook effect, the film measures -14 LUFS.
+
 ## Step 10. Critic pass (max 3 rounds)
 
 Self-check against `references/rhythm-and-direction.md` "Checklist before rendering" and
@@ -242,7 +265,8 @@ cd "$P"
 cd source && $HF snapshot --at <the busy moments> --no-end --describe false -o ../snaps_reel && cd ..
 #   any card or prop now outside the frame: move it toward the centre in source/shots.js (e.g. at: [9, 9.5, 2] -> [5.5, 10.5, 3]); change nothing else
 cd source && $HF render -o ../renders/<film-id>_4x5.mp4 && cd ..
-"$PY" "$S/reel_frame.py" pad renders/<film-id>_4x5.mp4 renders/<film-id>_reel_9x16.mp4
+"$PY" "$S/fx_pass.py" apply renders/<film-id>_4x5.mp4 storyboard/fx_cues.json -o renders/<film-id>_fx_4x5.mp4   # effects BEFORE the bars
+"$PY" "$S/reel_frame.py" pad renders/<film-id>_fx_4x5.mp4 renders/<film-id>_reel_9x16.mp4
 "$PY" "$S/reel_frame.py" restore source
 ```
 
@@ -266,7 +290,8 @@ Never a 16:9 strip in a 9:16 frame (the user: "still landscape"); never re-desig
 4. Write `shots.js` with 4 shots from `examples/clip10-short.shots.js`; `brain.py check` PASS (Step 6).
 5. Snapshot every chapter, fix the defects listed in Step 7 (two rounds is normal).
 6. `audio/score.sh` from `examples/clip10-short.score.sh`; the spread within 1.5 dB (Step 8).
-7. Render 16:9 (about 1 min for 10 s), frames from the render, loudness (-14 LUFS), then the reel (Step 11).
+7. Render 16:9 (about 1 min for 10 s); `fx_pass.py plan / check / apply` (Step 9b: the hook on frame 0, hits, sounds);
+   frames from the result, loudness (-14 LUFS); then the reel: render 4:5, apply the same cues, pad (Step 11).
 8. Deliver to `output/<film-id>/` with the `.srt`, shot list and score.
 
 Measured on clip10 (Sonnet 5.5): about 25 renders-and-snapshots minutes in total; each render of 10 s = 1 min.
@@ -276,6 +301,8 @@ Measured on clip10 (Sonnet 5.5): about 25 renders-and-snapshots minutes in total
 | date | model | task | gaps found, now fixed |
 |---|---|---|---|
 | 2026-11-14 | Sonnet 5.5 | 10 s clip "generate the assets first" (`examples/clip10-short.*`) | backup `index_landscape.html` inside `source/` broke `hyperframes check` -> `reel_frame.py` backs up to `_landscape/`; kit page had no audio tag -> `new_film.py`; no script-only start -> TTS line in Step 1; no asset reuse step -> Step 3 and `--assets-from`; the brain's "impossible moment" gate was a surprise -> planned in Step 6; Windows Python `/c/` paths; `check` false alarms documented in Step 7 |
+
+| 2026-11-15 | Opus 5.5 | effects pass on clip10 | the kit faded in from black (frame 0 dead) -> no fade by default; the hook effect's attack left frame 0 clean -> `slam` envelope; the planner dropped big moments for small ones -> importance ranking; a 4:5 render made before a kit fix stayed black on frame 0 -> re-render the reel after kit changes |
 
 Add a row every time the skill is run by another model. Fix the gap in the skill, never only in the film.
 

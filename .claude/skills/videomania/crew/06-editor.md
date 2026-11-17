@@ -48,3 +48,8 @@ and `references/greenscreen-compositing.md` if keyed.
 16:9 is the master. A **reel** is the same film composed at 4:5 and padded to 9:16 with black bars:
 `reel_frame.py prep` -> snapshot -> move only props that left the frame -> render -> `reel_frame.py pad` ->
 `reel_frame.py restore`. Full commands: `references/director-film-runbook.md` Step 11.
+
+## Editor effects pass (2026-11-15)
+After the render and before delivery: `fx_pass.py plan` -> read and adjust `storyboard/fx_cues.json` -> `check` PASS ->
+`apply`. The hook effect is on frame 0 at full strength; one pattern interrupt per chapter turn; hits on punch words.
+For reels apply on the 4:5 render, then pad. Rules: `references/editor-effects-and-hook-sound.md`.

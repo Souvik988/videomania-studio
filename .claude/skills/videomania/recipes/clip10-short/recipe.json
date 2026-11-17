@@ -1,0 +1,23 @@
+{
+ "id": "clip10-short",
+ "title": "10-second short: two worlds merge",
+ "about": "A 10 s short in four shots: the question in the drawn world, the statement in the void with a word flying through the lens, the answer shown on a split-screen monitor that merges, the sign-off on the generated stage. Hook: universe warp + braam on frame 0. Tested by Sonnet 5.5.",
+ "duration": 10.16,
+ "format": "16:9 + reel",
+ "tags": [
+  "short",
+  "reel",
+  "10s",
+  "split-screen",
+  "hook",
+  "voxel",
+  "mascot"
+ ],
+ "files": [
+  "shots.js",
+  "score.sh",
+  "fx_cues.json"
+ ],
+ "from_film": "clip10",
+ "needs": "the voxel-starter assets (vm assets reuse); songs are NOT included (bring your own, see score.sh)"
+}

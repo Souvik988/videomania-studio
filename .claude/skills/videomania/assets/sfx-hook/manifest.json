@@ -1,0 +1,1804 @@
+[
+ {
+  "id": "cinematic-drum-big",
+  "file": "kit/cinematic-drum-big.ogg",
+  "category": "cinematic-hits",
+  "duration": 2.178,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "big",
+  "lufs": -20,
+  "under_voiceover_db": -8,
+  "description": "A giant drum struck hard: the crack of the stick and a big, deep boom.",
+  "use_for": [
+   "Title slams and trailer beats",
+   "A logo or product landing with force",
+   "Dramatic reveals",
+   "Big moments: a title, a reveal, a turning point"
+  ],
+  "avoid_for": [
+   "On top of speech: the bass masks it",
+   "Calm, understated or friendly films",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "cinematic",
+   "impact",
+   "hit",
+   "trailer",
+   "bass",
+   "sub",
+   "drum",
+   "big",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "cinematic-drum-massive",
+  "file": "kit/cinematic-drum-massive.ogg",
+  "category": "cinematic-hits",
+  "duration": 3.335,
+  "sync_at": 0.034,
+  "sync_meets": "instant",
+  "tier": "massive",
+  "lufs": -17.5,
+  "under_voiceover_db": -8,
+  "description": "A colossal drum hit: a crack, then a huge boom sinking into a vast hall.",
+  "use_for": [
+   "Title slams and trailer beats",
+   "A logo or product landing with force",
+   "Dramatic reveals",
+   "The biggest moments: a climax or a final reveal"
+  ],
+  "avoid_for": [
+   "On top of speech: the bass masks it",
+   "Calm, understated or friendly films",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "cinematic",
+   "impact",
+   "hit",
+   "trailer",
+   "bass",
+   "sub",
+   "drum",
+   "massive",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "cinematic-metal-big",
+  "file": "kit/cinematic-metal-big.ogg",
+  "category": "cinematic-hits",
+  "duration": 2.115,
+  "sync_at": 0.03,
+  "sync_meets": "instant",
+  "tier": "big",
+  "lufs": -20,
+  "under_voiceover_db": -8,
+  "description": "A big metal hit: a deep clang of steel ringing on.",
+  "use_for": [
+   "Industrial, engineering and tech reveals",
+   "A heavy, hard statement",
+   "Strength, machines and steel",
+   "Big moments: a title, a reveal, a turning point"
+  ],
+  "avoid_for": [
+   "On top of speech: the bass masks it",
+   "Calm, understated or friendly films",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "cinematic",
+   "impact",
+   "hit",
+   "trailer",
+   "bass",
+   "sub",
+   "metal",
+   "big",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "cinematic-slam-big",
+  "file": "kit/cinematic-slam-big.ogg",
+  "category": "cinematic-hits",
+  "duration": 2.225,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "big",
+  "lufs": -20,
+  "under_voiceover_db": -8,
+  "description": "A big slam: a heavy wooden door crashing shut in a hall.",
+  "use_for": [
+   "A door closing on a scene, or an ending",
+   "Something final: done, locked, decided",
+   "A hard cut to black",
+   "Big moments: a title, a reveal, a turning point"
+  ],
+  "avoid_for": [
+   "On top of speech: the bass masks it",
+   "Calm, understated or friendly films",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "cinematic",
+   "impact",
+   "hit",
+   "trailer",
+   "bass",
+   "sub",
+   "slam",
+   "big",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "cinematic-thunder-big",
+  "file": "kit/cinematic-thunder-big.ogg",
+  "category": "cinematic-hits",
+  "duration": 3.813,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "big",
+  "lufs": -20,
+  "under_voiceover_db": -8,
+  "description": "A thunderclap: a sharp crack and a rolling rumble.",
+  "use_for": [
+   "A shock or a big turn in the story",
+   "A dramatic warning or reveal",
+   "Power, scale and storms",
+   "Big moments: a title, a reveal, a turning point"
+  ],
+  "avoid_for": [
+   "On top of speech: the bass masks it",
+   "Calm, understated or friendly films",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "cinematic",
+   "impact",
+   "hit",
+   "trailer",
+   "bass",
+   "sub",
+   "thunder",
+   "big",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "bass-808-short",
+  "file": "kit/bass-808-short.ogg",
+  "category": "booms-and-bass",
+  "duration": 0.683,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "808",
+  "lufs": -19,
+  "under_voiceover_db": -8,
+  "description": "A short, punchy 808-style bass: a tuned bass kick on C.",
+  "use_for": [
+   "A punchy accent on a beat or a cut",
+   "Modern, energetic edits and social videos",
+   "A title or a number hitting with bass"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "bass",
+   "sub",
+   "low",
+   "808",
+   "drop",
+   "short",
+   "cinematic"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "bass-808-medium",
+  "file": "kit/bass-808-medium.ogg",
+  "category": "booms-and-bass",
+  "duration": 1.469,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "808",
+  "lufs": -19,
+  "under_voiceover_db": -8,
+  "description": "An 808-style bass that rings on: a tuned bass kick on C.",
+  "use_for": [
+   "A punchy accent on a beat or a cut",
+   "Modern, energetic edits and social videos",
+   "A title or a number hitting with bass"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "bass",
+   "sub",
+   "low",
+   "808",
+   "drop",
+   "medium",
+   "cinematic"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "bass-sub-drop-short",
+  "file": "kit/bass-sub-drop-short.ogg",
+  "category": "booms-and-bass",
+  "duration": 1.175,
+  "sync_at": 0.021,
+  "sync_meets": "instant",
+  "tier": "sub-drop",
+  "lufs": -21,
+  "under_voiceover_db": -8,
+  "description": "A short sub drop: a deep tone dropping away, about a second.",
+  "use_for": [
+   "The moment after a build: a reveal, a logo or a big statement",
+   "Scene changes and title cards with weight",
+   "The bottom dropping out"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "bass",
+   "sub",
+   "low",
+   "sub drop",
+   "drop",
+   "short",
+   "cinematic"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "bass-sub-drop-medium",
+  "file": "kit/bass-sub-drop-medium.ogg",
+  "category": "booms-and-bass",
+  "duration": 2.154,
+  "sync_at": 0.021,
+  "sync_meets": "instant",
+  "tier": "sub-drop",
+  "lufs": -21,
+  "under_voiceover_db": -8,
+  "description": "A sub drop of about two seconds: deep and falling, felt more than heard.",
+  "use_for": [
+   "The moment after a build: a reveal, a logo or a big statement",
+   "Scene changes and title cards with weight",
+   "The bottom dropping out"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "bass",
+   "sub",
+   "low",
+   "sub drop",
+   "drop",
+   "medium",
+   "cinematic"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "bass-rumble-short",
+  "file": "kit/bass-rumble-short.ogg",
+  "category": "booms-and-bass",
+  "duration": 1.528,
+  "sync_at": 0.003,
+  "sync_meets": "action-start",
+  "tier": "rumble",
+  "lufs": -24,
+  "under_voiceover_db": -8,
+  "description": "A quick low rumble, rolling in and away.",
+  "use_for": [
+   "Tension building under a scene",
+   "Something huge approaching, or the ground shaking",
+   "Under a dramatic reveal"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "bass",
+   "sub",
+   "low",
+   "rumble",
+   "tension",
+   "short",
+   "cinematic"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "boom-hit-soft",
+  "file": "kit/boom-hit-soft.ogg",
+  "category": "booms-and-bass",
+  "duration": 1.02,
+  "sync_at": 0.031,
+  "sync_meets": "instant",
+  "tier": "soft",
+  "lufs": -27,
+  "under_voiceover_db": -8,
+  "description": "A soft, deep boom: a big drum struck gently in a hall.",
+  "use_for": [
+   "A title card or logo landing with weight",
+   "A big statement or a key number",
+   "A scene change with impact"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "boom",
+   "hit",
+   "sub",
+   "deep",
+   "low",
+   "reveal",
+   "soft",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "boom-hit-medium",
+  "file": "kit/boom-hit-medium.ogg",
+  "category": "booms-and-bass",
+  "duration": 1.301,
+  "sync_at": 0.038,
+  "sync_meets": "instant",
+  "tier": "medium",
+  "lufs": -24.5,
+  "under_voiceover_db": -8,
+  "description": "A deep, rounded boom with a warm hall.",
+  "use_for": [
+   "A title card or logo landing with weight",
+   "A big statement or a key number",
+   "A scene change with impact"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "boom",
+   "hit",
+   "sub",
+   "deep",
+   "low",
+   "reveal",
+   "medium",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "boom-hit-strong",
+  "file": "kit/boom-hit-strong.ogg",
+  "category": "booms-and-bass",
+  "duration": 1.693,
+  "sync_at": 0.047,
+  "sync_meets": "instant",
+  "tier": "strong",
+  "lufs": -22,
+  "under_voiceover_db": -8,
+  "description": "A big, deep boom that fills the room.",
+  "use_for": [
+   "A title card or logo landing with weight",
+   "A big statement or a key number",
+   "A scene change with impact"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI",
+   "Calm or understated films"
+  ],
+  "tags": [
+   "boom",
+   "hit",
+   "sub",
+   "deep",
+   "low",
+   "reveal",
+   "strong",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "boom-drop-medium",
+  "file": "kit/boom-drop-medium.ogg",
+  "category": "booms-and-bass",
+  "duration": 3.441,
+  "sync_at": 0.052,
+  "sync_meets": "instant",
+  "tier": "medium",
+  "lufs": -24.5,
+  "under_voiceover_db": -8,
+  "description": "A deep drop: a boom sinking, with a low roll under it.",
+  "use_for": [
+   "The reveal after a build (a riser or reverse whoosh into it)",
+   "A bold opening or a section opener",
+   "A dramatic pause: the bottom dropping out"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI"
+  ],
+  "tags": [
+   "boom",
+   "drop",
+   "sub",
+   "deep",
+   "low",
+   "reveal",
+   "medium",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "boom-drop-strong",
+  "file": "kit/boom-drop-strong.ogg",
+  "category": "booms-and-bass",
+  "duration": 4.293,
+  "sync_at": 0.095,
+  "sync_meets": "instant",
+  "tier": "strong",
+  "lufs": -22,
+  "under_voiceover_db": -8,
+  "description": "A huge, sinking drop with a rolling rumble: the biggest moment.",
+  "use_for": [
+   "The reveal after a build (a riser or reverse whoosh into it)",
+   "A bold opening or a section opener",
+   "A dramatic pause: the bottom dropping out"
+  ],
+  "avoid_for": [
+   "On top of speech: its low end masks it",
+   "Small elements and UI",
+   "Calm or understated films"
+  ],
+  "tags": [
+   "boom",
+   "drop",
+   "sub",
+   "deep",
+   "low",
+   "reveal",
+   "strong",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "riser-1s-soft",
+  "file": "kit/riser-1s-soft.ogg",
+  "category": "risers-and-fallers",
+  "duration": 1.19,
+  "sync_at": 0.982,
+  "sync_meets": "arrival",
+  "tier": "soft",
+  "lufs": -24,
+  "under_voiceover_db": -3,
+  "description": "A 1-second soft, airy rise that builds to its peak at the end.",
+  "use_for": [
+   "Building up to a reveal: a logo, a product, a big number",
+   "Leading into a new section",
+   "A short lift before something appears"
+  ],
+  "avoid_for": [
+   "Reveals that land before the rise ends: the peak is at its end",
+   "Big, energetic moments (use strong)"
+  ],
+  "tags": [
+   "riser",
+   "build",
+   "swell",
+   "1s",
+   "soft",
+   "air",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "riser-1s-strong",
+  "file": "kit/riser-1s-strong.ogg",
+  "category": "risers-and-fallers",
+  "duration": 1.216,
+  "sync_at": 0.984,
+  "sync_meets": "arrival",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A 1-second strong, bright rise that builds to its peak at the end.",
+  "use_for": [
+   "Building up to a reveal: a logo, a product, a big number",
+   "Leading into a new section",
+   "A short lift before something appears"
+  ],
+  "avoid_for": [
+   "Reveals that land before the rise ends: the peak is at its end",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "riser",
+   "build",
+   "swell",
+   "1s",
+   "strong",
+   "air",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "riser-2s-strong",
+  "file": "kit/riser-2s-strong.ogg",
+  "category": "risers-and-fallers",
+  "duration": 2.195,
+  "sync_at": 1.978,
+  "sync_meets": "arrival",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A 2-second strong, bright rise that builds to its peak at the end.",
+  "use_for": [
+   "Building up to a reveal: a logo, a product, a big number",
+   "Leading into a new section",
+   "A short lift before something appears"
+  ],
+  "avoid_for": [
+   "Reveals that land before the rise ends: the peak is at its end",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "riser",
+   "build",
+   "swell",
+   "2s",
+   "strong",
+   "air",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "riser-4s-strong",
+  "file": "kit/riser-4s-strong.ogg",
+  "category": "risers-and-fallers",
+  "duration": 4.191,
+  "sync_at": 3.977,
+  "sync_meets": "arrival",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A 4-second strong, bright rise that builds to its peak at the end.",
+  "use_for": [
+   "Building up to a reveal: a logo, a product, a big number",
+   "Leading into a new section",
+   "A long build under a title sequence"
+  ],
+  "avoid_for": [
+   "Reveals that land before the rise ends: the peak is at its end",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "riser",
+   "build",
+   "swell",
+   "4s",
+   "strong",
+   "air",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "faller-1s-strong",
+  "file": "kit/faller-1s-strong.ogg",
+  "category": "risers-and-fallers",
+  "duration": 0.88,
+  "sync_at": 0.015,
+  "sync_meets": "release",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A 1-second strong, bright fall from its peak, descending and settling.",
+  "use_for": [
+   "Something leaving, dropping or powering down",
+   "The release after a reveal",
+   "Transitions out of a section"
+  ],
+  "avoid_for": [
+   "Arrivals (use a rise or an impact)",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "faller",
+   "drop",
+   "swell",
+   "1s",
+   "strong",
+   "air",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "reverse-whoosh-short-strong",
+  "file": "kit/reverse-whoosh-short-strong.ogg",
+  "category": "reverse-whooshes",
+  "duration": 0.499,
+  "sync_at": 0.34,
+  "sync_meets": "arrival",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A short strong, bright reverse whoosh: air drawn in, building to a sudden stop.",
+  "use_for": [
+   "Something collapsing or shrinking into a point",
+   "The build into a hard cut, a hit or a reveal",
+   "An element pulled back into a button or icon",
+   "A quick suck-in transition"
+  ],
+  "avoid_for": [
+   "Moments that should land softly (it stops dead)",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "reverse",
+   "whoosh",
+   "suck",
+   "build",
+   "collapse",
+   "air",
+   "short",
+   "strong",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "reverse-whoosh-medium-strong",
+  "file": "kit/reverse-whoosh-medium-strong.ogg",
+  "category": "reverse-whooshes",
+  "duration": 0.836,
+  "sync_at": 0.682,
+  "sync_meets": "arrival",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A strong, bright reverse whoosh: air drawn in, building to a sudden stop.",
+  "use_for": [
+   "Something collapsing or shrinking into a point",
+   "The build into a hard cut, a hit or a reveal",
+   "An element pulled back into a button or icon",
+   "A quick suck-in transition"
+  ],
+  "avoid_for": [
+   "Moments that should land softly (it stops dead)",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "reverse",
+   "whoosh",
+   "suck",
+   "build",
+   "collapse",
+   "air",
+   "medium",
+   "strong",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "reverse-whoosh-medium-soft",
+  "file": "kit/reverse-whoosh-medium-soft.ogg",
+  "category": "reverse-whooshes",
+  "duration": 0.861,
+  "sync_at": 0.679,
+  "sync_meets": "arrival",
+  "tier": "soft",
+  "lufs": -24,
+  "under_voiceover_db": -3,
+  "description": "A soft reverse whoosh: air drawn in, building to a sudden stop.",
+  "use_for": [
+   "Something collapsing or shrinking into a point",
+   "The build into a hard cut, a hit or a reveal",
+   "An element pulled back into a button or icon",
+   "A quick suck-in transition"
+  ],
+  "avoid_for": [
+   "Moments that should land softly (it stops dead)",
+   "Big, energetic moments (use strong)"
+  ],
+  "tags": [
+   "reverse",
+   "whoosh",
+   "suck",
+   "build",
+   "collapse",
+   "air",
+   "medium",
+   "soft",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "reverse-whoosh-long-strong",
+  "file": "kit/reverse-whoosh-long-strong.ogg",
+  "category": "reverse-whooshes",
+  "duration": 1.358,
+  "sync_at": 1.165,
+  "sync_meets": "arrival",
+  "tier": "strong",
+  "lufs": -20,
+  "under_voiceover_db": -5,
+  "description": "A long strong, bright reverse whoosh: air drawn in, building to a sudden stop.",
+  "use_for": [
+   "Something collapsing or shrinking into a point",
+   "The build into a hard cut, a hit or a reveal",
+   "An element pulled back into a button or icon",
+   "A slow pull before a big moment"
+  ],
+  "avoid_for": [
+   "Moments that should land softly (it stops dead)",
+   "Calm, understated films"
+  ],
+  "tags": [
+   "reverse",
+   "whoosh",
+   "suck",
+   "build",
+   "collapse",
+   "air",
+   "long",
+   "strong",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "whoosh-fast-hard",
+  "file": "kit/whoosh-fast-hard.ogg",
+  "category": "whooshes",
+  "duration": 0.252,
+  "sync_at": 0.092,
+  "sync_meets": "move-peak",
+  "tier": "hard",
+  "lufs": -17,
+  "under_voiceover_db": -4,
+  "description": "A fast, crisp whip of air with a bright edge and a little push behind it.",
+  "use_for": [
+   "Whip pans",
+   "Fast cuts between scenes",
+   "Quick zooms",
+   "Energetic social edits"
+  ],
+  "avoid_for": [
+   "Calm or corporate pieces",
+   "Small UI details",
+   "On top of speech: use a softer one"
+  ],
+  "tags": [
+   "whoosh",
+   "swish",
+   "transition",
+   "movement",
+   "air",
+   "natural",
+   "quick",
+   "strong"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "whoosh-fast-medium",
+  "file": "kit/whoosh-fast-medium.ogg",
+  "category": "whooshes",
+  "duration": 0.252,
+  "sync_at": 0.096,
+  "sync_meets": "move-peak",
+  "tier": "medium",
+  "lufs": -20.5,
+  "under_voiceover_db": -3,
+  "description": "A quick, clean swish of air with a defined middle.",
+  "use_for": [
+   "Cards flicking in or out",
+   "Carousel and tab swipes",
+   "Menus and drawers opening",
+   "Quick text slides"
+  ],
+  "avoid_for": [
+   "Very subtle micro-interactions (use soft)",
+   "Slow, calm moves"
+  ],
+  "tags": [
+   "whoosh",
+   "swish",
+   "transition",
+   "movement",
+   "air",
+   "natural",
+   "quick",
+   "balanced"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "whoosh-medium-hard",
+  "file": "kit/whoosh-medium-hard.ogg",
+  "category": "whooshes",
+  "duration": 0.55,
+  "sync_at": 0.201,
+  "sync_meets": "move-peak",
+  "tier": "hard",
+  "lufs": -17,
+  "under_voiceover_db": -4,
+  "description": "A strong rush of air with a bright crack at its peak and weight behind it.",
+  "use_for": [
+   "Big transitions between sections",
+   "Objects flying across the frame",
+   "Bold title moves",
+   "A product spinning into view"
+  ],
+  "avoid_for": [
+   "Calm or understated films",
+   "Small elements",
+   "On top of speech: use a softer one"
+  ],
+  "tags": [
+   "whoosh",
+   "swish",
+   "transition",
+   "movement",
+   "air",
+   "natural",
+   "standard",
+   "strong"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "whoosh-medium-medium",
+  "file": "kit/whoosh-medium-medium.ogg",
+  "category": "whooshes",
+  "duration": 0.517,
+  "sync_at": 0.209,
+  "sync_meets": "move-peak",
+  "tier": "medium",
+  "lufs": -20.5,
+  "under_voiceover_db": -3,
+  "description": "A balanced swish of air: a clear rise, a defined peak and a smooth fade.",
+  "use_for": [
+   "Standard scene transitions",
+   "Cards and screens sliding across",
+   "A device moving into frame",
+   "Titles moving into place"
+  ],
+  "avoid_for": [
+   "Tiny UI details",
+   "Very slow moves"
+  ],
+  "tags": [
+   "whoosh",
+   "swish",
+   "transition",
+   "movement",
+   "air",
+   "natural",
+   "standard",
+   "balanced"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "whoosh-slow-hard",
+  "file": "kit/whoosh-slow-hard.ogg",
+  "category": "whooshes",
+  "duration": 1.016,
+  "sync_at": 0.403,
+  "sync_meets": "move-peak",
+  "tier": "hard",
+  "lufs": -17,
+  "under_voiceover_db": -4,
+  "description": "A big, slow rush of air: a deep swell, a bright peak and a long tail.",
+  "use_for": [
+   "Large, dramatic moves",
+   "A big object passing slowly",
+   "Section openers",
+   "The move before a logo reveal"
+  ],
+  "avoid_for": [
+   "Small elements",
+   "Calm films"
+  ],
+  "tags": [
+   "whoosh",
+   "swish",
+   "transition",
+   "movement",
+   "air",
+   "natural",
+   "slow",
+   "strong"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "move-zoom-in",
+  "file": "kit/move-zoom-in.ogg",
+  "category": "bounce-spin-zoom",
+  "duration": 0.566,
+  "sync_at": 0.489,
+  "sync_meets": "arrival",
+  "tier": "zoom-in",
+  "lufs": -22,
+  "under_voiceover_db": -3,
+  "description": "Zooming in: air rushing nearer and rising to the moment it arrives.",
+  "use_for": [
+   "Zooming into a detail or a screen",
+   "Pushing in on a scene",
+   "Focusing on one thing"
+  ],
+  "avoid_for": [
+   "Small, subtle moves (use a soft whoosh)"
+  ],
+  "tags": [
+   "motion",
+   "zoom in",
+   "zoom",
+   "camera",
+   "animation",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "move-zoom-out",
+  "file": "kit/move-zoom-out.ogg",
+  "category": "bounce-spin-zoom",
+  "duration": 0.547,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "zoom-out",
+  "lufs": -22,
+  "under_voiceover_db": -3,
+  "description": "Zooming out: air falling away as it recedes.",
+  "use_for": [
+   "Zooming out to the bigger picture",
+   "Pulling back from a scene",
+   "Revealing the whole"
+  ],
+  "avoid_for": [
+   "Small, subtle moves (use a soft whoosh)"
+  ],
+  "tags": [
+   "motion",
+   "zoom out",
+   "zoom",
+   "camera",
+   "animation",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "move-spin",
+  "file": "kit/move-spin.ogg",
+  "category": "bounce-spin-zoom",
+  "duration": 1.138,
+  "sync_at": 0.007,
+  "sync_meets": "action-start",
+  "tier": "spin",
+  "lufs": -24,
+  "under_voiceover_db": -3,
+  "description": "Something spinning fast, whirring up and winding down.",
+  "use_for": [
+   "A logo, icon or wheel spinning",
+   "Loading and refreshing",
+   "A coin or a globe turning"
+  ],
+  "avoid_for": [
+   "Small, subtle moves (use a soft whoosh)"
+  ],
+  "tags": [
+   "motion",
+   "spin",
+   "animation",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-glitch-clear",
+  "file": "kit/digital-glitch-clear.ogg",
+  "category": "digital",
+  "duration": 0.24,
+  "sync_at": 0.018,
+  "sync_meets": "instant",
+  "tier": "clear",
+  "lufs": -22,
+  "under_voiceover_db": -2,
+  "description": "A crisp little glitch, stepping in pitch.",
+  "use_for": [
+   "A digital error or interference",
+   "A screen or text glitching",
+   "Switching between digital states"
+  ],
+  "avoid_for": [
+   "Natural, physical subjects (use foley, impacts or whooshes)",
+   "Quiet, delicate scenes (use subtle)"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "clear",
+   "tech",
+   "data"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-glitch-subtle",
+  "file": "kit/digital-glitch-subtle.ogg",
+  "category": "digital",
+  "duration": 0.164,
+  "sync_at": 0.02,
+  "sync_meets": "instant",
+  "tier": "subtle",
+  "lufs": -26,
+  "under_voiceover_db": -2,
+  "description": "A gentle, clean stutter.",
+  "use_for": [
+   "A digital error or interference",
+   "A screen or text glitching",
+   "Switching between digital states"
+  ],
+  "avoid_for": [
+   "Natural, physical subjects (use foley, impacts or whooshes)",
+   "Moments that must cut through music (use clear)"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "subtle",
+   "tech",
+   "data"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-corrupt",
+  "file": "kit/digital-corrupt.ogg",
+  "category": "digital",
+  "duration": 0.649,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "glitch",
+  "lufs": -24,
+  "under_voiceover_db": -4,
+  "description": "Data corrupting: a slice of data stuttering, crushed and smeared.",
+  "use_for": [
+   "A data error or a corrupted file",
+   "A screen or text breaking up",
+   "Glitch transitions"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes",
+   "On top of speech: its noise masks the voice"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "corrupt",
+   "static",
+   "error",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-static",
+  "file": "kit/digital-static.ogg",
+  "category": "digital",
+  "duration": 0.646,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "glitch",
+  "lufs": -24,
+  "under_voiceover_db": -4,
+  "description": "A burst of TV static: bright snow with a faint buzz in it.",
+  "use_for": [
+   "A screen fuzzing or switching channel",
+   "A glitchy transition between scenes",
+   "Lost signal or old technology"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes",
+   "On top of speech: its noise masks the voice"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "static",
+   "error",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-interference",
+  "file": "kit/digital-interference.ogg",
+  "category": "digital",
+  "duration": 0.866,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "glitch",
+  "lufs": -24,
+  "under_voiceover_db": -4,
+  "description": "Electrical interference: a buzz stuttering on and off with crackle.",
+  "use_for": [
+   "A signal being disrupted or hacked",
+   "Faulty electronics or a power problem",
+   "Tension in a tech scene"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes",
+   "On top of speech: its noise masks the voice"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "interference",
+   "static",
+   "error",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-signal-drop",
+  "file": "kit/digital-signal-drop.ogg",
+  "category": "digital",
+  "duration": 0.793,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "glitch",
+  "lufs": -24,
+  "under_voiceover_db": -4,
+  "description": "A signal failing: a tone stuttering, sagging and cutting out.",
+  "use_for": [
+   "A connection lost: a call, a stream, a network",
+   "Something switching off or failing",
+   "The moment before a cut to black"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "signal drop",
+   "static",
+   "error",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-scramble",
+  "file": "kit/digital-scramble.ogg",
+  "category": "digital",
+  "duration": 0.955,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "glitch",
+  "lufs": -24,
+  "under_voiceover_db": -4,
+  "description": "Scrambling: rapid random pips, like text decoding.",
+  "use_for": [
+   "Text or code decoding or scrambling",
+   "Passwords and encryption",
+   "Data being shuffled"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes",
+   "On top of speech: its noise masks the voice"
+  ],
+  "tags": [
+   "digital",
+   "glitch",
+   "scramble",
+   "static",
+   "error",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-power-up",
+  "file": "kit/digital-power-up.ogg",
+  "category": "digital",
+  "duration": 1.131,
+  "sync_at": 0,
+  "sync_meets": "instant",
+  "tier": "power",
+  "lufs": -23,
+  "under_voiceover_db": -4,
+  "description": "A device powering up: a click, its hum rising, a ping when it's ready.",
+  "use_for": [
+   "A device or screen switching on",
+   "A system starting up, going live",
+   "Energy, launch, getting going"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes"
+  ],
+  "tags": [
+   "digital",
+   "power",
+   "device",
+   "power up",
+   "on off",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-power-down",
+  "file": "kit/digital-power-down.ogg",
+  "category": "digital",
+  "duration": 0.882,
+  "sync_at": 0,
+  "sync_meets": "instant",
+  "tier": "power",
+  "lufs": -23,
+  "under_voiceover_db": -4,
+  "description": "A device powering down: a click, then its hum sinking away.",
+  "use_for": [
+   "A device or screen switching off",
+   "Shutting down, ending a session",
+   "Losing power, running out"
+  ],
+  "avoid_for": [
+   "Calm, natural or friendly scenes"
+  ],
+  "tags": [
+   "digital",
+   "power",
+   "device",
+   "power down",
+   "on off",
+   "tech"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "digital-scan-clear",
+  "file": "kit/digital-scan-clear.ogg",
+  "category": "digital",
+  "duration": 0.837,
+  "sync_at": 0,
+  "sync_meets": "action-start",
+  "tier": "clear",
+  "lufs": -22,
+  "under_voiceover_db": -2,
+  "description": "A clean scan: a defined tone gliding up, pulsing.",
+  "use_for": [
+   "Scanning a document, face or code",
+   "A progress sweep or a search",
+   "Analysing or reading data"
+  ],
+  "avoid_for": [
+   "Natural, physical subjects (use foley, impacts or whooshes)",
+   "Quiet, delicate scenes (use subtle)"
+  ],
+  "tags": [
+   "digital",
+   "scan",
+   "clear",
+   "tech",
+   "data"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "sting-bold-short",
+  "file": "kit/sting-bold-short.ogg",
+  "category": "logo-stings",
+  "duration": 1.708,
+  "sync_at": 0.304,
+  "sync_meets": "instant",
+  "tier": "bold",
+  "lufs": -20.5,
+  "under_voiceover_db": -6,
+  "description": "A bold sting: a quick pull of air into a deep drum, a knock and a struck chord.",
+  "use_for": [
+   "Energetic, confident brands",
+   "Big openings and launch films",
+   "A title card that should land hard",
+   "A logo that appears at once"
+  ],
+  "avoid_for": [
+   "Mid-film transitions: a sting says 'ending' or 'brand moment'",
+   "On top of speech: time its hit to a pause in the voice",
+   "Calm, softly spoken films"
+  ],
+  "tags": [
+   "sting",
+   "logo",
+   "reveal",
+   "signature",
+   "ending",
+   "musical",
+   "bold",
+   "short",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "sting-tech-short",
+  "file": "kit/sting-tech-short.ogg",
+  "category": "logo-stings",
+  "duration": 3.143,
+  "sync_at": 0.155,
+  "sync_meets": "instant",
+  "tier": "tech",
+  "lufs": -22,
+  "under_voiceover_db": -6,
+  "description": "A tech sting: a few data pips and a flick of glitch into a clean digital chord.",
+  "use_for": [
+   "Software, SaaS and tech brands",
+   "Product and feature launches",
+   "Data, AI and digital services",
+   "A logo that appears at once"
+  ],
+  "avoid_for": [
+   "Mid-film transitions: a sting says 'ending' or 'brand moment'",
+   "On top of speech: time its hit to a pause in the voice"
+  ],
+  "tags": [
+   "sting",
+   "logo",
+   "reveal",
+   "signature",
+   "ending",
+   "musical",
+   "tech",
+   "short",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "sting-bright-short",
+  "file": "kit/sting-bright-short.ogg",
+  "category": "logo-stings",
+  "duration": 1.53,
+  "sync_at": 0.139,
+  "sync_meets": "instant",
+  "tier": "bright",
+  "lufs": -22,
+  "under_voiceover_db": -6,
+  "description": "A bright sting: glass glints into a bell chord, with a shimmer trailing off.",
+  "use_for": [
+   "Premium or tech brands",
+   "A logo or product reveal that should sparkle",
+   "Launches and announcements",
+   "A logo that appears at once"
+  ],
+  "avoid_for": [
+   "Mid-film transitions: a sting says 'ending' or 'brand moment'",
+   "On top of speech: time its hit to a pause in the voice"
+  ],
+  "tags": [
+   "sting",
+   "logo",
+   "reveal",
+   "signature",
+   "ending",
+   "musical",
+   "bright",
+   "short",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "impact-deep-hard",
+  "file": "kit/impact-deep-hard.ogg",
+  "category": "impacts",
+  "duration": 1.205,
+  "sync_at": 0.01,
+  "sync_meets": "instant",
+  "tier": "deep",
+  "lufs": -19,
+  "under_voiceover_db": -7,
+  "description": "A deep, hard hit: a crisp crack over a heavy, rumbling low end.",
+  "use_for": [
+   "Big, weighty landings with real bass",
+   "A title or object slamming down",
+   "Moments that need to be felt",
+   "Crisp, confident landings"
+  ],
+  "avoid_for": [
+   "On top of speech: the bass masks it",
+   "Small elements",
+   "Calm, softly spoken films"
+  ],
+  "tags": [
+   "impact",
+   "hit",
+   "land",
+   "drop",
+   "crisp",
+   "deep",
+   "bass",
+   "sub",
+   "cinematic",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "impact-medium-soft",
+  "file": "kit/impact-medium-soft.ogg",
+  "category": "impacts",
+  "duration": 0.21,
+  "sync_at": 0.013,
+  "sync_meets": "instant",
+  "tier": "medium",
+  "lufs": -22,
+  "under_voiceover_db": -3,
+  "description": "A soft, padded thud: something landing on fabric.",
+  "use_for": [
+   "Cards and panels landing",
+   "Objects dropping into frame",
+   "A title setting into place",
+   "Gentle, friendly landings"
+  ],
+  "avoid_for": [
+   "Tiny details",
+   "Moments that need a crisp edge"
+  ],
+  "tags": [
+   "impact",
+   "hit",
+   "land",
+   "drop",
+   "thud",
+   "medium",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "impact-light-firm",
+  "file": "kit/impact-light-firm.ogg",
+  "category": "impacts",
+  "duration": 0.099,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "light",
+  "lufs": -25,
+  "under_voiceover_db": -2,
+  "description": "A light wooden tap: a small object set down on a table.",
+  "use_for": [
+   "Small elements landing or snapping into place",
+   "Icons dropping into a grid",
+   "Labels and tags settling",
+   "Natural, everyday landings"
+  ],
+  "avoid_for": [
+   "Big, heavy moves"
+  ],
+  "tags": [
+   "impact",
+   "hit",
+   "land",
+   "drop",
+   "knock",
+   "light",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "shimmer-short-soft",
+  "file": "kit/shimmer-short-soft.ogg",
+  "category": "shimmers",
+  "duration": 0.478,
+  "sync_at": 0.012,
+  "sync_meets": "instant",
+  "tier": "soft",
+  "lufs": -25,
+  "under_voiceover_db": -3,
+  "description": "A short shimmer: a few soft, glassy glints that ring out gently.",
+  "use_for": [
+   "Gentle highlights: a feature, a benefit, a tick",
+   "Elements lighting up or being highlighted",
+   "A quick highlight"
+  ],
+  "avoid_for": [
+   "Negative or serious moments"
+  ],
+  "tags": [
+   "shimmer",
+   "sparkle",
+   "glint",
+   "reveal",
+   "magic",
+   "soft",
+   "short",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "pop-medium-in",
+  "file": "kit/pop-medium-in.ogg",
+  "category": "pops",
+  "duration": 0.06,
+  "sync_at": 0.011,
+  "sync_meets": "instant",
+  "tier": "medium",
+  "lufs": -22.5,
+  "under_voiceover_db": -2,
+  "description": "A round, friendly pop that lifts into place.",
+  "use_for": [
+   "Elements appearing or scaling up into view",
+   "Icons, badges and stickers popping in",
+   "Points on a chart appearing",
+   "Cards, buttons and labels"
+  ],
+  "avoid_for": [
+   "Things leaving the screen (use pop out)"
+  ],
+  "tags": [
+   "pop",
+   "appear",
+   "medium",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "swish-medium",
+  "file": "kit/swish-medium.ogg",
+  "category": "swishes-and-zips",
+  "duration": 0.201,
+  "sync_at": 0.076,
+  "sync_meets": "move-peak",
+  "tier": "medium",
+  "lufs": -21,
+  "under_voiceover_db": -3,
+  "description": "A quick, clean swish through the air, with a little whistle.",
+  "use_for": [
+   "Text, icons or arrows flicked into place",
+   "Quick cuts, wipes and whip transitions",
+   "A line or pointer sweeping across"
+  ],
+  "avoid_for": [
+   "Slow, calm moves (use a whoosh)"
+  ],
+  "tags": [
+   "swish",
+   "movement",
+   "air",
+   "quick",
+   "medium",
+   "natural"
+  ],
+  "source": "SFX Kit by Wyzowl, github.com/wyzowl/sfx-kit",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "braam",
+  "file": "synth/braam.wav",
+  "category": "hook-synth",
+  "duration": 2.8,
+  "sync_at": 0.03,
+  "tier": "hard",
+  "description": "Trailer braam: a huge low brass-like blast with a long hall tail.",
+  "use_for": [
+   "the first frame of a hook",
+   "a reveal",
+   "a dark turn"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -8.2
+ },
+ {
+  "id": "braam_short",
+  "file": "synth/braam_short.wav",
+  "category": "hook-synth",
+  "duration": 1.4,
+  "sync_at": 0.03,
+  "tier": "medium",
+  "description": "A tighter braam for a mid-film pattern interrupt.",
+  "use_for": [
+   "chapter turn",
+   "a hard statement"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -5.3
+ },
+ {
+  "id": "ominous_swell",
+  "file": "synth/ominous_swell.wav",
+  "category": "hook-synth",
+  "duration": 1.6,
+  "sync_at": 1.59,
+  "tier": "medium",
+  "description": "A dark drone rising to a sudden stop; its sync point is its END.",
+  "use_for": [
+   "the 1-2 s before a reveal",
+   "tension before a cut"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -5.7
+ },
+ {
+  "id": "tear",
+  "file": "synth/tear.wav",
+  "category": "hook-synth",
+  "duration": 0.6,
+  "sync_at": 0.004,
+  "tier": "hard",
+  "description": "Reality tearing: ripped noise, pitch falling, crushed stutter.",
+  "use_for": [
+   "universe warp",
+   "glitch hook",
+   "world switch"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -21.3
+ },
+ {
+  "id": "sub_hit",
+  "file": "synth/sub_hit.wav",
+  "category": "hook-synth",
+  "duration": 1.2,
+  "sync_at": 0.004,
+  "tier": "hard",
+  "description": "A sub thump with a click: felt more than heard.",
+  "use_for": [
+   "under any hit",
+   "zoom punch",
+   "the beat a word lands"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -14.1
+ },
+ {
+  "id": "heartbeat",
+  "file": "synth/heartbeat.wav",
+  "category": "hook-synth",
+  "duration": 0.9,
+  "sync_at": 0.004,
+  "tier": "medium",
+  "description": "Lub-dub: two low thumps.",
+  "use_for": [
+   "suspense",
+   "before a question is answered"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -12.8
+ },
+ {
+  "id": "tape_stop",
+  "file": "synth/tape_stop.wav",
+  "category": "hook-synth",
+  "duration": 0.7,
+  "sync_at": 0.0,
+  "tier": "medium",
+  "description": "The world winding down to a stop.",
+  "use_for": [
+   "freeze frame",
+   "record scratch moment",
+   "a joke stop"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -7.1
+ },
+ {
+  "id": "shutter_stutter",
+  "file": "synth/shutter_stutter.wav",
+  "category": "hook-synth",
+  "duration": 0.35,
+  "sync_at": 0.0,
+  "tier": "soft",
+  "description": "Rapid digital shutter burst.",
+  "use_for": [
+   "frame stutter",
+   "freeze",
+   "camera snap"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0",
+  "lufs": -70.0
+ }
+]

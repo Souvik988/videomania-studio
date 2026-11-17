@@ -137,7 +137,12 @@ export function createFilm(SHOTS) {
     pos.needsUpdate = true;
     const tex = new THREE.Texture(img); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4; tex.needsUpdate = true;
     const g = rl.glow || 1;
-    const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map: tex, color: new THREE.Color(g, g, g) }));
+    // `cutout`: a layer of a layered world (scripts/world_build.py): its PNG alpha cuts it out, so nothing stretches
+    // between it and the layer behind (the far layer is filled in behind it)
+    const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial(rl.cutout
+      ? { map: tex, color: new THREE.Color(g, g, g), transparent: true, alphaTest: 0.35, side: THREE.DoubleSide }
+      : { map: tex, color: new THREE.Color(g, g, g) }));
+    if (rl.cutout) m.renderOrder = rl.order ?? 1;
     m.position.set(...rl.at); m.frustumCulled = false; group.add(m);
   }
   const loader = new THREE.TextureLoader();
@@ -865,7 +870,8 @@ export function createFilm(SHOTS) {
       else if (kind === "flash") U.uFlash.value = k;
       else if (kind === "iris") U.uIris.value = k;
     }
-    U.uFade.value = Math.max(t < 0.25 && !shots[0].flicker ? 1 - clamp(t / 0.25) : 0, 1 - clamp((DUR - t) / 0.3));
+    // frame 0 is the hook: no fade from black unless asked (SHOTS.fadeIn). User note 2026-11-15: 65 % skip rate.
+    U.uFade.value = Math.max(SHOTS.fadeIn && t < 0.25 && !shots[0].flicker ? 1 - clamp(t / 0.25) : 0, 1 - clamp((DUR - t) / 0.3));
     // wash: [{ t, color, k }] - the world's colour turns on a word without a cut
     U.uSat.value = (s.grade && s.grade.sat) ?? lens.sat; U.uCon.value = (s.grade && s.grade.contrast) ?? lens.contrast;   // per-shot grade: { sat, contrast }
     U.uWashK.value = 0;

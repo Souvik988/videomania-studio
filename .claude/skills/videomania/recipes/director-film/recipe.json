@@ -1,0 +1,24 @@
+{
+ "id": "director-film",
+ "title": "Director film (pixel-world explainer, 2 min)",
+ "about": "The creator's own mascot acts every line in a voxel pixel world: a real-world meadow opening that drops into the pixel world through a screen, 23 chapters as long takes, depth typography, generated icons and real footage on screens, six songs cast by meaning with a cappella moments. Approved by the user (v5) and exported as a 4:5-in-9:16 reel.",
+ "duration": 113.55,
+ "format": "16:9 + reel",
+ "tags": [
+  "voxel",
+  "pixel",
+  "mascot",
+  "explainer",
+  "heist",
+  "creator",
+  "story",
+  "long"
+ ],
+ "files": [
+  "shots.js",
+  "score.sh",
+  "shots_reel.js"
+ ],
+ "from_film": "director-film",
+ "needs": "the voxel-starter assets (vm assets reuse); songs are NOT included (bring your own, see score.sh)"
+}

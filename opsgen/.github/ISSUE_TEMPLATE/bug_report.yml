@@ -1,0 +1,73 @@
+name: Bug report
+description: Something in OpsGen does not work as it should.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: OpsGen version
+      description: What `opsgen --version` prints.
+      placeholder: 0.1.2
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 15.5, Windows 11, Ubuntu 24.04…
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      description: Which coding agent ran OpsGen, if any.
+      options:
+        - None (Studio or the command by hand)
+        - Claude Code
+        - Codex
+        - Cursor
+        - Other (say which below)
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Diagnostic report
+      description: |
+        In Studio: Settings → Developer → Copy report (or, in the desktop app, Copy diagnostic report under the message
+        that failed), then paste it here. Without Studio, paste what `npx opsgen doctor` prints. Paths in your home
+        folder show as ~, and it has no keys or accounts. If neither runs, say so. For more, attach the diagnostic file
+        from Settings → Developer → Export, after a look at it.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. opsgen open demo
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: The command's output or the error, as text.
+    validations:
+      required: true
+  - type: textarea
+    id: film
+    attributes:
+      label: The film or logs
+      description: |
+        If you can, attach the film folder (zipped, without large media) or the smallest film.html that shows the bug,
+        and Studio's log (~/.opsgen/logs/studio.log). Leave out anything private, such as keys.

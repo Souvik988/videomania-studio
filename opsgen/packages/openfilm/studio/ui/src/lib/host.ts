@@ -1,0 +1,524 @@
+import React from 'react';
+
+/**
+ * The app Studio is embedded in, when there is one. An app that shows Studio in its own window (rather than a browser
+ * tab) sets `window.openfilmHost` before Studio's modules run (a preload, or the app's own page that builds Studio's
+ * editor in, served with `startStudio({ editorDir })`); Studio then leaves out what only makes sense in a browser,
+ * such as the button that introduces the desktop app.
+ */
+/** A tab of the app's window (`tabs` below): a project's, its title as Studio shows it. */
+export interface HostTab { id: string; projectId: string; title: string; active: boolean; working: boolean; asking: boolean; exporting: number | null }
+
+/** Settings → Developer, as the app keeps it (`developer` below). */
+export interface HostDeveloper { logs: boolean; changes: boolean }
+
+/** The project identity and current folder shared with an embedded chat. */
+export interface HostProject { id: string; name: string; path: string }
+export type HostWritingModel = { agent: HostAgentId; options: Record<string, string | number | boolean> };
+
+export interface StudioHost {
+  /** the version of this interface the app speaks */
+  version: 1;
+  /** The native Settings menu asks the current page to open General, including the launcher. */
+  settings?: { onOpen: (listener: () => void) => () => void };
+  /** the app's name, for the person */
+  name?: string;
+  /** A successful rename, here or in another page: the chat keeps its identity but uses the new name and folder. */
+  projectChanged?: (project: HostProject) => void;
+  /**
+   * The window has no title bar of its own: Studio's top bar is where the window is dragged, and `inset` pixels at its
+   * left (macOS) and `insetRight` at its right (Windows) are left free for the window's controls. `onChange` tells of a
+   * new left inset (a full-screen window has no controls to make room for).
+   */
+  titlebar?: { inset: number; insetRight?: number; onChange?: (listener: (inset: number) => void) => void };
+  /**
+   * The app has a chat: whatever the person points at becomes a reference in the message being written. Studio calls
+   * this from "Reference in chat" on its menus (clips, layers, tracks, media), from ⌘L (what is selected; the range
+   * marked on the timeline; else the frame at the playhead) and from a box drawn on the picture with ⌘ held.
+   * Studio's things can also be dragged into the app's composer: they carry STUDIO_REF_TYPE (see there).
+   */
+  refer?: (ref: StudioRef) => void;
+  /**
+   * A question for the chat, written for the person: `text` in the message being written, `refs` as its references
+   * (the examples' "Explain how it's made"). Sent only when the person sends it.
+   */
+  ask?: (request: { text: string; refs: StudioRef[] }) => void;
+  /** The desktop composer's model picker and the options to use for the next canvas writing request. */
+  canvasWriting?: { Picker: React.ComponentType<{ triggerClassName?: string }>; selection: () => HostWritingModel | null };
+  /**
+   * What is selected in the project shown and where the playhead is, each time either changes (the time a few times
+   * a second while playing): what a chat's "@current selection" and "@current time" point at.
+   */
+  onSelection?: (selection: StudioSelection) => void;
+  /**
+   * What the pointer is over in Studio, each time that changes (null: nothing it points at): a clip's block on the
+   * timeline, a layer on the picture. A chat lights its pills that point at the same thing.
+   */
+  onHover?: (ref: StudioRef | null) => void;
+  /**
+   * A panel of the app's own on Studio's left, under the top bar (its chat), drawn by the app in Studio's page: Studio's
+   * top bar runs over it; below the bar Studio leaves `width` px free for it while it is open, and its Layout menu
+   * shows and hides it as it does its own panes. The panel's element carries `data-studio-host-panel`, so Studio's
+   * shortcuts leave the keys pressed in it alone. `onChange` tells Studio of a new width, or of the panel opened or
+   * closed from the app.
+   *
+   * `assets`, when the app has it, is where the project's media lives instead of Studio's own left pane (the viewer is
+   * then first on the left): a button in the panel opens them over it, and Studio draws them there, above the bottom
+   * `bottom` px the panel keeps (its composer). `setAssetsOpen` opens or closes them from Studio; `setWidth` sizes the
+   * panel from the seam beside them (the panel's own seam is under them then); `done` ends a drag.
+   */
+  panel?: {
+    label: string;
+    open: boolean;
+    width: number;
+    /** Its preferred width, including while closed (when the shown width is zero). */
+    preferredWidth?: number;
+    assets?: { open: boolean; bottom: number };
+    setOpen: (open: boolean) => void;
+    setAssetsOpen?: (open: boolean) => void;
+    setWidth?: (width: number, done?: boolean) => void;
+    setBounds?: (bounds: { left: number; top: number; width: number; height: number } | null) => void;
+    setPlacement?: (placement: { side: 'left' | 'right'; libraryDock: 'left' | 'right' | 'bottom' | 'chat' }) => void;
+    onChange: (listener: (state: { open: boolean; width: number; preferredWidth?: number; assets?: { open: boolean; bottom: number } }) => void) => void | (() => void);
+  };
+  /**
+   * The app's chat names a skill in the message being written: the library's skills call this for one tried there,
+   * `newConversation` true (Try now: a new conversation with it named).
+   */
+  useSkill?: (skill: { name: string; description: string; title?: string; newConversation?: boolean }) => void;
+  /** The person's own skills, where the app keeps them: one added, the app's own way (from a link, a folder, or made
+      with the agent). */
+  skills?: { add: () => void };
+  /** Let the app ask Studio to show something: Studio calls this once with its listener. */
+  onCommand?: (listener: (command: StudioCommand) => void) => void;
+  /**
+   * The agents the app's chat can use, for Settings → Agents: connected or not, shown in the chat's menu or not, and
+   * the person's own key for the one that takes one. `onChange` tells of every change (a sign-in finished, a key set up)
+   * and returns a way to stop listening. One of the person's own agents, found or not, can be pointed at a program
+   * of the person's choosing (`locate`: the system's file dialog, with Studio's words; `{ ok: false }` and no error
+   * when cancelled) and set back to being found (`useAutomatic`); `diagnose` says what was searched (an older app
+   * has none of these). One not found that has an official installer (`HostAgent.installer`) can be installed:
+   * `install` runs it in a terminal window, once the person agreed to that command (an older app has none).
+   */
+  agents?: {
+    list: () => Promise<HostAgent[]>;
+    /** Explicitly reload local configuration and idle sessions; no model prompt is sent. */
+    refresh?: () => Promise<HostAgent[]>;
+    connect: (id: HostAgentId) => Promise<{ ok: boolean; error?: string }>;
+    /** Stop waiting for terminal sign-in without disconnecting the agent or changing its own sign-in. */
+    cancelSignIn?: (id: HostAgentId) => Promise<unknown>;
+    disconnect: (id: HostAgentId) => Promise<unknown>;
+    /** Another account, for one that signs out with its own command (`HostAgent.signOut`): signed out, then its sign-in opened. An older app has none. */
+    switchAccount?: (id: HostAgentId) => Promise<{ ok: boolean; error?: string }>;
+    /** Codex: what is left of its plan, as it says for the account signed in (null: it can't say; other agents, null) */
+    usage?: (id: HostAgentId, fresh?: boolean) => Promise<HostAgentUsage | null>;
+    setShown: (id: HostAgentId, shown: boolean) => Promise<unknown>;
+    saveOpsGenModels?: (config: { order: string[]; hidden: string[] }) => Promise<{ ok: boolean; error?: string }>;
+    locate?: (id: HostAgentId, words?: { title?: string; button?: string; kind?: 'file' | 'folder' }) => Promise<{ ok: boolean; error?: string; path?: string; version?: string; code?: 'not-a-program' | 'did-not-start' | 'app' | 'not-cursor-agent' | string }>;
+    install?: (id: HostAgentId) => Promise<{ ok: boolean; error?: string }>;
+    useAutomatic?: (id: HostAgentId) => Promise<unknown>;
+    diagnose?: (id: HostAgentId) => Promise<HostAgentDiagnosis | null>;
+    /** Open the installed desktop app to complete its Code component setup. */
+    openSetup?: (id: HostAgentId) => Promise<{ ok: boolean; error?: string }>;
+    /** The app's part of Settings → Developer's diagnostic report: the app, and each agent's program, version and state, as text. */
+    report?: () => Promise<string>;
+    /**
+     * One of the person's own models set up (no `id`) or changed: checked before it is kept. A key left empty keeps its
+     * own, or takes the one of another model on the same address.
+     */
+    saveOwnModel: (config: HostOwnModelConfig) => Promise<{ ok: true; id: string } | { ok: false; error: string; code?: string; url?: string; status?: number; reason?: string }>;
+    removeOwnModel: (id: string) => Promise<unknown>;
+    /**
+     * The MCP servers the person added to an agent themselves (its maker's not among them), each let into the app or
+     * not: hidden there until let in. `filtered` false: the agent cannot be told, and has them all.
+     */
+    mcp?: (id: HostAgentId) => Promise<{ filtered: boolean; servers: Array<{ name: string; detail: string; allowed: boolean }> }>;
+    allowMcp?: (id: HostAgentId, name: string, allowed: boolean) => Promise<unknown>;
+    /** The same for the skills the person installed in an agent themselves (OpsGen's own skill for terminal agents is never among them). */
+    skills?: (id: HostAgentId) => Promise<{ filtered: boolean; skills: Array<{ name: string; description: string; allowed: boolean }> }>;
+    allowSkill?: (id: HostAgentId, name: string, allowed: boolean) => Promise<unknown>;
+    onChange: (listener: (agents: HostAgent[]) => void) => () => void;
+  };
+  /**
+   * Questions an agent's `opsgen get` asks the person before it spends (a video clip), and what it tells them (a
+   * provider with no balance left: "Manage" opens its page), for an app with a chat to show where the person talks to
+   * the agent, above its composer, instead of Studio's own card: the agent's command waits for a question's answer. Studio calls `show` with every question waiting in the project shown (an
+   * empty list when none is left), worded in the language shown; `answer` gives the person's answer.
+   */
+  asks?: { show: (asks: HostAsk[], answer: (id: string, allow: boolean) => void) => void };
+  /**
+   * The app's own updates, shown in Studio's top bar beside the projects button: a new version downloaded and ready,
+   * and Restart to install it. `onChange` gives the state now and on every change (null: nothing to show), and returns
+   * a way to stop listening. `restart` is refused while an agent works or Studio exports; the update then stays ready,
+   * with the reason (`waiting`).
+   */
+  update?: {
+    onChange: (listener: (update: HostUpdate | null) => void) => () => void;
+    restart: () => Promise<{ ok: boolean; error?: string }>;
+    /** Settings → About: the whole state now and on every change, and a check made now (it resolves when it ends) */
+    onState?: (listener: (state: HostUpdateState) => void) => () => void;
+    check?: () => Promise<HostUpdateState | null>;
+  };
+  /**
+   * The app's chat, for Settings → Developer: `logs`, each turn's full log (everything the agent sent and was
+   * answered, as it happened); `changes`, what each turn changed in the project's files, under its reply. `onChange`
+   * tells of a change from anywhere and returns a way to stop.
+   */
+  developer?: {
+    get: () => Promise<HostDeveloper>;
+    set: (next: Partial<HostDeveloper>) => Promise<unknown>;
+    onChange: (listener: (prefs: HostDeveloper) => void) => () => void;
+  };
+  /**
+   * The app's notifications, for Settings → Advanced: the system's notification of a chat's turn done, stopped by an
+   * error, or waiting for an answer, while the window is not in front (on, until switched off).
+   */
+  notifications?: {
+    get: () => Promise<boolean>;
+    set: (on: boolean) => Promise<unknown>;
+    onChange: (listener: (on: boolean) => void) => () => void;
+  };
+  /**
+   * The app keeps each open project in a tab of its own window, one shown at a time, and draws nothing of them: Studio
+   * names the one in front at its top bar's left, the way to the others and to the recent ones (ProjectSwitcher,
+   * `open`: one open already is shown). With no tab open the page is at `/`, and
+   * Studio shows the projects there. `list` gives the tabs and which is this page's (`self`); `onChange` every change.
+   * A page `report`s what it shows (its title, an export's progress, its project gone: its tab closes), and `retitle`s
+   * another tab whose project it renamed. Studio's
+   * "open this project" (heard by every page) goes to `openRequest`, which the app settles once; `onPick` is the app
+   * asking for the projects window (a new tab from its menu).
+   */
+  tabs?: {
+    list: () => Promise<{ self: string | null; tabs: HostTab[] }>;
+    onChange: (listener: (tabs: HostTab[]) => void) => () => void;
+    show: (id: string) => void;
+    close: (id?: string) => void;
+    /** a project's tab: shown, opened when it is not */
+    open: (projectId: string) => void;
+    move: (id: string, index: number) => void;
+    report: (state: { title?: string; exporting?: number | null; gone?: boolean }) => void;
+    /** projects this page deleted: their tabs close together, none of them to be opened again */
+    gone?: (projectIds: string[]) => Promise<unknown>;
+    /** another tab's title, its project renamed from this page's tabs (its page may be gone, and cannot say it) */
+    retitle?: (id: string, title: string) => Promise<unknown>;
+    openRequest: (to: string) => void;
+    onPick: (listener: () => void) => () => void;
+    /** another page shown in front of this one (a tab it opened, ready): what it showed meanwhile can go */
+    onCovered?: (listener: () => void) => () => void;
+  };
+
+  /**
+   * The app picks folders, and knows where a dropped one is: the Projects list gets "Open…", which asks the app for a
+   * folder to open as a project (`pick`: null when the person cancelled), and opens a folder dropped on it (`pathOf`:
+   * its full path, '' when the app cannot tell). The export's "Save to" asks with its own words and the folder it
+   * starts in (`title`, `button`, `at`).
+   */
+  folders?: {
+    pick: (options?: { title?: string; button?: string; at?: string }) => Promise<string | null>;
+    pathOf: (file: File) => string;
+  };
+}
+
+/** A question about spending, worded for the person (see `asks`). */
+export interface HostAsk { id: string; title: string; body: string | null; allowLabel: string; denyLabel: string }
+
+/**
+ * Where the app's update is: `off` (this build never updates) · idle · checking · current · available · downloading
+ * (`progress` 0–100) · staging (macOS unpacks it) · ready · installing · error. `availableVersion`: the newer version
+ * found; `checkedAt`: when a check last answered (ms); `error`: offline · unavailable · failed (a check or download),
+ * agent-busy · exporting · install-failed (a Restart not done).
+ */
+export interface HostUpdateState {
+  status: 'off' | 'idle' | 'checking' | 'current' | 'available' | 'downloading' | 'staging' | 'ready' | 'installing' | 'error';
+  version: string;
+  channel: 'stable' | 'beta';
+  availableVersion: string | null;
+  progress: number;
+  checkedAt: number | null;
+  error: string | null;
+}
+
+/** An update of the app, ready to install or installing; `waiting`: why the last Restart did not go ahead. */
+export type HostUpdate = { status: 'ready' | 'installing'; version: string; waiting?: 'agent-busy' | 'exporting' | 'install-failed' | null };
+
+export type HostAgentId = 'openfilm' | 'codex' | 'claude' | 'antigravity' | 'copilot' | 'cursor' | 'opencode' | 'codebuddy' | 'qwen' | 'kimi' | 'minimax' | 'deepseek' | 'byok';
+/**
+ * What was searched for an agent (`agents.diagnose`): the report to copy, the program's name, where it was found, and
+ * when it was not, why: chosen-missing (the program chosen is gone) · wsl (only inside WSL, which the app cannot use) ·
+ * unusable (files with its name, none that starts) · none.
+ */
+export interface HostAgentDiagnosis { found: string | null; program?: string; hint: 'chosen-missing' | 'wsl' | 'unusable' | 'none' | null; text: string }
+
+/** The API a person's own key is for: OpenAI's Responses or Chat Completions, or Anthropic's Messages. */
+export type HostByokFormat = 'responses' | 'chat' | 'anthropic';
+
+/**
+ * One agent as the app has it. `status`: ready · off (disconnected in the app; its own sign-in is kept) · sign-in (its
+ * own sign-in is needed) · waiting (signing in, in Terminal) · missing (connection component not found) ·
+ * key (no key set up) · unavailable (not offered yet) · checking. `account`: whose sign-in it uses, as the program says
+ * (no key or token).
+ */
+export interface HostAgent {
+  id: HostAgentId;
+  name: string;
+  shown: boolean;
+  status: 'ready' | 'off' | 'sign-in' | 'waiting' | 'missing' | 'key' | 'unavailable' | 'checking';
+  install?: string | null;
+  /** What installing it takes, when `install` is not a download: 'code-tab', Claude Code comes with the Claude app (its Code tab). */
+  setupRequired?: string | null;
+  /** The desktop app when only that is here (`Cursor`), and the official command that installs the connection component. */
+  app?: string | null;
+  installer?: string | null;
+  /** Its installer is running in a terminal window: it is looked for again until it is there. */
+  installing?: boolean;
+  /** The program used (the person's own agents), and the one the person chose for it, if they did. */
+  path?: string | null;
+  chosen?: string | null;
+  /** Changes when configuration is explicitly refreshed, so model menus discard older probes. */
+  configurationRevision?: number;
+  error?: string;
+  /** Last actionable model failure; finding a program or opening a protocol session does not clear it. */
+  connectionIssue?: { kind: 'quota' | 'credentials'; message: string };
+  /** Found, but it cannot read its own settings (Codex's config file), as it says: no session starts until fixed. */
+  problem?: string;
+  /** Older than the chat was tried with (Claude Code): its version, the one tried, the command that updates it, and `app` when its app updates it. */
+  outdated?: { version: string; tested: string; update: string | null; app?: boolean } | null;
+  account?: HostAgentAccount;
+  /** It signs out with its own command, so the app can switch its account (`agents.switchAccount`); else that is done in the agent itself. */
+  signOut?: boolean;
+  /** The own key's models, each set up on its own; the first is the one a conversation starts on. */
+  byok?: { models: HostOwnModel[] };
+  openfilm?: { order: string[]; hidden: string[]; defaultOrder: string[]; model?: string; models: HostOpsGenModel[] };
+}
+
+export interface HostOpsGenModel { id: string; name: string; shown: boolean; available: boolean; levels?: string[]; effort?: string }
+
+/**
+ * One of the person's own models: its `id` (the app's), the `name` the chat's menu shows, its service (API `format`
+ * and `baseUrl`), the `model` asked for there, its efforts, its `context` length in tokens (none: 128K), and the last
+ * four characters of its key.
+ */
+export interface HostOwnModel extends HostByokEffort { id: string; name: string; format: HostByokFormat; baseUrl: string; model: string; context?: number; last4: string }
+
+/** What setting up one of the person's own models sends: `id` to change one, no `key` to keep its key, no `context` for 128K. */
+export interface HostOwnModelConfig { id?: string; name?: string; format: HostByokFormat; baseUrl: string; model: string; key?: string; levels: HostByokEffortLevel[]; effort: HostByokEffortLevel; context?: number }
+
+/**
+ * The reasoning efforts a model of the person's own key offers, in this order (`auto`: none is sent, the service decides),
+ * and the one a conversation starts on. A model given none offers `auto` alone.
+ */
+export const BYOK_EFFORTS = ['auto', 'off', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'] as const;
+export type HostByokEffortLevel = (typeof BYOK_EFFORTS)[number];
+export interface HostByokEffort { levels: HostByokEffortLevel[]; effort: HostByokEffortLevel }
+
+/**
+ * What is left of an agent's plan: each window's share used (0–100), how long it is (minutes) and when it resets (ms);
+ * `kind`: five_hour · seven_day · window (another length).
+ * `account`: whose it is, when the program says it here (Codex's email and plan).
+ */
+export interface HostAgentUsage {
+  plan: string | null;
+  windows: Array<{ kind: 'five_hour' | 'seven_day' | 'window'; minutes: number | null; usedPercent: number; resetsAt: number | null }>;
+  account?: { email?: string; plan?: string };
+}
+
+/** Whose sign-in an agent uses: how (a claude.ai or ChatGPT account, an API key…), and what the program tells of it. */
+export interface HostAgentAccount { method: 'claude.ai' | 'console' | 'api-key' | 'chatgpt' | 'other'; email?: string; org?: string; plan?: string }
+
+/** A box on the picture, in the film's stage pixels (the stage is `stage.w` × `stage.h`, film.html's stage). */
+export interface StageBox { x: number; y: number; w: number; h: number }
+
+/**
+ * A picture for a reference, for its pill and for the agent. Either `src`, an address the host can load (a clip's own
+ * frame or a still on Studio's origin, a data: URL), or `viewer`: what the viewer shows right now, which the host
+ * takes itself as it hears of the reference (a screenshot of the viewer). `crop`, when only part of it is meant (a
+ * region, a layer), is that part in stage pixels of a picture that shows the whole stage (`stage`).
+ *
+ * The moment at the playhead, a region and a layer are `viewer` pictures: drawing the whole film on the server for
+ * them was slow, and while it drew Studio answered nothing else (an edit waited half a minute). A range and a subtitle
+ * line have none: their times and clips say enough.
+ */
+export interface StudioRefImage { src?: string; viewer?: boolean; crop?: StageBox; stage?: { w: number; h: number } }
+
+/**
+ * Something the person points at, as the host hears of it. Times are seconds of the film; `id`s are film.html clip
+ * ids; `loc` is a clip's place (`film.html#<track>.<clip>`); `track` is film.html's track index (0 = the top one).
+ *
+ *   · clip    a clip on the timeline: its file, its span on the film, its trim (`in`, source seconds) and `speed`
+ *   · layer   an element inside a page clip: its words and tag, where it is on the picture at `time` (`box`), and
+ *             where it is written (`source`, `file:line` of the page, when Studio knows it)
+ *   · region  a box drawn on the picture at `time`: the clips showing there, the words inside it
+ *   · time    a moment of the film
+ *   · range   a stretch of the film (marked on the timeline's ruler, or with I and O): the clips playing in it
+ *   · track   a whole track
+ *   · file    a file of the project (the media pane): its path, kind, and length / size when known
+ *   · example  an example film (ExamplesGallery), or a part of it (`start`–`end`, a `segment` it names): where it comes
+ *             from (`url`), and its folder on this computer to read how it is made (`folder`: fetched by the app
+ *             when the message is sent, if not yet); `canvas` when its folder has the canvas it was made on
+ *   · node     a node of the project's canvas (components/canvas): its id there, what it is (`nodeKind`: note, file,
+ *             group, or what it makes: image, video, sfx, music), its words (a note's `text`, a making node's
+ *             `prompt`), its file (`path`: a file, or the version a making node shows) and how many versions it made
+ *   · subtitle a line of the film's subtitles (the subtitle panel), or words picked inside one: their span on the film,
+ *             the words, the language they are in when a translation is shown (`lang`), the line's number in the panel
+ *             (`index`, from 1), and each word's own span when the transcript has word times (`words`)
+ *
+ *   · voice    a voice of the library (the assets drawer's Voices) to speak a voice-over in: its service (`provider`,
+ *             named `service`), its `id` there, and how the agent speaks in it now (`via`: the provider `opsgen get tts`
+ *             runs, `models`: those it may name; none: not connected yet)
+ *
+ * `image` is the picture its pill shows and the agent is given (see StudioRefImage): a clip's own frame, the viewer as
+ * it is for a moment, a region and a layer, none for a range or a subtitle line.
+ */
+export type StudioRef = (
+  | { kind: 'clip'; id: string | null; loc: string | null; label: string; clipKind: string; src: string | null; start: number; end: number; track?: number; in?: number; speed?: number }
+  | { kind: 'layer'; label: string; loc: string | null; clipId: string | null; text: string | null; tag: string | null; time?: number; box?: StageBox; source?: string | null }
+  | { kind: 'region'; time: number; box: StageBox; clipIds: string[]; texts: string[] }
+  | { kind: 'time'; time: number }
+  | { kind: 'range'; start: number; end: number; clipIds: string[] }
+  | { kind: 'track'; track: number; label: string; clipIds: string[] }
+  | { kind: 'file'; path: string; fileKind: string; duration?: number; w?: number; h?: number }
+  | { kind: 'node'; id: string; nodeKind: string; label: string; text?: string; prompt?: string; path?: string; versions?: number }
+  | { kind: 'subtitle'; start: number; end: number; text: string; lang?: string | null; index?: number; words?: Array<{ text: string; start: number; end: number }> }
+  | { kind: 'example'; id: string; title: string; url: string; folder?: string; start?: number; end?: number; segment?: string; description?: string; canvas?: boolean }
+  | { kind: 'voice'; provider: string; service: string; id: string; name: string; via: string | null; models: string[]; language?: string | null; description?: string | null }
+) & { image?: StudioRefImage };
+
+/**
+ * The drag type Studio's things carry when dragged out (a clip, a layer, the marked range, a file of the media pane,
+ * a subtitle line or the words picked in it):
+ * a JSON array of StudioRef. The app's composer takes them as references.
+ */
+export const STUDIO_REF_TYPE = 'application/x-openfilm-ref';
+
+export interface StudioSelection {
+  projectId: string;
+  /** the playhead, in seconds */
+  time: number;
+  /** the clips selected, then the layer picked inside a page clip, then the subtitle line picked in the subtitle panel */
+  refs: StudioRef[];
+  /** the range marked on the timeline's ruler, when there is one */
+  range?: { start: number; end: number } | null;
+  /** the film's stage, for boxes in stage pixels */
+  stage?: { w: number; h: number };
+}
+
+/**
+ * What an app can ask Studio to show: a clip selected (by its film.html id, or its place), a moment, a range briefly lit,
+ * a box on the picture shown at its moment, a track, a file of the media pane, a subtitle line (its span marked, the
+ * subtitle panel open on it).
+ *
+ * And what a chat points at, without moving the playhead or changing the selection: `highlight`, the thing a pill the
+ * person hovers stands for, lit until the next one (null: none); `draft-refs`, the things the message being written
+ * references, in its order (the numbers the agent reads them by), marked with those numbers until the next list
+ * (empty: sent or cleared).
+ */
+export type StudioCommand =
+  | { type: 'select-clip'; id?: string | null; loc?: string | null; seek?: boolean }
+  | { type: 'seek'; time: number }
+  | { type: 'show-range'; start: number; end: number }
+  | { type: 'show-box'; time: number; box: StageBox }
+  | { type: 'show-track'; track: number }
+  | { type: 'show-file'; path: string }
+  /* a node of the canvas: the canvas opened, the node selected and in view */
+  | { type: 'show-node'; id: string }
+  | { type: 'show-subtitle'; start: number; end: number }
+  | { type: 'highlight'; ref: StudioRef | null }
+  | { type: 'draft-refs'; refs: StudioRef[] }
+  /* the app's chat sends the person to Settings (an agent to set up) */
+  | { type: 'settings'; section?: 'agents' | 'providers' }
+  /* the app's chat shows the library's skills (on Discover, or a skill's page) or the projects window's examples
+     (an example's page); none: the examples */
+  | { type: 'show-examples'; open?: CommunityItem };
+
+/**
+ * A skill or an example to open on its page (a pill of one clicked); or `discover`, OpsGen's skills to install (an
+ * empty project's "More skills"); or `examples`, the examples to start from (its "Start from an example").
+ */
+export type CommunityItem = { kind: 'skill'; name: string } | { kind: 'example'; id: string } | { kind: 'discover' } | { kind: 'examples' };
+
+export const studioHost: StudioHost | null = (globalThis as { openfilmHost?: StudioHost }).openfilmHost ?? null;
+
+/** Make room for the host window's controls, and let Studio's top bars drag the window (see `titlebar`). */
+export function applyStudioHost(root: HTMLElement = document.documentElement) {
+  const titlebar = studioHost?.titlebar;
+  if (!titlebar) return;
+  const set = (inset: unknown) => {
+    if (typeof inset !== 'number' || !Number.isFinite(inset) || inset < 0) return;
+    root.style.setProperty('--titlebar-logo-x', `${Math.min(inset, 200)}px`);
+    root.dataset.hostTitlebarInset = inset === 0 ? 'none' : 'controls';
+  };
+  root.dataset.hostTitlebar = '';
+  if (typeof titlebar.insetRight === 'number' && titlebar.insetRight > 0) root.style.setProperty('--titlebar-right-x', `${Math.min(titlebar.insetRight, 240)}px`);
+  set(titlebar.inset);
+  titlebar.onChange?.(set);
+}
+
+/** The app's own panel (see `panel`): whether it is open and how wide, and its assets drawer, kept current. Null without one. */
+export type HostPanel = {
+  label: string;
+  open: boolean;
+  width: number;
+  preferredWidth: number;
+  setOpen: (open: boolean) => void;
+  /** null: the app keeps no assets of its own (Studio's left pane holds them) */
+  assets: { open: boolean; bottom: number; setOpen: (open: boolean) => void } | null;
+  setWidth: (width: number, done?: boolean) => void;
+  setBounds: (bounds: { left: number; top: number; width: number; height: number } | null) => void;
+  setPlacement: (placement: { side: 'left' | 'right'; libraryDock: 'left' | 'right' | 'bottom' | 'chat' }) => void;
+};
+
+/**
+ * The panel's width as --host-panel-width on the page, set the moment the app tells it: what sits beside the panel
+ * reads it from there, so while the panel's seam is dragged the two move in the same frame, before Studio renders.
+ */
+export const HOST_PANEL_WIDTH = 'var(--host-panel-width, 0px)';
+function keepPanelWidth({ open, width }: { open: boolean; width: number }) {
+  document.documentElement.style.setProperty('--host-panel-width', `${open ? width : 0}px`);
+}
+
+export function useHostPanel(): HostPanel | null {
+  const panel = studioHost?.panel;
+  const preferredWidth = React.useRef(panel?.preferredWidth || panel?.width || 420);
+  const read = (next: { open: boolean; width: number; preferredWidth?: number; assets?: { open: boolean; bottom: number } }) => {
+    if ((next.preferredWidth ?? next.width) > 0) preferredWidth.current = next.preferredWidth || next.width;
+    return {
+      open: Boolean(next.open),
+      width: Math.max(0, Number(next.width) || 0),
+      preferredWidth: preferredWidth.current,
+      assetsOpen: Boolean(next.assets?.open),
+      bottom: Math.max(0, Number(next.assets?.bottom) || 0),
+    };
+  };
+  const [state, setState] = React.useState(() => (panel ? read(panel) : null));
+  React.useEffect(() => {
+    if (!panel) return;
+    keepPanelWidth(read(panel));
+    const stop = panel.onChange((next) => {
+      const now = read(next);
+      keepPanelWidth(now);
+      setState(now);
+    });
+    return typeof stop === 'function' ? stop : undefined;
+  }, [panel]);
+  if (!panel || !state) return null;
+  const setAssetsOpen = panel.setAssetsOpen;
+  return {
+    label: panel.label,
+    open: state.open,
+    width: state.width,
+    preferredWidth: state.preferredWidth,
+    setOpen: (open) => panel.setOpen(open),
+    setWidth: (width, done) => panel.setWidth?.(width, done),
+    setBounds: bounds => panel.setBounds?.(bounds),
+    setPlacement: placement => panel.setPlacement?.(placement),
+    assets: setAssetsOpen ? { open: state.assetsOpen, bottom: state.bottom, setOpen: (open) => setAssetsOpen(open) } : null,
+  };
+}
+
+/** The app's update to show in the top bar (see `update`), kept current. Null without one. */
+export function useHostUpdate(): { update: HostUpdate; restart: () => Promise<{ ok: boolean; error?: string }> } | null {
+  const host = studioHost?.update;
+  const [update, setUpdate] = React.useState<HostUpdate | null>(null);
+  React.useEffect(() => host?.onChange(setUpdate), [host]);
+  return host && update ? { update, restart: host.restart } : null;
+}

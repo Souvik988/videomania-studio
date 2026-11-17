@@ -1,0 +1,38 @@
+{
+ "id": "hook-reel-8s",
+ "title": "8-second hook reel: the picture does what the voice says",
+ "about": "The film obeys its own advice: it dies on screen, then hits back with the very glitch and boom it names.",
+ "from_film": "first-second",
+ "duration": 8.53,
+ "format": "reel",
+ "saved": "2026-11-15",
+ "meta": {
+  "film": "first-second",
+  "concept": "The film obeys its own advice: it dies on screen, then hits back with the very glitch and boom it names.",
+  "device": "the words 'a glitch' and 'a boom' ARE the editor's glitch and boom: the picture does what the voice says",
+  "hook": "frame 0 already twisting (universe warp + braam) under 'your first second'",
+  "signature": "a word that dies flying through the lens, then the stage answering with a glitch and a shockwave",
+  "structure": "claim 0-2.3 / the problem 2.3-4.55 / the fix 4.55-7.25 / the payoff 7.25-8.53",
+  "constraint": "The picture must literally do what each line says."
+ },
+ "tags": [
+  "the",
+  "words",
+  "'a",
+  "glitch'",
+  "and",
+  "'a",
+  "boom'",
+  "ARE",
+  "the",
+  "editor's",
+  "glitch",
+  "and"
+ ],
+ "files": [
+  "shots.js",
+  "score.sh",
+  "fx_cues.json"
+ ],
+ "needs": "the voxel-starter assets (mascot, icons, screens, backdrop, plates); songs are NOT included (bring your own)"
+}

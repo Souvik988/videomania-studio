@@ -1,0 +1,701 @@
+[
+ {
+  "id": "universe_warp",
+  "family": "hook",
+  "dur": 0.75,
+  "centre": "start",
+  "envelope": "slam",
+  "job": "Frame 0: the world twists, bulges and splits colour, then snaps into the film. The scroll-stopper.",
+  "avoid": "more than once per film",
+  "sfx": [
+   {
+    "id": "braam",
+    "at": "start",
+    "gain_db": 0
+   },
+   {
+    "id": "tear",
+    "at": "start",
+    "gain_db": -4
+   },
+   {
+    "id": "bass-sub-drop-short",
+    "at": "start",
+    "gain_db": -3
+   }
+  ]
+ },
+ {
+  "id": "shockwave",
+  "family": "hook",
+  "dur": 0.6,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "A ring of force from the subject: a reveal, a 'boom' statement, a name.",
+  "avoid": "busy frames",
+  "sfx": [
+   {
+    "id": "boom-drop-medium",
+    "at": "start",
+    "gain_db": 0
+   },
+   {
+    "id": "sub_hit",
+    "at": "start",
+    "gain_db": -3
+   }
+  ]
+ },
+ {
+  "id": "glitch_hook",
+  "family": "hook",
+  "dur": 0.6,
+  "centre": "start",
+  "envelope": "slam",
+  "job": "Frame 0 for tech / AI / hacking subjects: the signal breaks, then locks on.",
+  "avoid": "calm or warm films",
+  "sfx": [
+   {
+    "id": "digital-corrupt",
+    "at": "start",
+    "gain_db": 0
+   },
+   {
+    "id": "cinematic-drum-big",
+    "at": "start",
+    "gain_db": -2
+   },
+   {
+    "id": "bass-sub-drop-short",
+    "at": "start",
+    "gain_db": -4
+   }
+  ]
+ },
+ {
+  "id": "flash_zoom_hook",
+  "family": "hook",
+  "dur": 0.5,
+  "centre": "start",
+  "envelope": "slam",
+  "job": "Frame 0: white flash into a hard zoom punch: energetic, bright subjects.",
+  "avoid": "dark ominous openings",
+  "sfx": [
+   {
+    "id": "cinematic-slam-big",
+    "at": "start",
+    "gain_db": 0
+   },
+   {
+    "id": "whoosh-fast-hard",
+    "at": "start",
+    "gain_db": -4
+   }
+  ]
+ },
+ {
+  "id": "rgb_split",
+  "family": "glitch",
+  "dur": 0.35,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Colour channels tear apart for a beat: a light accent on a word or a turn.",
+  "avoid": "faces in close-up for long",
+  "sfx": [
+   {
+    "id": "digital-glitch-subtle",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "glitch_slices",
+  "family": "glitch",
+  "dur": 0.4,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Horizontal bands jump sideways: 'wrong', 'error', 'myth'.",
+  "avoid": "warm emotional beats",
+  "sfx": [
+   {
+    "id": "digital-glitch-clear",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "digital_glitch",
+  "family": "glitch",
+  "dur": 0.5,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Full digital break-up: slices, colour split, corrupt blocks.",
+  "avoid": "more than 3 per minute",
+  "sfx": [
+   {
+    "id": "digital-corrupt",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "block_corrupt",
+  "family": "glitch",
+  "dur": 0.4,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Macroblocks smear and posterise: data, AI, broken files.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-scramble",
+    "at": "start",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "static_burst",
+  "family": "glitch",
+  "dur": 0.3,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "TV snow over the picture: a channel change, a cut to a new world.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-static",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "invert_flash",
+  "family": "glitch",
+  "dur": 0.2,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Two-frame negative flicker: a shock word.",
+  "avoid": "photosensitive pacing: max 3 per second",
+  "sfx": [
+   {
+    "id": "sub_hit",
+    "at": "start",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "frame_stutter",
+  "family": "glitch",
+  "dur": 0.45,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "The picture stammers on its last frames: a double-take, a 'wait...'.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "shutter_stutter",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "signal_drop",
+  "family": "glitch",
+  "dur": 0.5,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Signal failing: black lines, jumps, colour loss: a lie, a crash, 'it failed'.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-signal-drop",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "lens_bulge",
+  "family": "distort",
+  "dur": 0.35,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Fisheye punch toward the viewer: 'YOU', a direct address.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "move-zoom-in",
+    "at": "peak",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "wave_warp",
+  "family": "distort",
+  "dur": 0.7,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Heat-haze wobble: a dream, a memory, confusion.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "whoosh-slow-hard",
+    "at": "peak",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "chromatic",
+  "family": "distort",
+  "dur": 0.4,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Radial colour fringing: lens stress on an impact.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "impact-deep-hard",
+    "at": "start",
+    "gain_db": -3
+   }
+  ]
+ },
+ {
+  "id": "zoom_punch",
+  "family": "camera",
+  "dur": 0.35,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Snap zoom-in on the punch word, then settle: the classic emphasis.",
+  "avoid": "every word: max one per chapter",
+  "sfx": [
+   {
+    "id": "sub_hit",
+    "at": "start",
+    "gain_db": -2
+   },
+   {
+    "id": "whoosh-fast-medium",
+    "at": "start",
+    "gain_db": -8
+   }
+  ]
+ },
+ {
+  "id": "zoom_blur",
+  "family": "camera",
+  "dur": 0.35,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Radial speed blur: 'fast', 'instantly', travel.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "whoosh-fast-hard",
+    "at": "start",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "shake",
+  "family": "camera",
+  "dur": 0.45,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Impact shake: something lands, a big claim, a slam.",
+  "avoid": "dialogue-heavy holds",
+  "sfx": [
+   {
+    "id": "cinematic-slam-big",
+    "at": "start",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "whip_blur",
+  "family": "camera",
+  "dur": 0.3,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Sideways whip: moving on, 'next'.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "whoosh-fast-hard",
+    "at": "peak",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "flash_white",
+  "family": "light",
+  "dur": 0.25,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "A white flash: a reveal, a new world, a camera snap.",
+  "avoid": "max 3 flashes per second",
+  "sfx": [
+   {
+    "id": "cinematic-drum-big",
+    "at": "start",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "flash_color",
+  "family": "light",
+  "dur": 0.25,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "A flash in the brand red: an alarm word.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "boom-hit-medium",
+    "at": "start",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "light_leak",
+  "family": "light",
+  "dur": 1.2,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Warm light sweeping across: nostalgia, a win, the ending.",
+  "avoid": "tense moments",
+  "sfx": [
+   {
+    "id": "whoosh-slow-hard",
+    "at": "peak",
+    "gain_db": -8
+   },
+   {
+    "id": "shimmer-short-soft",
+    "at": "peak",
+    "gain_db": -8
+   }
+  ]
+ },
+ {
+  "id": "film_burn",
+  "family": "light",
+  "dur": 0.9,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Orange film burn eating the frame: a chapter ending, a memory closing.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "whoosh-slow-hard",
+    "at": "peak",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "flare_streak",
+  "family": "light",
+  "dur": 0.8,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Anamorphic streak from the brights: premium, cinematic, a product hero.",
+  "avoid": "dark frames (no brights)",
+  "sfx": [
+   {
+    "id": "shimmer-short-soft",
+    "at": "peak",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "bloom_pulse",
+  "family": "light",
+  "dur": 0.4,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "The whole frame glows for a beat: 'magic', 'perfect', a win.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "sting-bright-short",
+    "at": "start",
+    "gain_db": -8
+   }
+  ]
+ },
+ {
+  "id": "vhs",
+  "family": "texture",
+  "dur": 1.0,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "VHS tape: the past, 'back then', a flashback.",
+  "avoid": "the whole film",
+  "sfx": [
+   {
+    "id": "digital-static",
+    "at": "start",
+    "gain_db": -8
+   }
+  ]
+ },
+ {
+  "id": "crt",
+  "family": "texture",
+  "dur": 1.0,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Old monitor scanlines: inside a screen, retro tech.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-power-up",
+    "at": "start",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "film_grain",
+  "family": "texture",
+  "dur": 1.5,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Grain texture: a documentary, 'real' footage beat.",
+  "avoid": "",
+  "sfx": []
+ },
+ {
+  "id": "old_film",
+  "family": "texture",
+  "dur": 1.5,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Sepia, scratches, flicker: history, 'years ago'.",
+  "avoid": "",
+  "sfx": []
+ },
+ {
+  "id": "bw_hit",
+  "family": "color",
+  "dur": 0.6,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Drop to black and white: 'stop', a sober truth, the problem.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "sub_hit",
+    "at": "start",
+    "gain_db": -4
+   }
+  ]
+ },
+ {
+  "id": "color_pop",
+  "family": "color",
+  "dur": 0.6,
+  "centre": "start",
+  "envelope": "hit",
+  "job": "Saturation surge: the answer, colour returning after bw_hit.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "shimmer-short-soft",
+    "at": "start",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "red_alert",
+  "family": "color",
+  "dur": 0.6,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Red tint: danger, wrong, warning.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-denied",
+    "at": "start",
+    "gain_db": -4
+   }
+  ]
+ },
+ {
+  "id": "negative",
+  "family": "color",
+  "dur": 0.3,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Full negative: an upside-down idea.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "tear",
+    "at": "start",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "echo_trails",
+  "family": "time",
+  "dur": 0.8,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Motion trails: speed, a blur of work, 'everything at once'.",
+  "avoid": "static shots (no effect)",
+  "sfx": [
+   {
+    "id": "whoosh-medium-hard",
+    "at": "start",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "freeze_hold",
+  "family": "time",
+  "dur": 0.8,
+  "centre": "start",
+  "envelope": "hold",
+  "job": "Freeze frame with a push: 'this is me', a record-scratch moment.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "tape_stop",
+    "at": "start",
+    "gain_db": -2
+   },
+   {
+    "id": "shutter_stutter",
+    "at": "start",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "pixelate",
+  "family": "time",
+  "dur": 0.4,
+  "centre": "start",
+  "envelope": "swell",
+  "job": "Pixel break-up and resolve: entering a game / pixel world.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-glitch-clear",
+    "at": "peak",
+    "gain_db": -2
+   }
+  ]
+ },
+ {
+  "id": "glitch_cut",
+  "family": "transition",
+  "dur": 0.36,
+  "centre": "around",
+  "envelope": "swell",
+  "job": "A glitch across the cut: the default energetic cut.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-glitch-clear",
+    "at": "peak",
+    "gain_db": 0
+   },
+   {
+    "id": "whoosh-fast-hard",
+    "at": "peak",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "whip_cut",
+  "family": "transition",
+  "dur": 0.3,
+  "centre": "around",
+  "envelope": "swell",
+  "job": "Whip pan across the cut.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "whoosh-fast-hard",
+    "at": "peak",
+    "gain_db": 0
+   }
+  ]
+ },
+ {
+  "id": "zoom_cut",
+  "family": "transition",
+  "dur": 0.4,
+  "centre": "around",
+  "envelope": "swell",
+  "job": "Zoom through into the next shot.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "move-zoom-in",
+    "at": "peak",
+    "gain_db": -2
+   },
+   {
+    "id": "boom-hit-soft",
+    "at": "peak",
+    "gain_db": -6
+   }
+  ]
+ },
+ {
+  "id": "flash_cut",
+  "family": "transition",
+  "dur": 0.24,
+  "centre": "around",
+  "envelope": "swell",
+  "job": "White flash across the cut: a new world.",
+  "avoid": "max 3 flashes per second",
+  "sfx": [
+   {
+    "id": "cinematic-drum-big",
+    "at": "peak",
+    "gain_db": -4
+   }
+  ]
+ },
+ {
+  "id": "pixel_cut",
+  "family": "transition",
+  "dur": 0.4,
+  "centre": "around",
+  "envelope": "swell",
+  "job": "Pixelate out and back in: pixel worlds.",
+  "avoid": "",
+  "sfx": [
+   {
+    "id": "digital-glitch-subtle",
+    "at": "peak",
+    "gain_db": -2
+   }
+  ]
+ }
+]

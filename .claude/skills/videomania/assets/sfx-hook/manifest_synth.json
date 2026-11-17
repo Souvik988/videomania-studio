@@ -1,0 +1,127 @@
+[
+ {
+  "id": "braam",
+  "file": "synth/braam.wav",
+  "category": "hook-synth",
+  "duration": 2.8,
+  "sync_at": 0.03,
+  "tier": "hard",
+  "description": "Trailer braam: a huge low brass-like blast with a long hall tail.",
+  "use_for": [
+   "the first frame of a hook",
+   "a reveal",
+   "a dark turn"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "braam_short",
+  "file": "synth/braam_short.wav",
+  "category": "hook-synth",
+  "duration": 1.4,
+  "sync_at": 0.03,
+  "tier": "medium",
+  "description": "A tighter braam for a mid-film pattern interrupt.",
+  "use_for": [
+   "chapter turn",
+   "a hard statement"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "ominous_swell",
+  "file": "synth/ominous_swell.wav",
+  "category": "hook-synth",
+  "duration": 1.6,
+  "sync_at": 1.59,
+  "tier": "medium",
+  "description": "A dark drone rising to a sudden stop; its sync point is its END.",
+  "use_for": [
+   "the 1-2 s before a reveal",
+   "tension before a cut"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "tear",
+  "file": "synth/tear.wav",
+  "category": "hook-synth",
+  "duration": 0.6,
+  "sync_at": 0.004,
+  "tier": "hard",
+  "description": "Reality tearing: ripped noise, pitch falling, crushed stutter.",
+  "use_for": [
+   "universe warp",
+   "glitch hook",
+   "world switch"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "sub_hit",
+  "file": "synth/sub_hit.wav",
+  "category": "hook-synth",
+  "duration": 1.2,
+  "sync_at": 0.004,
+  "tier": "hard",
+  "description": "A sub thump with a click: felt more than heard.",
+  "use_for": [
+   "under any hit",
+   "zoom punch",
+   "the beat a word lands"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "heartbeat",
+  "file": "synth/heartbeat.wav",
+  "category": "hook-synth",
+  "duration": 0.9,
+  "sync_at": 0.004,
+  "tier": "medium",
+  "description": "Lub-dub: two low thumps.",
+  "use_for": [
+   "suspense",
+   "before a question is answered"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "tape_stop",
+  "file": "synth/tape_stop.wav",
+  "category": "hook-synth",
+  "duration": 0.7,
+  "sync_at": 0.0,
+  "tier": "medium",
+  "description": "The world winding down to a stop.",
+  "use_for": [
+   "freeze frame",
+   "record scratch moment",
+   "a joke stop"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ },
+ {
+  "id": "shutter_stutter",
+  "file": "synth/shutter_stutter.wav",
+  "category": "hook-synth",
+  "duration": 0.35,
+  "sync_at": 0.0,
+  "tier": "soft",
+  "description": "Rapid digital shutter burst.",
+  "use_for": [
+   "frame stutter",
+   "freeze",
+   "camera snap"
+  ],
+  "source": "Video Mania hook_sounds.py (original synthesis)",
+  "license": "CC0-1.0"
+ }
+]

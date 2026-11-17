@@ -318,3 +318,8 @@ audio tag, skeleton `shots.js`, asset folders, reuse of the approved mascot/icon
 above lists the built-in `mani`/`bit`; the creator's picture mascot is `me` (`SHOTS.cast.me.poses`, 17 poses incl.
 `sit_code floor_code holo_type hold_doc thumbs fly`). `scripts/split_frames.py` makes the two-worlds split monitor.
 Worked 10 s clip: `examples/clip10-short.shots.js` + `.score.sh`.
+
+## Frame 0 (2026-11-15)
+The kit no longer fades in from black: frame 0 is the full picture (the hook). `SHOTS.fadeIn: true` brings the old
+0.25 s fade back only when the user asks. The editor effects (glitch, warp, shake, flashes ...) and hook sounds are a
+separate pass on the rendered film: `scripts/fx_pass.py`.

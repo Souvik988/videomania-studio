@@ -1,0 +1,74 @@
+{
+ "duration": 8.53,
+ "rules": "references/editor-effects-and-hook-sound.md",
+ "cues": [
+  {
+   "t": 0.0,
+   "fx": "universe_warp",
+   "amount": 1.0,
+   "why": "HOOK: frame 0 must break the scroll: an editor effect + an ominous hit, in the first second."
+  },
+  {
+   "t": 1.18,
+   "fx": "zoom_punch",
+   "amount": 0.85,
+   "why": "Punch word 'EVERYTHING.': hit it."
+  },
+  {
+   "t": 2.3,
+   "fx": "glitch_cut",
+   "amount": 0.9,
+   "why": "Chapter turn A->B: a pattern interrupt with its sound."
+  },
+  {
+   "t": 3.02,
+   "fx": "signal_drop",
+   "amount": 0.8,
+   "why": "'die': the picture itself fails for a beat."
+  },
+  {
+   "t": 4.55,
+   "fx": "zoom_cut",
+   "amount": 0.9,
+   "why": "Chapter turn B->C: a pattern interrupt with its sound."
+  },
+  {
+   "t": 5.76,
+   "fx": "digital_glitch",
+   "amount": 1.0,
+   "sfx": [
+    {
+     "id": "digital-corrupt",
+     "at": "start",
+     "gain_db": 0
+    },
+    {
+     "id": "tear",
+     "at": "start",
+     "gain_db": -4
+    }
+   ],
+   "why": "'a glitch': the picture glitches on the word (the film's device)."
+  },
+  {
+   "t": 6.62,
+   "fx": "shockwave",
+   "amount": 1.0,
+   "why": "'a boom': a ring of force on the word."
+  },
+  {
+   "t": 7.25,
+   "fx": "rgb_split",
+   "dur": 0.3,
+   "amount": 0.5,
+   "sfx": [
+    {
+     "id": "whoosh-fast-hard",
+     "at": "start",
+     "gain_db": -2
+    }
+   ],
+   "why": "Kit transition 'pixelate' at C->D: sound it and add a light colour tear."
+  }
+ ]
+}

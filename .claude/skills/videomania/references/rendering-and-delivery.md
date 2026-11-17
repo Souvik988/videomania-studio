@@ -31,3 +31,7 @@ This user's reel is the film re-composed at 4:5 (1080x1350) and padded to 1080x1
 `scripts/reel_frame.py prep <source> --size 1080x1350 --keep 0.82` -> snapshot, move only props that left the
 frame -> render -> `reel_frame.py pad in.mp4 out.mp4` -> `reel_frame.py restore <source>`. Never a 16:9 strip
 in a 9:16 frame, never a full re-composition unless asked. Full steps: `director-film-runbook.md` Step 11.
+
+## Editor effects before delivery (2026-11-15)
+Every film: `fx_pass.py plan / check / apply` on the render (`editor-effects-and-hook-sound.md`). Reels: effects on the
+4:5 render, then `reel_frame.py pad`. Never deliver a film whose frame 0 is black or still.

@@ -27,9 +27,20 @@ decide whether a step is done, not your judgement.
 
 ## Pick the route (first thing, every request)
 
+**EDITOR FIRST (user rule 2026-11-15): before any editing, launch OpsGen (our video editor) and open the film in it**
+(`bash <repo>/opsgen/opsgen-dev.sh desktop`, then `vm studio <film>`), so the person watches every change land. Then
+edit through commands, never the mouse: `vm tl` reads the timeline in a few lines, `vm edit` changes it, `vm media`
+does footage edits. Read `references/opsgen.md`.
+
+**Claude Editor (`vm`) is the way to drive every route below**: `vm status <film>` says where a film stands and what to
+run next; every step is a `vm` command (or the same MCP tool, registered in `.mcp.json`). `vm presets search` finds any
+effect, sound, LUT, transition, After-Effects-equivalent effect, recipe or style; `vm brain ask` answers from the
+director's memory. Read `references/claude-editor.md` once.
+
 | the user gives / asks | route | follow, step by step |
 |---|---|---|
 | a **voiceover or script** for a narrated film about themselves, their work, a tool ("like the director film", pixel / voxel world, mascot) | **Director film** (voxel-diorama kit) | **`references/director-film-runbook.md`** — the exact steps of the user's approved film, with commands; worked example `templates/voxel-diorama/examples/director-film-v5.*` |
+| any film, start to finish, through commands | **Claude Editor** | `references/claude-editor.md` (`vm new` … `vm deliver`, recipes, presets, brain) |
 | a **short clip (10-15 s)** in the same world | **Short-clip lane** | `references/director-film-runbook.md` -> "Short-clip lane"; `scripts/new_film.py`, `examples/clip10-short.*` (tested by Sonnet 5.5) |
 | a voiceover for a general explainer / ad / product film in another look | **Motion-graphics edit** (HyperFrames scaffold) | §4 below (the editing loop), with `references/editor-doctrine.md` and `references/motion-design-playbook.md` |
 | "**Vox style**" | Vox poster system | `references/vox-poster-system.md`, `templates/vox-poster/` |
@@ -50,8 +61,12 @@ decide whether a step is done, not your judgement.
 4. **Rhythm, never a clock** — `references/rhythm-and-direction.md`: chapters as long takes that change on the word.
 5. **Sound is measured, never "heard"** — `references/audio-cinematography.md` (songs cast by meaning) and
    `scripts/sound_mix.py` (spread against the reference, −14 LUFS).
-6. **Google Flow video**: Omni Flash only, one approval per generation (§2).
-7. **Every user note becomes a rule** (§4b) and is synced with `install_skills.sh`.
+6. **Editor effects and hook sound on every film** - `references/editor-effects-and-hook-sound.md`: frame 0 carries a
+   hook effect at full strength (`universe_warp` by default) with an ominous sound stack (braam + tear + sub drop),
+   then a pattern interrupt with its sound every 3-7 s. `scripts/fx_pass.py plan / check / apply` after the render.
+   Never fade in from black. (User note 2026-11-15: 200 views and a 65 % skip rate without it.)
+7. **Google Flow video**: Omni Flash only, one approval per generation (§2).
+8. **Every user note becomes a rule** (§4b) and is synced with `install_skills.sh`.
 
 ## Where everything is
 
@@ -269,7 +284,8 @@ director skill in `OpenMontage/skills/pipelines/voiceover-film/`; persist every 
      motion brief, the open loops and the reason to stay).
    - Verify every complaint on real frames, fix the top defects, and stop after 3 passes at most.
    → `references/review-gates-and-critique.md`
-8. **Finish it** — `render -q delivery` → `mux_master.py` → `qa.py --tag final` → `seek_test.py`
+8. **Finish it** — `render -q delivery` → `fx_pass.py plan/check/apply` (editor effects + hook sound,
+   `references/editor-effects-and-hook-sound.md`) → `mux_master.py` → `qa.py --tag final` → `seek_test.py`
    → `deliver.py`.
 
 **Crew pages for the same loop:** steps 1–2 = `crew/02-director.md`, `crew/03-storyboard.md`; step 3–4 =

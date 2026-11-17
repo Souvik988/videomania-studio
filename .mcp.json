@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vm": {
+      "command": "${USERPROFILE}/video-production-workbench/OpenMontage/.venv/Scripts/python.exe",
+      "args": [".claude/skills/videomania/scripts/vm.py", "mcp"]
+    }
+  }
+}

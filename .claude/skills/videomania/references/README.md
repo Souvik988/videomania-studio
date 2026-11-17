@@ -8,6 +8,8 @@ them literally); **references** say why and how (open one when a step names it).
 
 | file | open it when |
 |---|---|
+| `opsgen.md` | **the editor**: launch it first, `vm tl` / `vm edit` timeline operations, `vm media` footage edits, the Claude Code chat |
+| `claude-editor.md` | **the command layer**: every step as a `vm` command / MCP tool, one preset search, recipes, the director's brain |
 | `house-rules.md` | before every edit — the user's notes as rules, newest first |
 | `director-film-runbook.md` | **RUNBOOK** for a narrated film from a voiceover (the approved director film, every command) |
 | `director-film-runbook.md` -> Short-clip lane | a 10-15 s clip: the whole run in 8 lines; `scripts/new_film.py`, `scripts/split_frames.py` |
@@ -51,12 +53,14 @@ them literally); **references** say why and how (open one when a step names it).
 | `editorial-collage-and-diorama.md` | Vox collage and paper diorama |
 | `vox-poster-system.md` | the user's "Vox style" (colour editorial poster) |
 | `orchestration.md` | mixing several engines in one film |
+| `3d-worlds-without-blender.md` | 3D worlds from pictures: generated layers (best), relief plates, `world_build.py` (experimental), SHARP splats (needs 16 GB) |
 | `blender-3d-route.md` | optional real 3D (Blender not installed; 3D goes through raea) |
 
 ## Sound
 
 | file | what it gives |
 |---|---|
+| `editor-effects-and-hook-sound.md` | **every film**: the hook on frame 0 (effect + ominous sound stack), pattern interrupts, 41 CapCut-style presets (`fx_pass.py`), 59 hook sounds (`sfx_library.py`) |
 | `audio-cinematography.md` | songs cast by meaning, downbeat entrances, a cappella, `sound_mix.py --cue` |
 | `background-music-and-sound.md` | SFX design, ducking, the master to −14 LUFS |
 | `voiceover-alignment.md` | word times from the voiceover (`ingest.py`) |

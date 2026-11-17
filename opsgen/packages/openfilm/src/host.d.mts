@@ -1,0 +1,43 @@
+import type { Browser, Page } from 'playwright-core';
+export declare const HOST_FLAG: string;
+export declare const SEEK_INSIDE_FRAME: string;
+export declare const FILM_CLOCK: string;
+export declare function injectFirst(html: string, tag: string): string;
+export declare function serve(root: string, opts?: { port?: number }): Promise<{ url: string; close(): Promise<void> }>;
+/** Listen on 127.0.0.1 at `port`; for port 0, never at a port browsers refuse to open. The port it listens on. */
+export declare function listenLocal(server: import('node:net').Server, port?: number): Promise<number>;
+export interface LaunchOptions { headed?: boolean; channel?: string | null; args?: string[]; env?: Record<string, string | undefined> }
+export declare function launch(opts?: LaunchOptions): Promise<Browser>;
+/** A renderer string that is not a GPU: WebGL drawn on the CPU. */
+export declare const SOFTWARE_GL: RegExp;
+/** Windows: open with Vulkan once, and keep it only when its renderer is a GPU and it shows videos; otherwise the GPU another way, or Chromium's default. */
+export declare function vulkanFirst(renderer?: (browser: Browser) => Promise<string>, presents?: (browser: Browser) => Promise<boolean>): ((open: (angle: string[]) => Promise<Browser>) => Promise<Browser>) & { videoNotShown(): Promise<boolean> };
+/** Whether the browser shows the frame a paused video is sought to, for H.264 and HEVC (some Windows computers with Vulkan do not). */
+export declare function presentsVideo(browser: Browser): Promise<boolean>;
+/** Close every browser launch() opened that is still open: what waits on one fails at once instead of never answering. */
+export declare function closeBrowsers(): Promise<void>;
+/** With `offline`: the origins still open to a page, and optionally who answers them (a cache). */
+export interface PageNetwork { allow?: readonly string[]; fetch?(url: string, headers: Record<string, string>): Promise<{ status: number; headers: Record<string, string>; body: Buffer }> }
+export declare class FrameError extends Error {}
+/** A film whose video frames this browser never showed, drawn again in browsers that show video another way. */
+export declare class VideoNotShown extends FrameError {}
+/** A film's video frames were never seen: on Windows, browsers opened from now on show video another way. Whether they will. */
+export declare function videoNotShown(): Promise<boolean>;
+/** A page's facts once ready: its length (null: it has no end), and its viewport (its own size, or 1920 × 1080 when it says none). */
+/** `sized`: the page sets its own width and height (without, it is laid out at its clip's size or the stage's). */
+export interface FilmMeta { duration: number | null; width: number; height: number; sized: boolean; sounds: FilmSound[] }
+/** One sound of the film as the built-in timeline plays it: `src` a path on the film's origin, placed at film second `at`, its source seconds [from, to). */
+export interface FilmSound { clip: string; src: string; at: number; from: number; to?: number; volume: number; speed: number }
+export declare class FilmPage {
+  static open(browser: Browser, origin: string, entry: string, opts?: { scale?: number; size?: { w: number; h: number } | null; transparent?: boolean; black?: boolean; readyMs?: number; offline?: boolean; network?: PageNetwork; waitMs?: number; onVideoNotShown?: () => Promise<boolean> }): Promise<FilmPage>;
+  page: Page;
+  meta: FilmMeta;
+  problems: Array<{ kind: string; message: string }>;
+  seek(t: number, opts?: { timeoutMs?: number }): Promise<void>;
+  capture(opts?: { format?: 'png' | 'jpeg' | 'webp'; quality?: number }): Promise<Buffer>;
+  /** What the page leaves unpainted from now on: clear (a capture keeps it transparent), else black. */
+  ground(clear: boolean): Promise<void>;
+  close(): Promise<void>;
+}
+/** Serves one request for the files of `root` at `path`; false when the path leaves the folder. */
+export declare function folderFiles(root: string, opts?: { inject?: string; timelineInject?: string; headers?: Record<string, string>; swap?: (file: string) => string | null }): (req: import('node:http').IncomingMessage, res: import('node:http').ServerResponse, path: string, query?: URLSearchParams) => boolean;

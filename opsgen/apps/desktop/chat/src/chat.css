@@ -1,0 +1,1430 @@
+/*
+ * The chat's own styles. It sits in Studio's page (apps/desktop/shell), so every rule here is scoped to the chat when
+ * the page is built (shell/vite.config.ts, `scopeChat`): a selector applies inside `.of-chat` (the chat's column and
+ * its layer), `:root`, `html` and `body` mean the chat itself, and Tailwind, the font and `dark:` are Studio's.
+ */
+
+/* Colors, fonts and shadows are Studio's (studio/ui/src/globals.css): the chat is part of its page and uses its
+   tokens, so the two read as one in both themes. */
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* the project's assets open over the chat's column (Studio draws them): above its composer the page is see-through */
+html[data-assets-open],
+html[data-assets-open] body {
+  background: transparent;
+}
+
+/*
+ * The desktop shell hides the system title bar (apps/desktop/src/main.mjs), so the traffic lights float at the
+ * top-left. This is the room left for them; 0 in a browser, so the same UI works in both.
+ *
+ * That strip is also the window's handle: it needs `-webkit-app-region: drag`, and buttons in it need no-drag
+ * or they can't be clicked.
+ */
+:root {
+  --inset-titlebar-h: 0px;
+  --inset-titlebar-w: 0px;
+  /* The top-left control group's size. 0 in a browser, so the room made for it collapses. */
+  --nav-controls-h: 0px;
+  --nav-controls-w: 0px;
+  /* Where the logo in the project top bar starts. In a browser, a small margin. */
+  --titlebar-logo-x: 6px;
+}
+
+html.opsgen-inset-titlebar {
+  /* Room at the top of the left bar for the control group, which sits above it. Same as --nav-controls-h. */
+  --inset-titlebar-h: 40px;
+  /* 40: the traffic lights' centers are at y=20 (top 14 + radius 6), and 26px buttons centered in 40 land
+     on 20 too. */
+  --nav-controls-h: 40px;
+
+  /*
+   * Where content starts, right of the window buttons.
+   *
+   * The traffic lights sit at (14,14), 12px across with centers 20px apart, so they end at x=66.
+   * 91 = 66 + 25 puts the first 26px button's center at 104, 38px past them: any closer and the two groups
+   * read as one row of six buttons.
+   */
+  --inset-titlebar-w: 91px;
+  /* 91 + three 26px buttons + two 2px gaps + right padding. */
+  --nav-controls-w: 180px;
+  /*
+   * The project page's logo sits closer to the window buttons: a lone logo can't be read as part of their
+   * group, so 10px is enough.
+   */
+  --titlebar-logo-x: 76px;
+}
+
+/*
+ * Fullscreen: no window buttons, nothing to make room for.
+ *
+ * The class follows the window's enter/leave-full-screen events (apps/desktop/src/main.mjs): CSS can't see
+ * the window's fullscreen state, and `display-mode: fullscreen` means something else.
+ */
+html.opsgen-inset-titlebar.opsgen-fullscreen {
+  --inset-titlebar-w: 8px;
+  --nav-controls-w: 97px;
+  --titlebar-logo-x: 6px;
+}
+
+/*
+ * Interactive elements inside drag regions must opt out, or pressing them drags the window.
+ *
+ * One global rule rather than one per element: a missed one only fails in the desktop shell, in a few places,
+ * and goes unnoticed. In a browser there are no drag regions and this does nothing.
+ */
+html.opsgen-inset-titlebar
+  :is(button, a, input, select, textarea, [role='button'], [contenteditable='true']) {
+  -webkit-app-region: no-drag;
+}
+
+/* Electron consumes pointer events in native drag regions before the page sees them.
+   Mounted, dismissible overlays opt in so clicking empty titlebar space reaches
+   their outside-click handlers. Override inline drag styles and their descendants;
+   when the last overlay unmounts, the original window drag regions return.
+   Do not use role=dialog here: inline conversation cards also have that role. */
+html.opsgen-inset-titlebar:has([data-desktop-overlay]) * {
+  -webkit-app-region: no-drag !important;
+}
+
+body {
+  color: var(--text);
+  background: var(--bg-panel);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ * The workspace pages' shell: the screen is the whole page.
+ *
+ * `fixed` rather than h-screen + overflow-hidden, which still lets the document scroll: 100vw is wider than the
+ * viewport when there is a scrollbar, and trackpad rubber-banding drags the page. Fixed takes it out of the
+ * flow, and overscroll-behavior stops inner scrolls chaining out. Only for these pages: long pages must scroll.
+ */
+.workspace-shell {
+  position: fixed;
+  inset: 0;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Thin scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+  background-clip: padding-box;
+}
+
+/* ── keyframes ── */
+@keyframes openfilm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes openfilm-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+/* a conversation at work: its light breathes (ConversationSessionBar's StatusLight) */
+@keyframes openfilm-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+.status-breathe {
+  animation: openfilm-breathe 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-breathe {
+    animation: none;
+  }
+}
+@keyframes openfilm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes openfilm-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+/* With background-size 200%, background-position moves the other way (offset = −P% × width),
+   so 150% → −50% sweeps the highlight from left to right. */
+@keyframes openfilm-text-sweep {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+@keyframes openfilm-tool-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes openfilm-vp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Split viewer: a faint divider that fades out at the top and bottom. */
+.viewer-pane-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    rgba(0, 0, 0, 0.85) 28%,
+    black 42%,
+    black 58%,
+    rgba(0, 0, 0, 0.85) 72%,
+    rgba(0, 0, 0, 0.25) 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    rgba(0, 0, 0, 0.85) 28%,
+    black 42%,
+    black 58%,
+    rgba(0, 0, 0, 0.85) 72%,
+    rgba(0, 0, 0, 0.25) 90%,
+    transparent 100%
+  );
+}
+
+/* The timeline zoom slider. A native range looks different in every browser, and the default thumb is too
+   big for a 76px slider among 20px icon buttons. */
+.timeline-zoom-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.timeline-zoom-range::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border);
+}
+
+.timeline-zoom-range::-moz-range-track {
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border);
+}
+
+.timeline-zoom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  /* 2px track, 9px thumb: center the thumb on the track. */
+  margin-top: -3.5px;
+  border-radius: 9999px;
+  background: var(--text-faint);
+  transition: background-color 0.12s;
+}
+
+.timeline-zoom-range::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--text-faint);
+  transition: background-color 0.12s;
+}
+
+.timeline-zoom-range:hover::-webkit-slider-thumb,
+.timeline-zoom-range:focus-visible::-webkit-slider-thumb {
+  background: var(--text);
+}
+
+.timeline-zoom-range:hover::-moz-range-thumb,
+.timeline-zoom-range:focus-visible::-moz-range-thumb {
+  background: var(--text);
+}
+
+.opsgen-rise {
+  animation: openfilm-rise 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Entrance for menus and popovers. */
+@keyframes openfilm-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.opsgen-pop {
+  animation: openfilm-pop 0.16s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+
+/* The indeterminate bar in BrandLoadingScreen: it says "still working", not how far along. */
+@keyframes openfilm-loading-bar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.opsgen-loading-bar {
+  animation: openfilm-loading-bar 1.15s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* User menu popover */
+.user-menu .user-menu-row:first-of-type {
+  margin-top: 0;
+}
+
+/* Focus rings only when moving with Tab.
+   `:focus-visible` counts Space as keyboard use, so a playback shortcut would ring a button just clicked.
+   FocusNav sets `data-focus-nav`: Tab → tab, pointer down → pointer. */
+html:not([data-focus-nav='tab']) :is(a, button, [role='button'], select, summary):focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+html[data-focus-nav='tab'] :where(a, button, [role='button'], select, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 7px;
+}
+
+/* Respect the system's reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.accent-grad {
+  background-image: var(--accent);
+}
+.text-grad {
+  background-image: linear-gradient(120deg, var(--text), var(--text-muted));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Utility classes ──────────────────────────────────────────── */
+
+/* ── Home cards (YouTube's hover) ───────────────────────────────
+   A card is a halo (.card-halo) under the thumbnail (.tpl-thumb) and its text. On hover the halo fades in
+   and grows a little, holding the card together. Its color is the poster's (--card-tone) mixed into the
+   page background: a deep tone in dark, a pastel in light. */
+:root,
+[data-theme='light'] {
+  --card-halo-mix: 22%;
+}
+[data-theme='dark'] {
+  --card-halo-mix: 40%;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --card-halo-mix: 40%;
+  }
+}
+
+.card-halo {
+  position: absolute;
+  z-index: 0;
+  /* 4px less than the 16px grid gap at the sides, so it doesn't touch the next card. */
+  inset: -12px -12px -14px;
+  border-radius: 20px;
+  background: color-mix(
+    in oklab,
+    var(--bg-panel),
+    var(--card-tone, var(--text-muted)) var(--card-halo-mix)
+  );
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  transition:
+    opacity 0.14s ease-out,
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease;
+}
+.group:hover .card-halo {
+  opacity: 1;
+  transform: none;
+}
+
+/* Thumbnail: 0.5px border, 12px radius. It stays still on hover; only the halo appears. */
+.tpl-thumb {
+  position: relative;
+  z-index: 1;
+  border: 0.5px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-field);
+  transition: border-color 0.22s ease;
+}
+.group:hover .tpl-thumb {
+  border-color: color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+/* Controls shown on hover (mute, progress bar): fade in and rise a little. */
+@keyframes card-hover-chrome-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-hover-chrome {
+  animation: card-hover-chrome-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Segmented switch (Task / Agent) */
+.seg-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 999px;
+  background: var(--bg-pressed);
+}
+.seg-btn {
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+.seg-btn:hover {
+  color: var(--text-muted);
+}
+.seg-btn[data-on='true'] {
+  background: var(--bg-raised);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Filter tabs, underlined */
+.ag-tab {
+  position: relative;
+  padding: 0 2px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.ag-tab:hover {
+  color: var(--text-muted);
+}
+.ag-tab[data-on='true'] {
+  color: var(--text);
+}
+.ag-tab[data-on='true']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-raised) 25%,
+    var(--bg-field) 37%,
+    var(--bg-raised) 63%
+  );
+  background-size: 200% 100%;
+  animation: openfilm-shimmer 1.4s ease-in-out infinite;
+}
+
+/* The "working on it" line: a glint sweeps across the words. Unlike a spinner, it ties the activity to
+   the sentence itself. */
+.text-sweep {
+  background-image: linear-gradient(
+    90deg,
+    var(--text-faint) 0%,
+    var(--text-faint) 35%,
+    var(--text) 50%,
+    var(--text-faint) 65%,
+    var(--text-faint) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: openfilm-text-sweep 1.8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-sweep {
+    animation: none;
+    color: var(--text-muted);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Composer and tool timeline.
+   ────────────────────────────────────────────────────────────── */
+:root {
+  --bg-surface: var(--bg-raised);
+  --alpha-surface-04: var(--bg-hover);
+  --alpha-surface-07: var(--bg-hover);
+  --alpha-surface-08: var(--bg-pressed);
+  --alpha-surface-10: var(--bg-pressed);
+  --accent-alpha-06: var(--accent-soft);
+  --mono: var(--font-mono);
+}
+
+/* The greeting's entrance, word by word (character by character for CJK). It animates `translate`, not
+   `transform`, so a transform animation on the same element can run alongside it. */
+@keyframes greeting-unit-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.greeting-unit {
+  display: inline-block;
+  /* Back-out curve: a slight overshoot as it lands. */
+  animation: greeting-unit-in 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(var(--gd-i, 0) * 45ms);
+}
+/* Reduced motion: drop the stagger too. The global rule only shortens durations; the delays would remain. */
+@media (prefers-reduced-motion: reduce) {
+  .greeting-unit {
+    animation: none;
+  }
+}
+
+/* Editorial section headings: the greeting's serif, tighter tracking. */
+.editorial-title {
+  font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.sidebar-header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+.sidebar-header-icon:hover {
+  background: var(--bg-field);
+  color: var(--text);
+}
+
+/**
+ * The frame around each top-bar button.
+ *
+ * Without frames the row reads as the end of a sentence rather than separate things to click; a frame also
+ * shows where each click target is.
+ *
+ * --border-strong rather than --border, which is invisible on the near-black top bar.
+ *
+ * Must come after .sidebar-header-icon: the collapse button has both classes, that rule sets border: none, and
+ * at equal specificity the later rule wins.
+ */
+.topbar-btn {
+  border-radius: 9px;
+  border: 1px solid var(--border-strong);
+  /* Opaque: the cluster floats over the home page's dot grid, which would show through. */
+  background: var(--bg-panel);
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+/* The bell is a .sidebar-header-icon, used elsewhere too; the frame and text color apply only in the top bar,
+   so it matches the rest of the row (--topbar-text). */
+.topbar-actions .sidebar-header-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-panel);
+  color: var(--text);
+}
+.topbar-actions .sidebar-header-icon:hover,
+.topbar-actions .topbar-btn:hover {
+  background: color-mix(in srgb, var(--bg-panel), var(--text) 6%);
+}
+
+/**
+ * Fades at both ends of the skill row.
+ *
+ * A mask rather than gradient overlays: an overlay must match the background exactly or its edge shows,
+ * while a mask fades the content itself. The component sets the mask on whichever side hides content; this
+ * only eases it on and off.
+ */
+.skill-rail-mask {
+  transition: -webkit-mask-image 160ms ease, mask-image 160ms ease;
+}
+
+/*
+ * Icon buttons in the composer's control row (add media, pick a tool).
+ *
+ * No border: they sit inside the input card, and a ring each would make three layers of frames. All share one
+ * size and icon size, since a small difference reads as misalignment. Pressed is a background, not a border.
+ */
+.opsgen-composer-tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 8px;
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.opsgen-composer-tool:hover:not(:disabled) {
+  background: var(--bg-field);
+  color: var(--text);
+}
+
+.opsgen-composer-tool[aria-pressed='true'] {
+  background: var(--bg-pressed);
+  color: var(--text);
+}
+
+.opsgen-composer-tool:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* Composer pill buttons: outlined, a light gray fill on hover. */
+.opsgen-chat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 120ms ease;
+}
+.opsgen-chat-pill:hover {
+  background: var(--bg-field);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.opsgen-chat-pill:active {
+  transform: scale(0.96);
+}
+.opsgen-chat-pill:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Entrance for chips: a small pop. */
+@keyframes openfilm-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.opsgen-pop-in {
+  animation: openfilm-pop-in 200ms cubic-bezier(0.2, 0.8, 0.3, 1.1);
+}
+
+/* ── Agent tool timeline ── */
+.opsgen-tool-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.opsgen-tool-step {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  background: var(--bg-raised);
+  overflow: hidden;
+}
+.opsgen-tool-step-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 8px 11px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.opsgen-tool-step[role='button']:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+}
+.opsgen-tool-step.is-running .opsgen-tool-step-head::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    var(--accent-soft) 38%,
+    color-mix(in srgb, var(--accent) 24%, transparent) 50%,
+    var(--accent-soft) 62%,
+    transparent 100%
+  );
+  animation: openfilm-tool-wave 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes openfilm-tool-wave {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+.opsgen-tool-step-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.opsgen-tool-step-icon.is-running {
+  border-radius: 50%;
+  border: 1.6px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-top-color: var(--accent);
+  animation: openfilm-tool-spin 0.7s linear infinite;
+}
+.opsgen-tool-step-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+.opsgen-tool-step-spacer {
+  flex: 1;
+}
+.opsgen-tool-step-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+.opsgen-tool-step-chevron {
+  color: var(--text-muted);
+  transition: transform 0.15s ease;
+  position: relative;
+  z-index: 1;
+}
+.opsgen-tool-step.is-open .opsgen-tool-step-chevron {
+  transform: rotate(90deg);
+}
+.opsgen-tool-step-body {
+  border-top: 1px solid var(--border);
+  margin: 0;
+  padding: 10px 11px 11px;
+  background: var(--bg-panel);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.opsgen-tool-io-block {
+  min-width: 0;
+}
+.opsgen-tool-io-label {
+  margin-bottom: 5px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+.opsgen-tool-io-pre {
+  margin: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-panel);
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  max-height: 360px;
+  overflow: auto;
+}
+
+/* FileTree code panel: select-all and copy follow source lines, not token spans. */
+.opsgen-file-code pre {
+  overflow: auto;
+  user-select: text;
+  -webkit-user-select: text;
+}
+.opsgen-file-code code {
+  white-space: pre !important;
+  word-break: normal;
+}
+.opsgen-file-code code span {
+  display: inline;
+  white-space: inherit;
+}
+
+/* ── Auth scene + Spark Engine (GSAP) ─────────────────────────── */
+.auth-scene {
+  background: var(--bg-panel);
+}
+
+.spark-engine {
+  --lx: 50%;
+  --ly: 50%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.spark-engine__mesh {
+  position: absolute;
+  inset: 0;
+}
+
+.spark-blob {
+  position: absolute;
+  width: min(68vw, 620px);
+  height: min(68vw, 620px);
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+.spark-blob--a {
+  background: radial-gradient(circle, rgba(139, 128, 255, 0.95) 0%, rgba(139, 128, 255, 0) 68%);
+}
+.spark-blob--b {
+  width: min(72vw, 680px);
+  height: min(72vw, 680px);
+  background: radial-gradient(circle, rgba(94, 157, 255, 0.9) 0%, rgba(94, 157, 255, 0) 68%);
+  opacity: 0.48;
+}
+.spark-blob--c {
+  width: min(58vw, 520px);
+  height: min(58vw, 520px);
+  background: radial-gradient(circle, rgba(79, 209, 224, 0.85) 0%, rgba(79, 209, 224, 0) 68%);
+  opacity: 0.38;
+}
+
+/* cursor light — follows pointer via gsap.quickTo */
+.spark-light {
+  position: absolute;
+  left: var(--lx);
+  top: var(--ly);
+  width: min(55vw, 480px);
+  height: min(55vw, 480px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(139, 128, 255, 0.22) 0%,
+    rgba(94, 157, 255, 0.1) 35%,
+    transparent 68%
+  );
+  filter: blur(40px);
+  will-change: left, top;
+}
+
+.spark-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* slow pulse at viewport center */
+.spark-pulse {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: min(42vw, 360px);
+  height: min(42vw, 360px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(139, 128, 255, 0.35);
+  box-shadow:
+    0 0 40px rgba(139, 128, 255, 0.12),
+    inset 0 0 30px rgba(94, 157, 255, 0.06);
+  pointer-events: none;
+}
+
+/* subtle film grain */
+.spark-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+
+/* Plain centered column — no card, no backdrop. */
+.auth-panel {
+  position: relative;
+  animation: auth-panel-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes auth-panel-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Auth — quiet fields, solid ink primary, six-box code (see AuthPanel). */
+.auth-panel {
+  --auth-surface: var(--bg-panel);
+  --auth-line: color-mix(in srgb, var(--text) 14%, transparent);
+  --auth-line-hover: color-mix(in srgb, var(--text) 24%, transparent);
+  --auth-line-focus: color-mix(in srgb, var(--text) 42%, transparent);
+  --auth-ring: color-mix(in srgb, var(--text) 7%, transparent);
+  --auth-fill: color-mix(in srgb, var(--text) 3%, var(--auth-surface));
+}
+.auth-in-modal .auth-panel {
+  --auth-surface: var(--bg-raised);
+}
+.auth-step {
+  animation: auth-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* focus: one notch brighter border + a faint halo — never a thick white outline */
+.auth-field {
+  background: var(--auth-fill);
+  border: 1px solid var(--auth-line);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.auth-field::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+.auth-field:hover {
+  border-color: var(--auth-line-hover);
+}
+.auth-field:focus {
+  background: var(--auth-surface);
+  border-color: var(--auth-line-focus);
+  box-shadow: 0 0 0 3px var(--auth-ring);
+}
+.auth-field.is-invalid {
+  border-color: color-mix(in srgb, var(--err) 70%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--err) 12%, transparent);
+}
+.auth-oauth {
+  background: var(--auth-surface);
+  border: 1px solid var(--auth-line);
+}
+.auth-oauth:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--auth-line-hover);
+}
+.auth-oauth:active:not(:disabled) {
+  transform: scale(0.99);
+}
+.auth-oauth.is-dimmed {
+  opacity: 0.5;
+}
+.auth-primary {
+  background: var(--text);
+  color: var(--bg-panel);
+}
+.auth-primary:hover:not(:disabled) {
+  opacity: 0.88;
+}
+.auth-primary:active:not(:disabled) {
+  transform: scale(0.99);
+}
+.auth-primary[aria-busy] {
+  pointer-events: none;
+  opacity: 0.75;
+}
+.auth-edit {
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.auth-edit:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 11%, transparent);
+}
+/* six-box code: one transparent input over six painted slots */
+.auth-otp__input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font-size: 16px;
+  letter-spacing: -1em;
+  cursor: text;
+}
+.auth-otp__input::selection {
+  background: transparent;
+}
+.auth-otp__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--auth-fill);
+  border: 1px solid var(--auth-line);
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, opacity 0.2s ease;
+}
+.auth-otp__slot.is-filled {
+  background: var(--auth-surface);
+  border-color: var(--auth-line-hover);
+}
+.auth-otp__slot.is-active {
+  background: var(--auth-surface);
+  border-color: var(--auth-line-focus);
+  box-shadow: 0 0 0 3px var(--auth-ring);
+}
+.auth-otp.is-busy .auth-otp__slot {
+  opacity: 0.55;
+}
+.auth-otp.is-invalid .auth-otp__slot {
+  border-color: color-mix(in srgb, var(--err) 60%, transparent);
+}
+.auth-otp.is-invalid {
+  animation: auth-shake 0.32s ease;
+}
+@keyframes auth-shake {
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+.auth-otp__caret {
+  width: 1.5px;
+  height: 22px;
+  border-radius: 1px;
+  background: var(--text);
+  animation: auth-caret 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .auth-step,
+  .auth-otp.is-invalid { animation: none; }
+}
+@keyframes auth-btn-spin {
+  to { transform: rotate(360deg); }
+}
+.auth-btn-spinner {
+  animation: auth-btn-spin 0.65s linear infinite;
+}
+
+
+/* legal pages */
+.legal-section + .legal-section {
+  margin-top: 2rem;
+}
+.legal-section h2 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+.legal-section p,
+.legal-section li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.legal-section p + p,
+.legal-section ul {
+  margin-top: 0.75rem;
+}
+.legal-section ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.legal-section li + li {
+  margin-top: 0.35rem;
+}
+.legal-section a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-section a:hover {
+  color: var(--accent);
+}
+.legal-section strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/*
+ * Timeline scrollbars.
+ *
+ * Horizontally only the `.tl-range` bar at the bottom: the track area is `overflow-x: hidden` and the system
+ * scrollbar stays hidden, or there would be two. The vertical one appears with content.
+ */
+.tl-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-faint) transparent;
+}
+.tl-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 0;
+}
+.tl-scroll::-webkit-scrollbar:horizontal {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.tl-scroll::-webkit-scrollbar:vertical {
+  width: 8px;
+}
+.tl-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tl-scroll::-webkit-scrollbar-thumb {
+  background: var(--text-faint);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background-clip: content-box;
+}
+.tl-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+  background-clip: content-box;
+}
+.tl-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/*
+ * The split tool's cursor: a tilted razor blade.
+ *
+ * A blade rather than a crosshair: it says that pressing cuts the block.
+ *
+ * The numbers were measured:
+ * - 28px, not 24px: at 24 the blade shrinks to a white dot.
+ * - Tilted 32°: upright, it is a white bar like the guide line on the track.
+ * - Hotspot (9,11), the middle of the cutting edge: the guide line runs along the edge, and the blade hangs
+ *   down-right, over what you have passed rather than what you are about to look at.
+ * - White body, black outline, black slot: blocks run from teal to blue to gray, and a one-color blade would
+ *   vanish on one of them; the slot makes it a razor blade rather than a white square.
+ *
+ * Comes before .tl-playhead-hot: both use !important across the subtree, and at equal specificity the later
+ * rule wins. On the playhead (±4px) the cursor stays the resize arrows, since pressing there scrubs
+ * (Timeline's grabPlayhead takes that press in the capture phase).
+ */
+.tl-blade,
+.tl-blade * {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cg transform='rotate(32 14 14)' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Crect x='8.4' y='2' width='11.2' height='24' rx='2' fill='%23fff'/%3E%3Crect x='12.2' y='8.7' width='3.6' height='10.6' rx='1.8' fill='%23000' stroke='none'/%3E%3C/g%3E%3C/svg%3E")
+      9 11,
+    crosshair !important;
+}
+
+/*
+ * The playhead's drag cursor.
+ *
+ * Blocks set their own inline cursor (pointer / grab), which a parent's cursor can't override, so both "over
+ * the playhead (±4px)" and "dragging the playhead" hold the whole subtree with !important. Timeline adds and
+ * removes the classes in pointermove / startScrub.
+ */
+.tl-playhead-hot,
+.tl-playhead-hot *,
+body.tl-scrubbing,
+body.tl-scrubbing * {
+  cursor: col-resize !important;
+}
+
+/* The range bar under the timeline: a 10px hit area (H_SCROLL_H) with a 4px bar centered in it, 8px on
+   hover or drag, as macOS scrollbars do. */
+.tl-range-thumb {
+  top: 50% !important;
+  bottom: auto !important;
+  height: 4px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 28%, transparent);
+  transition: height 0.12s ease, background-color 0.12s ease;
+}
+.tl-range:hover .tl-range-thumb,
+.tl-range:active .tl-range-thumb {
+  height: 8px;
+  background: color-mix(in srgb, var(--text) 42%, transparent);
+}
+
+/*
+ * The timeline's zoom slider.
+ *
+ * The default round thumb outshines the icons around it in a 30px toolbar; a narrow rounded rectangle matches
+ * the square icons instead.
+ */
+.tl-zoom {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+.tl-zoom::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  /* Filled up to the thumb, so the slider shows the level without a number. The component sets `--pos`. */
+  background: linear-gradient(
+    to right,
+    var(--accent) 0,
+    var(--accent) calc(var(--pos, 0) * 100%),
+    var(--border) calc(var(--pos, 0) * 100%),
+    var(--border) 100%
+  );
+}
+.tl-zoom::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 6px;
+  height: 13px;
+  margin-top: -5px;
+  border-radius: 2px;
+  background: var(--accent);
+  cursor: pointer;
+}
+.tl-zoom::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0,
+    var(--accent) calc(var(--pos, 0) * 100%),
+    var(--border) calc(var(--pos, 0) * 100%),
+    var(--border) 100%
+  );
+}
+.tl-zoom::-moz-range-thumb {
+  width: 6px;
+  height: 12px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--text-muted);
+  cursor: pointer;
+}
+
+/* The canvas uses React Flow's own variables rather than competing with its stylesheet, which loads after
+   this file and wins at equal specificity. */
+.react-flow {
+  --xy-background-color: var(--bg-app);
+  /* Variables, so the selected state can override them; a per-edge style.stroke wouldn't change on selection. */
+  --xy-edge-stroke: var(--text-faint);
+  --xy-edge-stroke-selected: var(--accent);
+  --xy-edge-stroke-width: 1.5;
+  --xy-connectionline-stroke: var(--text-muted);
+  --xy-selection-background-color: var(--accent-soft);
+  --xy-selection-border: 1px dashed var(--accent);
+}
+/* Selected edges are thicker too: a color change alone is invisible on a thin line at low zoom. */
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke-width: 2.5;
+}
+
+/*
+ * The box around a marquee selection stays (it drags the group), but only as a rounded dashed outline: a
+ * solid square box around rounded cards looks like a container. Each card shows its own selection.
+ */
+.react-flow__nodesselection-rect {
+  border-style: dashed;
+  border-radius: 10px;
+}
+
+/* Panels on the canvas sit above cards: a selected card is raised to 1000, and panels default to 5. */
+.react-flow .react-flow__panel {
+  z-index: 1001;
+}
+
+/* Text in canvas text cards (ProseMirror). Tailwind's preflight strips list markers and heading sizes, so
+   this restores them at card scale: a card is about 200px wide, so headings differ by weight and spacing,
+   not size. */
+.opsgen-prose {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--text);
+}
+.opsgen-prose > * + * {
+  margin-top: 0.5em;
+}
+.opsgen-prose h1,
+.opsgen-prose h2,
+.opsgen-prose h3 {
+  font-weight: 600;
+  line-height: 1.35;
+}
+.opsgen-prose h1 { font-size: 15px; }
+.opsgen-prose h2 { font-size: 13.5px; }
+.opsgen-prose h3 { font-size: 12.5px; }
+.opsgen-prose ul,
+.opsgen-prose ol {
+  padding-left: 1.25em;
+}
+.opsgen-prose ul { list-style: disc; }
+.opsgen-prose ol { list-style: decimal; }
+.opsgen-prose li > * + * { margin-top: 0.25em; }
+.opsgen-prose li + li { margin-top: 0.15em; }
+.opsgen-prose blockquote {
+  padding-left: 0.75em;
+  border-left: 2px solid var(--border-strong);
+  color: var(--text-muted);
+}
+.opsgen-prose code {
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  background: var(--bg-hover);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.9em;
+}
+.opsgen-prose pre {
+  overflow-x: auto;
+  padding: 0.5em 0.65em;
+  border-radius: 6px;
+  background: var(--bg-hover);
+}
+.opsgen-prose pre code {
+  padding: 0;
+  background: none;
+}
+.opsgen-prose hr {
+  border: 0;
+  border-top: 1px solid var(--border-strong);
+}
+.opsgen-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Keep the reference-selection cursor while dragging beyond the ruler. */
+body.tl-pinning, body.tl-pinning * { cursor: crosshair !important; }
+
+/* A clip whose media shows no picture (Timeline mediaTrouble): marked on that block only — a red edge and
+   a small badge; the rest of the timeline and the film carry on. `unreachable` retries by itself: amber. */
+[data-media-trouble] > :first-child {
+  box-shadow: inset 0 0 0 1.5px var(--err, #e5484d);
+}
+[data-media-trouble='unreachable'] > :first-child {
+  box-shadow: inset 0 0 0 1.5px #f5a524;
+}
+[data-media-trouble]::after {
+  content: '!';
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  z-index: 3;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--err, #e5484d);
+  color: #fff;
+  font: 700 10px/14px system-ui, sans-serif;
+  text-align: center;
+  pointer-events: none;
+}
+[data-media-trouble='unreachable']::after {
+  content: '⟳';
+  background: #f5a524;
+}
+
+/* the desktop chat page: the column fills the view */
+#root { height: 100%; }

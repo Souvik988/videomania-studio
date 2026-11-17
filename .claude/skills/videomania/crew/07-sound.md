@@ -49,3 +49,8 @@ Run `scripts/sound_mix.py`: SFX from the shot list (plus flicker, wash, dissolve
 ## Music level for this user (2026-11-14)
 `sound_mix.py --music-db -22`: the user asked for the music "a little louder" than -26. Keep the cue script in
 the project (`audio/score.sh`, shape of `templates/voxel-diorama/examples/director-film-v5.score.sh`).
+
+## Hook sounds (2026-11-15)
+The first frame gets a layered ominous stack (transient + braam + sub drop) and every effect a paired sound placed on
+its sync point (`assets/sfx-hook/manifest.json`, search with `sfx_library.py find`). `fx_pass.py apply` places and
+level-matches them and re-finishes the film to -14 LUFS / -1.5 dBTP. Risers end ON the cut; hits start on the frame.
